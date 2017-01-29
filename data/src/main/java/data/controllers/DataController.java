@@ -28,4 +28,10 @@ public class DataController {
 		
 		return  inspirationsJson;
 	}
+	
+	@RequestMapping(value = "/inspirations/populate-db")
+    public void inpspirationSeeds() {
+		InspirationMapping im = new InspirationMapping();
+		im.runInspirationsSeeds();
+    }
 }

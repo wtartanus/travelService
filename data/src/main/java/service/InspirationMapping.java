@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import data.models.*;
+import data.models.db.Seed;
 
 public class InspirationMapping {
       
@@ -57,5 +58,10 @@ public class InspirationMapping {
 		}
 		
 		return this.inspirations;
+	}
+
+	public void runInspirationsSeeds() {
+		Seed.populateInspirations();
+		
 	}
 }
