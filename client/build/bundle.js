@@ -21640,7 +21640,38 @@
 	          React.createElement(NavBox, { windowSize: this.state.windowSize })
 	        )
 	      );
-	    } else if (this.state.windowSize.width >= 1000) {} else {
+	    } else if (this.state.windowSize.width >= 1000) {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'div',
+	          { id: 'landing-container', style: this.state.heightStyle },
+	          React.createElement(
+	            'h1',
+	            { id: 'logo' },
+	            React.createElement(
+	              'span',
+	              { id: 'travel-word' },
+	              'Travel'
+	            ),
+	            ' ',
+	            React.createElement(
+	              'span',
+	              { id: 'guide-word' },
+	              'Guide'
+	            )
+	          ),
+	          React.createElement(
+	            'p',
+	            { id: 'slogan' },
+	            'Everything you looking for in 1 place.'
+	          ),
+	          React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
+	          React.createElement(NavBox, { windowSize: this.state.windowSize })
+	        )
+	      );
+	    } else {
 	      return React.createElement(
 	        'div',
 	        null,

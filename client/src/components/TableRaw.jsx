@@ -26,11 +26,11 @@ populateTableData: function() {
                  styleClass = "populated-table-data-before";
                  break;
         	} else {
-        		 day = this.props.days[i].value.format("DD");
-		         var date = this.props.days[i];
-		         title = this.props.days[i].value.format("DD MMM YYYY");
-		         styleClass = "populated-table-data";
-		         break;
+            		 day = this.props.days[i].value.format("DD");
+    		         var date = this.props.days[i];
+    		         title = this.props.days[i].value.format("DD MMM YYYY");
+    		         styleClass = "populated-table-data";
+    		         break;
         	}
         } 
        }

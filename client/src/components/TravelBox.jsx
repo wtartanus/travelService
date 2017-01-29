@@ -64,7 +64,16 @@ var Travel = React.createClass({
         </div>
         );
     } else if(this.state.windowSize.width >= 1000) {
-
+      return(
+         <div>  
+          <div id="landing-container" style={this.state.heightStyle}>
+            <h1 id="logo"><span id="travel-word">Travel</span> <span id="guide-word">Guide</span></h1>
+            <p id="slogan">Everything you looking for in 1 place.</p>
+            <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
+            <NavBox windowSize={this.state.windowSize}/>
+          </div>
+        </div>
+      );
     } else {
          return (
          <div>
