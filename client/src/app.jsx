@@ -4,7 +4,7 @@ var TravelBox = require('./components/TravelBox.jsx');
 
 window.onload = function(){
   ReactDOM.render(
-    <TravelBox/>,
+    <TravelBox url="http://localhost:8080/"/>,
     document.getElementById('app')
   );
 }

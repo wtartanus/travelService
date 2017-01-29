@@ -45,8 +45,9 @@ public class InspirationMapping {
 				}
 			}
 			
-			for(Photo value : photos) {
-				if(value.getId() == c.getId()) {
+			for(Photo value : this.photos) {
+                int we = value.getCityId();
+				if(value.getCityId() == c.getId()) {
 					 p.add(value);
 				}
 			}

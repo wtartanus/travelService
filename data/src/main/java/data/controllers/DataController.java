@@ -17,7 +17,7 @@ public class DataController {
   
 	public static final String DATA_BASE_URI = "travel-guide/data";
 	
-	@RequestMapping(value = "/test")
+	@RequestMapping(value = "/inspirations")
 	public String test() {
 		InspirationMapping im = new InspirationMapping();
 		ArrayList<Inspiration> inspirations = im.mapAllInspirations();

@@ -34,7 +34,7 @@ var Calendar = React.createClass({
                       days.push(months[j]);
                  }
               }
-              list.push(<TableRaw week={week} days={days} setDate={this.props.setDate} today={today} update={0}/>);
+              list.push(<TableRaw week={week} days={days} setDate={this.props.setDate} today={today} update={0} key={i}/>);
            }
       }
 

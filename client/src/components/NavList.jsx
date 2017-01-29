@@ -7,8 +7,8 @@ var NavList = React.createClass({
 	},
 
 	render: function() {
-		var listItems = this.state.navItems.map(function(item) {
-			return ( <NavItem listItem={item}/> );
+		var listItems = this.state.navItems.map(function(item,index) {
+			return ( <NavItem listItem={item} key={index} /> );
 		}); 
 
 		return (

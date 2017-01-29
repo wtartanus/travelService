@@ -35,11 +35,9 @@ populateTableData: function() {
         } 
        }
 
-       return <TableData title={title} date={date} day={day} styleClass={styleClass} setDate={this.props.setDate} />
+       return <TableData title={title} date={date} day={day} styleClass={styleClass} setDate={this.props.setDate} key={index} />
  }.bind(this));
-
-   // this.setState({display: tableData, update: 1});
-   return tableData;
+ return tableData;
 
 },
 

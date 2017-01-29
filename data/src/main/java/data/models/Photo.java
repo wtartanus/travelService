@@ -16,7 +16,7 @@ public class Photo {
 	
 	public Photo(int id, int cityId, String link) {
 		this.id = id;
-		this.cityId = id;
+		this.cityId = cityId;
 		this.link = link;
 	}
 	
@@ -110,7 +110,10 @@ public class Photo {
 	    rs = this.con.executeGet(sql);
 		try {
 			while(rs.next()) {
-			  Photo photo = new Photo(rs.getInt("id"), rs.getInt("city_id"), rs.getString("link"));
+			  int id = rs.getInt("id");
+			  int cityId = rs.getInt("city_id");
+			  String link = rs.getString("link");
+			  Photo photo = new Photo(id, cityId, link);
 			  photos.add(photo);
 			}
 		} catch (SQLException e) {

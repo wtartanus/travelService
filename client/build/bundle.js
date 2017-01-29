@@ -51,7 +51,7 @@
 	var TravelBox = __webpack_require__(178);
 	
 	window.onload = function () {
-	  ReactDOM.render(React.createElement(TravelBox, null), document.getElementById('app'));
+	  ReactDOM.render(React.createElement(TravelBox, { url: 'http://localhost:8080/' }), document.getElementById('app'));
 	};
 
 /***/ },
@@ -21508,6 +21508,7 @@
 	
 	  componentWillMount: function componentWillMount() {
 	    this.getWindowSize();
+	    this.getData(this.props.url);
 	  },
 	
 	  getWindowSize: function getWindowSize() {
@@ -21521,6 +21522,20 @@
 	  setSearchItem: function setSearchItem(value) {
 	    var wojtek = value.destination;
 	    this.setState({ searchItem: value }, function () {});
+	  },
+	
+	  getData: function getData(url) {
+	    var request = new XMLHttpRequest();
+	    request.open("GET", url + "travel-guide/data/inspirations");
+	    request.onload = function () {
+	      if (request.status === 200) {
+	        var result = JSON.parse(request.responseText);
+	        this.setState({ inspirations: result });
+	        console.log(this.state.inspirations);
+	      }
+	    }.bind(this);
+	
+	    request.send(null);
 	  },
 	
 	  render: function render() {
@@ -21541,7 +21556,7 @@
 	            ),
 	            React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hiddenName': 'true' }),
+	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
 	          ),
@@ -21555,7 +21570,7 @@
 	            ),
 	            React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hiddenName': 'true' }),
+	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
 	          ),
@@ -21569,7 +21584,7 @@
 	            ),
 	            React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hiddenName': 'true' }),
+	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
 	          ),
@@ -21583,7 +21598,7 @@
 	            ),
 	            React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hiddenName': 'true' }),
+	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
 	          ),
@@ -21597,7 +21612,7 @@
 	            ),
 	            React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hiddenName': 'true' }),
+	            React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
 	            React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
 	          ),
@@ -36818,7 +36833,7 @@
 	            days.push(months[j]);
 	          }
 	        }
-	        list.push(React.createElement(TableRaw, { week: week, days: days, setDate: this.props.setDate, today: today, update: 0 }));
+	        list.push(React.createElement(TableRaw, { week: week, days: days, setDate: this.props.setDate, today: today, update: 0, key: i }));
 	      }
 	    }
 	
@@ -37000,10 +37015,8 @@
 	        }
 	      }
 	
-	      return React.createElement(TableData, { title: title, date: date, day: day, styleClass: styleClass, setDate: this.props.setDate });
+	      return React.createElement(TableData, { title: title, date: date, day: day, styleClass: styleClass, setDate: this.props.setDate, key: index });
 	    }.bind(this));
-	
-	    // this.setState({display: tableData, update: 1});
 	    return tableData;
 	  },
 	
@@ -37128,8 +37141,8 @@
 		},
 	
 		render: function render() {
-			var listItems = this.state.navItems.map(function (item) {
-				return React.createElement(NavItem, { listItem: item });
+			var listItems = this.state.navItems.map(function (item, index) {
+				return React.createElement(NavItem, { listItem: item, key: index });
 			});
 	
 			return React.createElement(
