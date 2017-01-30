@@ -66,19 +66,19 @@ public class Activity {
 	
 	public static void save(int id, int cityId, String city, String description, String address, String photoLink) {
 		DbConnection con = new DbConnection();
-		String sql = "INSERT INTO photos (id, city_id, name, description, address, photo_link) VALUES(" + id +  ", " + cityId + "," + city + ", " + description + "," + address + ", " + photoLink + ");";
+		String sql = "INSERT INTO activities (id, city_id, name, description, address, photo_link) VALUES(" + id +  ", " + cityId + "," + city + ", " + description + "," + address + ", " + photoLink + ");";
 		con.executeSet(sql);
 	}
 	
 	public void save() {
-		String sql = "INSERT INTO photos (city_id, name, description, address, photo_link) VALUES(" + this.cityId + "," + this.city + ", " + this.description + "," + this.address + ", " + this.photoLink + ");";
+		String sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(" + this.cityId + "," + this.city + ", " + this.description + "," + this.address + ", " + this.photoLink + ");";
 		this.con.executeSet(sql);
 	}
 	
 	public Activity getById(int id) {
 		ResultSet rs = null;
 		Activity activity = null;
-		String sql = "SELECT * FROM activities1 Where id =" + id;
+		String sql = "SELECT * FROM activities Where id =" + id;
 		rs = this.con.executeGet(sql);
 		try {
 			  activity = new Activity(rs.getInt("id"), rs.getInt("city_id"), rs.getString("name"), rs.getString("description"), rs.getString("address"), rs.getString("photo_link"));
@@ -112,7 +112,7 @@ public class Activity {
 	public ArrayList<Activity> getByCity(String city) {
 	   ResultSet rs = null;
 	   ArrayList<Activity> activities = new ArrayList<Activity>();
-	   String sql = "SELECT * FROM activities1 Where name =" + city;
+	   String sql = "SELECT * FROM activities Where name =" + city;
 	   rs = this.con.executeGet(sql);
 	   try {
 		   while(rs.next()) {
@@ -130,7 +130,7 @@ public class Activity {
 	public ArrayList<Activity> getAll() {
 		ResultSet rs = null;
 		ArrayList<Activity> activities = new ArrayList<Activity>();
-	    String sql = "SELECT * FROM activities1";
+	    String sql = "SELECT * FROM activities";
 	    rs = this.con.executeGet(sql);
 		try {
 			while(rs.next()) {
@@ -146,31 +146,31 @@ public class Activity {
 	}
 	
 	public void updateById(int id, int cityId, String city, String description, String address, String photoLink) {
-		String sql = "UPDATE activities1 Set cityId = " + cityId + ", name = " + city + ", description = "
+		String sql = "UPDATE activities Set cityId = " + cityId + ", name = " + city + ", description = "
 			      + description + ", address = " + address + ", photo_link = " + photoLink +
 			      "WHERE id = " + id;
 		this.con.executeSet(sql);
 	}
 	
 	public void update() {
-		String sql = "UPDATE activities1 Set cityId = " + this.cityId + ", name = " + this.city + ", description = "
+		String sql = "UPDATE activities Set cityId = " + this.cityId + ", name = " + this.city + ", description = "
 				      + this.description + ", address = " + this.address + ", photo_link = " + this.photoLink +
 				      "WHERE id = " + this.id;
 		this.con.executeSet(sql);
 	}
 	
 	public void deleteById(int id) {
-	    String sql = "DELETE FROM activities1 WHERE id = " + id;
+	    String sql = "DELETE FROM activities WHERE id = " + id;
 	    this.con.executeSet(sql);
 	}
 	
 	public void delete() {
-		String sql = "DELETE FROM activities1 WHERE id = " + this.id;
+		String sql = "DELETE FROM activities WHERE id = " + this.id;
 		this.con.executeSet(sql);
 	}
 	
 	public void deleteAll() {
-		String sql = "DELETE FROM activities1";
+		String sql = "DELETE FROM activities";
 		this.con.executeSet(sql);
 	}
 

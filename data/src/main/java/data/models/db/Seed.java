@@ -3,29 +3,13 @@ package data.models.db;
 import data.models.DbConnection;
 
 public class Seed {
-
+	static DbConnection con = new DbConnection();
 	public static void populateInspirations() {
-	  DbConnection con = new DbConnection();
-	  
-	  //Create tables
-	  String sql = "CREATE TABLE cities(id SERIAL4 primary key, city VARCHAR(255), description TEXT, history TEXT);";
-	  con.executeSet(sql);
-	  
-	  sql = "CREATE TABLE photos(id SERIAL4 primary key, city_id INT4 references cities (id) ON DELETE CASCADE, link VARCHAR(255));";
-	  con.executeSet(sql);
-	  
-	  sql = "CREATE TABLE weather(id SERIAL4 primary key, city_id INT4 references cities (id) ON DELETE CASCADE,"
-	  		+ "jan INT4, feb INT4, mar INT4, apr INT4, may INT4, june INT4, july INT4, aug INT4, sept INT4, oct INT4, nov INT4, dec INT4);";
-	  con.executeSet(sql);
-	  
-	  sql = "CREATE TABLE activities(id SERIAL4 primary key, city_id INT4 references cities (id) ON DELETE CASCADE, name VARCHAR(255),"
-	  		+ "description TEXT, address VARCHAR(255), photo_link VARCHAR(255));";
-	  con.executeSet(sql);
 	  
 	  //Populate tables
 	  
 	  //Populate cities
-	  sql = "INSERT INTO cities (city, description, history) VALUES('Edinburgh',"
+	/* String sql = "INSERT INTO cities (city, description, history) VALUES('Edinburgh',"
 	  		+ "'Edinburgh is Scotland compact, hilly capital. It has a medieval Old Town and elegant Georgian New Town with gardens "
 	  		+ "and neoclassical buildings. Looming over the city is Edinburgh Castle, home to Scotland crown jewels and the Stone of "
 	  		+ "Destiny, used in the coronation of Scottish rulers. Arthur Seat is an imposing peak in Holyrood Park with sweeping views, "
@@ -265,11 +249,11 @@ public class Seed {
 	  
 	  sql = "INSERT INTO weather (city_id, jan, feb, mar, apr, may, june, july, aug, sept, oct, nov, dec) "
 			 + "VALUES(5, 27, 30, 29, 30, 30, 29, 29, 29, 29, 28, 28, 28);";
-	  con.executeSet(sql);
+	  con.executeSet(sql); */
 	  
 	  //Populate activities
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) "
+	 String sql = "INSERT INTO activities (city_id, name, description, address, photo_link) "
 	  		+ "VALUES(1, "
 	  		+ "'Arthurs Seat',"
 	  		+ "'Arthurs Seat is one of four hill forts, dating from around 2,000 years ago. Situated within Holyrood Park,"
@@ -281,7 +265,7 @@ public class Seed {
 	  		+ "'http://www.edinburghspotlight.com/wp-content/uploads/2013/04/3160071115_54a0a7fd05.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(1, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(1, "
 	  		+ "'Royal Yacht Britannia', "
 	  		+ "'Step aboard The Queens former floating palace and experience this iconic 5 star attraction for yourself. "
 	  		+ "Britannia is one of the most famous ships in the world. Sailing a million miles on a thousand official visits, "
@@ -295,21 +279,21 @@ public class Seed {
 	  		+ " 'http://i.dailymail.co.uk/i/pix/2011/11/11/article-0-0033270D00000258-945_964x602.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(1, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(1, "
 	  		+ "'Edinburgh Old Town', "
 	  		+ "'Edinburgh oldest neighborhood, dating back to medieval times: these small streets are lined with wool shops, pubs and historical monuments.', "
 	  		+ "'Edinburgh EH1, Scotland', "
 	  		+ "'http://www.lawhf.co.uk/UserFiles/Image/Galleries/Edinburgh/FullSize/Old%20Town.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(1, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(1, "
 	  		+ "'National Museum of Scotland', "
 	  		+ "'xplore the diversity of the natural world, world cultures, science and technology, art, design and fashion, and Scottish history, all under one roof.', "
 	  		+ "'Chambers Street, Edinburgh EH1 1JF, Scotland', "
 	  		+ "'http://www.banditstudio.com/wp-content/files_mf/cache/th_912ed52bc8b5318a418885506e0851b8_NATIONAL_MUSEUM_SCOTLAND_DN061.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(1, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(1, "
 	  		+ "'Edinburgh Castle', "
 	  		+ "'A mighty fortress, the defender of the nation, and a world-famous visitor attraction - Edinburgh Castle "
 	  		+ "has dominated the skyline for centuries. And the high volcanic rock on which it stands has been occupied for thousands of years. "
@@ -319,7 +303,7 @@ public class Seed {
 	  		+ "'http://static.guim.co.uk/sys-images/Guardian/About/General/2011/11/16/1321471266306/The-Edinburgh-Castle--007.jpg')";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(1, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(1, "
 	  		+ "'Royal Botanic Garden Edinburgh', "
 	  		+ "'The Botanics offers visitors peace and tranquility amongst its stunning 72 acres in Edinburgh city centre. "
 	  		+ "Founded in 1670, the Garden is acknowledged to be one of the finest in the world.', "
@@ -327,14 +311,14 @@ public class Seed {
 	  		+ "'http://www.gardenvisit.com/uploads/image/image/143/14384/royalbotanicgardensedinburgh_original.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Praia dos Salgados', "
 	  		+ "'Lovely long beach with the Salgaldos nature reserve behind the beach.', "
 	  		+ "'Salgados, Albufeira, Portugal', "
 	  		+ "'https://www.guiadacidade.pt/assets/capas_poi/capa_13914.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Praia da Coelha', "
 	  		+ "'Praia da Coelha (Rabbit Beach) is a very typical Algarve coast location featuring clean fine sand,"
 	  		+ " limestone cliffs and Atlantic breakers rolling in. The coastline is well linked with a path network"
@@ -343,7 +327,7 @@ public class Seed {
 	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/02/2e/2b/71/praia-da-coelha.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Praia Gale', "
 	  		+ "'The beach between Galé and Armação de Pêra is about 5 km long. A nice sandy beach, with some nice restaurants. "
 	  		+ "Also the natural preserved area behind the beach is worth a visit.', "
@@ -351,7 +335,7 @@ public class Seed {
 	  		+ "'http://freemapsalgarve.com/wp-content/uploads/praia-gale.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Praia Sao Rafael', "
 	  		+ "'This is a lovely beach for swimming and sun-bathing with some secluded areas for privacy. "
 	  		+ "Certain areas beneath the water are still rocky so be careful when jumping in for a swim.', "
@@ -359,14 +343,14 @@ public class Seed {
 	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/04/15/73/d8/praia-sao-rafael.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Falesia Beach', "
 	  		+ "'Fabulous little beach with mountain views and crisp sea waves.', "
 	  		+ "'Aldeia da Falésia, Olhos de Agua, Albufeira 8200-593, Portugal', "
 	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/01/10/98/da/sun-beds-and-sunshades.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(2, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(2, "
 	  		+ "'Zoomarine Algarve', "
 	  		+ "'Located in Guia, just a few kilometers from Albufeira, you can watch presentations with dolphins, seals and sea lions, "
 	  		+ "with tropical birds and birds of prey. Besides these presentations, there is also an amazing aquarium with sharks, various habitats, "
@@ -377,7 +361,7 @@ public class Seed {
 	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/01/f4/ed/99/provided-by-zoomarine.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'Queens Gardens', "
 	  		+ "'The Gardens are inspired by an intimate, Victorian garden. They reflect the growth and development of the city. "
 	  		+ "Visitors will find a diverse plant and Notable Tree collection and also a place for social and civic gatherings, "
@@ -386,14 +370,14 @@ public class Seed {
 	  		+ "'https://www.maitaivalleymotorcamp.co.nz/sites/default/files/pictures/Queens-Gardens-Nelson.JPG');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'Tahunanui Beach', "
 	  		+ "'A very long beach, with shallow water. soft white sand and lots of space.', "
 	  		+ "'Bisley Walk, Nelson 7011, New Zealand', "
 	  		+ "'https://media.xogrp.com/images/1e0b6579-8673-49e3-9a46-f527398928a0');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'Founders Park', "
 	  		+ "'Founders Heritage Park is a museum in Nelson, New Zealand, housing a number of groups with historical themes, "
 	  		+ "including transport. A short heritage railway line is operated by the Nelson Railway Society.', "
@@ -401,7 +385,7 @@ public class Seed {
 	  		+ "'https://farm2.staticflickr.com/1617/24248547200_3532b1d920.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'Nelson Saturday Market', "
 	  		+ "'The Nelson Market is famous for its longevity and high quality of its stalls.  For over 30 years, market owner "
 	  		+ "Nita Knight has worked hard to create a showcase of the best that the Nelson region has to offer in arts, "
@@ -411,14 +395,14 @@ public class Seed {
 	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/05/f3/84/ac/caption.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'Centre of New Zealand',"
 	  		+ "'An iconic walk for locals and visitors, the Centre of New Zealand is on Botanical Hill at the start of the Maitai Valley.', "
 	  		+ "'Milton Street, Nelson 7010, New Zealand', "
 	  		+ "'http://photos.travellerspoint.com/272063/large_IMG_1486.jpg');";
 	  con.executeSet(sql);
 	  
-	  sql = "INSERT INTO weather (city_id, name, description, address, photo_link) VALUES(3, "
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(3, "
 	  		+ "'World of WearableArt & Classic Cars Museum', "
 	  		+ "'The World of WearableArt and Classic Cars Museum is an iconic Nelson visitor attraction that celebrates two passions "
 	  		+ "united by design. Amazing Wearable works of Art from the annual WOW Awards Show are displayed alongside one of "
@@ -429,7 +413,115 @@ public class Seed {
 	  		+ " 'http://cdn.secretearth.com/production/4859/banner_4859.jpg');";
 	  con.executeSet(sql);
 	  
-	 
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Whistler Valley Trail', "
+	  		+ "'Over 40 km of paved trail and boardwalk that connects Whistler’s neighbourhoods from Function Junction to Emerald.',"
+	  		+ "'Whistler, British Columbia V0N 1B0, Canada', "
+	  		+ "'http://images.glaciermedia.ca/polopoly_fs/1.2216980.1458856970!/fileImage/httpImage/image.jpg_gen/derivatives/landscape_804/valley-trail.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Lost Lake', "
+	  		+ "'Lost Lake is a lake located in Whistler, British Columbia, Canada. The area around it, Lost Lake Park, "
+	  		+ "is part of the municipal park systems cross-country skiing trails and, until hotel development overshadowed views of "
+	  		+ "the park swimming docks, was Whistler long-time nude sunbathing beach.', "
+	  		+ "'Whistler, British Columbia, Canada', "
+	  		+ "'http://images.travelpod.com/tw_slides/ta00/9b1/b82/lost-lake-whistler.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Squamish Lilwat Cultural Centre', "
+	  		+ "'The Squamish Lilwat Cultural Centre is a three-storey, 30,400-square foot award-winning First Nations tourism facility. "
+	  		+ "Guests are offered a guided tour from a local First Nation cultural ambassador who share their knowledge and stories "
+	  		+ "while visiting the many displays and artifacts on display. Guests enjoy a cultural performance of drums and song as well "
+	  		+ "as the chance to learn, hands-on, an indigenous craft. The facility is designed to evoke a traditional Squamish "
+	  		+ "longhouse and a Lilwat Istken (pit house) and is surrounded by dramatic mountain scenery. Designed to preserve and "
+	  		+ "renew local First Nations cultures and to share these living cultures with the world; the experience includes Class "
+	  		+ "A museum space to house rare artifacts, a gift gallery, a cafe and an 80 seat HD theatre.', "
+	  		+ "'4584 Blackcomb Way, Whistler, British Columbia V0N 1B0, Canada', "
+	  		+ "'https://www.whistler.com/arts/slcc/slider/2.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Whistler Sliding Centre', "
+	  		+ "'The Whistler Sliding Centre is home to the fastest ice track in the world. Since hosting the bobsleigh, "
+	  		+ "skeleton and luge competitions during the Vancouver 2010 Olympic and Paralympic Winter Games, "
+	  		+ "the Whistler Sliding Centre continues to challenge the sports’ most elite athletes with international "
+	  		+ "competitions, recruiting camps, and ongoing youth programs. Visitors are invited to tour the state-of-the-art "
+	  		+ "facility, or experience the action first-hand with passenger bobsleigh (winter and summer) and skeleton rides "
+	  		+ "(winter only) down part of the 1,450 meter-long ice track.', "
+	  		+ "'4910 Glacier Lane, Whistler, British Columbia V0N 1B4, Canada', "
+	  		+ "'http://www.whistlersportlegacies.com/sites/default/files/styles/slideshow_crop/public/venue-images/LR-WSCArialEvening.jpg?itok=P5AiCZly')";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Whistler Mountain Bike Park', "
+	  		+ "'Whistler Mountain Bike Park has something for every level of rider. Gentle, banked cruisers through the Coastal forest. "
+	  		+ "Tight and twisty single track - perfect for intermediate riders. For the armour clad, full face wearing, 50lb. "
+	  		+ "bike group there are steep rock faces, gnarly, root strewn lines, drop offs of all descriptions and more.', "
+	  		+ "'4545 Blackcomb Way, Whistler, British Columbia V0N 1B4, Canada', "
+	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/01/36/de/d9/whistler-mountain-bike.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(4, "
+	  		+ "'Peak 2 Peak Gondola', "
+	  		+ "'The PEAK 2 PEAK Gondola travels 4.4 kilometres in just 11 minutes, transporting winter and summer guests "
+	  		+ "from Whistler’s Roundhouse Lodge to the Rendezvous Lodge on Blackcomb Mountain. Skiers and riders have the "
+	  		+ "opportunity to easily take advantage of 8,171 acres of terrain via the world longest continuous lift system. "
+	  		+ "The adventure for summer visitors includes spectacular views of glaciers and peaks as well as access to an expanded "
+	  		+ "hiking trail network on both mountains.', "
+	  		+ "'4545 Blackcomb Way, Whistler, British Columbia V0N 1B4, Canada', "
+	  		+ "'https://www.whistlerblackcomb.com/~/media/Images-Whistler-Blackcomb/PEAK-2-PEAK-360-Experience/2016/1920TwoGondolasPassing.ashx?mw=960&hash=58E4EF093EA4765B7F97F75D3A59A4CC3AB96E5C');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'Poda Island', "
+	  		+ "'Ko Poda is an island off the west coast of Thailand, in Krabi Province, about 8 kilometres from Ao Nang. "
+	  		+ "It is part of the Mu Ko Poda, or Poda Group Islands, which are under the administration of Hat Nopharat Thara-Mu Ko Phi Phi "
+	  		+ "National Park', "
+	  		+ "'Poda Islands | หมู่เกาะปอดะ, Ao Nang, Krabi Town, Thailand', "
+	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/01/3e/05/39/poda-island-great-for.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'Railay Beach', "
+	  		+ "'Railay, also known as Rai Leh, is a small peninsula between the city of Krabi and Ao Nang in Thailand. "
+	  		+ "It is accessible only by boat due to high limestone cliffs cutting off mainland access.', "
+	  		+ "'194/5 Moo 5 | Tambol Saithai, Railay Beach, Krabi Town 81000, Thailand', "
+	  		+ "'http://www.touristbooklet.com/wp-content/uploads/2016/05/Railay-Beach-Krabi.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'Tab Kak Hang Nak Hill Nature Trail', "
+	  		+ "'It is a moderately strenuous trek through the jungle and by far one of the most rewarding experiences you can have while in "
+	  		+ "Thailand. The views from the top are made even more spectacular.', "
+	  		+ "'Krabi Town, Thailand', "
+	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/08/c2/ff/fd/tab-kak-hang-nak-hill.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'Railay Beach Viewpoint', "
+	  		+ "'It is a little adventure but a really nice view.', "
+	  		+ "'Railay Beach, Krabi Town, Thailand', "
+	  		+ "'https://media-cdn.tripadvisor.com/media/photo-s/05/4e/dc/9e/railay-beach-viewpoint.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'PhraNang Cave Beach', "
+	  		+ "'Rocky cliffs with abundant greenery on one side, soft sands and warm turquoise water on the other.', "
+	  		+ "'Ao Nang, Krabi Town, Thailand', "
+	  		+ "'https://i.ytimg.com/vi/6j_kXA1SIno/hqdefault.jpg');";
+	  con.executeSet(sql);
+	  
+	  sql = "INSERT INTO activities (city_id, name, description, address, photo_link) VALUES(5, "
+	  		+ "'Tiger Cave Temple (Wat Tham Suea)', "
+	  		+ "'This temple complex not only serves as a religious site for the monks who live and worship there, "
+	  		+ "but also features a maze of natural caves in an overgrown jungle valley where stone tools, pottery "
+	  		+ "remains and the mold for making Buddha footprints have been excavated.', "
+	  		+ "'Krabi Town 81000, Thailand', "
+	  		+ "'http://farm8.staticflickr.com/7022/6402206529_5e833d86e3.jpg');";
+	  con.executeSet(sql);
+	  
 	  
 	}
 	

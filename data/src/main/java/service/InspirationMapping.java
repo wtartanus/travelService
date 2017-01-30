@@ -61,6 +61,7 @@ public class InspirationMapping {
 	}
 
 	public void runInspirationsSeeds() {
+		System.out.println("Woj");
 		Seed.populateInspirations();
 		
 	}
