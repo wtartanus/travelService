@@ -21497,6 +21497,7 @@
 	var React = __webpack_require__(1);
 	var SearchBox = __webpack_require__(179);
 	var NavBox = __webpack_require__(295);
+	var Inspirations = __webpack_require__(323);
 	
 	var Travel = React.createClass({
 	  displayName: 'Travel',
@@ -21638,7 +21639,8 @@
 	            'Everything you looking for in 1 place.'
 	          ),
 	          React.createElement(NavBox, { windowSize: this.state.windowSize })
-	        )
+	        ),
+	        React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations })
 	      );
 	    } else if (this.state.windowSize.width >= 1000) {
 	      return React.createElement(
@@ -37162,26 +37164,55 @@
 	"use strict";
 	
 	var React = __webpack_require__(297);
-	var NavItem = __webpack_require__(322);
+	//var NavItem = require("./NavItem");
 	
 	var NavList = React.createClass({
-		displayName: "NavList",
+	  displayName: "NavList",
 	
-		getInitialState: function getInitialState() {
-			return { navItems: ["Inspiration", "About", "Sign In", "Log In"] };
-		},
 	
-		render: function render() {
-			var listItems = this.state.navItems.map(function (item, index) {
-				return React.createElement(NavItem, { listItem: item, key: index });
-			});
+	  render: function render() {
 	
-			return React.createElement(
-				"ul",
-				{ id: "nav-bar", style: this.props.navStyle },
-				listItems
-			);
-		}
+	    return React.createElement(
+	      "ul",
+	      { id: "nav-bar", style: this.props.navStyle },
+	      React.createElement(
+	        "li",
+	        { className: "nav-item" },
+	        React.createElement(
+	          "a",
+	          { href: "#inspirations-container" },
+	          "Inspiration"
+	        )
+	      ),
+	      React.createElement(
+	        "li",
+	        { className: "nav-item" },
+	        React.createElement(
+	          "a",
+	          { href: "" },
+	          "About"
+	        )
+	      ),
+	      React.createElement(
+	        "li",
+	        { className: "nav-item" },
+	        React.createElement(
+	          "a",
+	          { href: "" },
+	          "Sign Int"
+	        )
+	      ),
+	      React.createElement(
+	        "li",
+	        { className: "nav-item" },
+	        React.createElement(
+	          "a",
+	          { href: "" },
+	          "Log In"
+	        )
+	      )
+	    );
+	  }
 	});
 	
 	module.exports = NavList;
@@ -40758,26 +40789,28 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 322 */
+/* 322 */,
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var React = __webpack_require__(297);
+	var React = __webpack_require__(1);
 	
-	var NavItem = React.createClass({
-	  displayName: "NavItem",
+	var Inspirations = React.createClass({
+	   displayName: "Inspirations",
 	
-	  render: function render() {
-	    return React.createElement(
-	      "li",
-	      { className: "nav-item" },
-	      this.props.listItem
-	    );
-	  }
+	
+	   render: function render() {
+	      return React.createElement(
+	         "div",
+	         { id: "inspirations-container", style: this.props.height },
+	         "HELLO"
+	      );
+	   }
 	});
 	
-	module.exports = NavItem;
+	module.exports = Inspirations;
 
 /***/ }
 /******/ ]);

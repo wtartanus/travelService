@@ -1,7 +1,7 @@
 var React = require('react');
 var SearchBox = require('./SearchBox.jsx');
 var NavBox = require('./NavBox.jsx');
-
+var Inspirations = require('./InspirationsBox.jsx');
 
 
 var Travel = React.createClass({
@@ -61,6 +61,7 @@ var Travel = React.createClass({
             <p id="slogan">Everything you looking for in 1 place.</p>
             <NavBox windowSize={this.state.windowSize} />
           </div>
+          <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} />
         </div>
         );
     } else if(this.state.windowSize.width >= 1000) {

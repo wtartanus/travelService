@@ -3,9 +3,7 @@
 	box-sizing: border-box;
 }
 
-body {
-	overflow: hidden;
-}
+
 
 #landing-container {
 	background-image: url(images/photo.jpg);
@@ -487,6 +485,10 @@ body {
 
   .star-3 {
     right: 110px;
+  }
+
+  #inspirations-container {
+    border: 1px solid red;
   }
 
 }
