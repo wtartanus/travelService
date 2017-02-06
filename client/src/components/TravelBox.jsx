@@ -83,6 +83,7 @@ var Travel = React.createClass({
             <h1 id="logo"><span id="travel-word">Travel</span> <span id="guide-word">Guide</span></h1>
           </div>
           <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
+          <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} />
         </div>
       );
     }

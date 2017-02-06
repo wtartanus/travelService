@@ -21497,7 +21497,7 @@
 	var React = __webpack_require__(1);
 	var SearchBox = __webpack_require__(179);
 	var NavBox = __webpack_require__(295);
-	var Inspirations = __webpack_require__(323);
+	var Inspirations = __webpack_require__(322);
 	
 	var Travel = React.createClass({
 	  displayName: 'Travel',
@@ -21697,7 +21697,8 @@
 	            )
 	          )
 	        ),
-	        React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem })
+	        React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
+	        React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations })
 	      );
 	    }
 	  }
@@ -40789,7 +40790,63 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 322 */,
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	var Inspiration = __webpack_require__(323);
+	
+	var Inspirations = React.createClass({
+	   displayName: "Inspirations",
+	
+	
+	   getInitialState: function getInitialState() {
+	      return {
+	         inspirations: this.props.inspirations
+	      };
+	   },
+	
+	   componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	      console.log(prevProps, prevState);
+	   },
+	
+	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	      console.log("hhhh", nextProps);
+	      this.setState({ inspirations: nextProps.inspirations });
+	   },
+	
+	   populateInspiration: function populateInspiration() {
+	      console.log(this.state.inspirations);
+	      var inspirations = this.state.inspirations.map(function (val, index) {
+	         return React.createElement(Inspiration, { inspiration: "val", key: index });
+	      });
+	      return inspirations;
+	   },
+	
+	   render: function render() {
+	      console.log("we", this.state.inspirations);
+	      if (this.state.inspirations) {
+	         var inspirations = this.populateInspiration();
+	         return React.createElement(
+	            "div",
+	            { id: "inspirations-container", style: this.props.height },
+	            inspirations
+	         );
+	      } else {
+	         return React.createElement(
+	            "p",
+	            null,
+	            "Wojtek"
+	         );
+	      }
+	   }
+	});
+	
+	module.exports = Inspirations;
+
+/***/ },
 /* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -40797,20 +40854,20 @@
 	
 	var React = __webpack_require__(1);
 	
-	var Inspirations = React.createClass({
-	   displayName: "Inspirations",
+	var InspirationBox = React.createClass({
+	   displayName: "InspirationBox",
 	
 	
 	   render: function render() {
 	      return React.createElement(
 	         "div",
-	         { id: "inspirations-container", style: this.props.height },
-	         "HELLO"
+	         { className: "inspiration-container" },
+	         this.props.inspiration.city.city
 	      );
 	   }
 	});
 	
-	module.exports = Inspirations;
+	module.exports = InspirationBox;
 
 /***/ }
 /******/ ]);
