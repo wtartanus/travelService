@@ -21,7 +21,7 @@ var Inspirations = React.createClass({
    populateInspiration: function() {
    	console.log(this.state.inspirations);
      var inspirations = this.state.inspirations.map(function(val, index) {
-     	  return <Inspiration inspiration="val" key={index} />
+     	  return <Inspiration inspiration={val} key={index} />
      });
      return inspirations;
    },

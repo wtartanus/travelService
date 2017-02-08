@@ -105,6 +105,33 @@
 	border: 2px solid green;
 }
 
+.inspiration-container {
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.inspiration-header {
+  margin-bottom: 10px;
+  font-family: 'Playfair Display SC', serif;
+  cursor: pointer;
+}
+
+.inspiration-description-mobile {
+  width: 200px;
+  height: 222px;
+  float: right;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.inspiration-gallery-header-mobile {
+  cursor: pointer;
+}
+
+.inspiration-gallery-container-mobile {
+
+}
+
 @media only screen and (min-width: 500px) {
     #landing-container {
       margin-top: 0;
