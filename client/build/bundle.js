@@ -40861,40 +40861,86 @@
 	    return {
 	      expandView: false,
 	      expandGallery: false,
-	      galleryStyle: { display: "none" }
+	      galleryStyle: { display: "none" },
+	      gallery: [],
+	      galleryDispaly: [],
+	      galleryDisplayPosition1: 0,
+	      galleryDisplayPosition2: 1
 	    };
 	  },
 	
+	  componentDidMount: function componentDidMount() {
+	    this.populateGallery();
+	  },
+	
 	  handleHeaderClick: function handleHeaderClick() {
-	    console.log("wojtek");
-	    this.setState({ expandView: !this.state.expandView });
+	    var view = this.state.expandView;
+	    view = !view;
+	    this.setState({ expandView: view });
 	  },
 	
 	  handleGalleryClick: function handleGalleryClick() {
 	    if (this.state.expandGallery) {
 	      this.setState({
 	        expandGallery: !this.state.expandGallery,
-	        galleryStyle: { display: "initial" }
+	        galleryStyle: { display: "none" }
 	      });
 	    } else {
 	      this.setState({
 	        expandGallery: !this.state.expandGallery,
-	        galleryStyle: { display: "none" }
+	        galleryStyle: { display: "initial" }
 	      });
 	    }
 	  },
 	
 	  populateGallery: function populateGallery() {
 	    var gallery = this.props.inspiration.photos.map(function (val, index) {
-	      return React.createElement(PhotoBox, { link: val.link, alt: this.props.inspiration.city.city, height: 200, width: 200, key: index });
+	      return React.createElement(PhotoBox, { link: val.link, alt: this.props.inspiration.city.city, height: 400, width: 400, key: index });
 	    }.bind(this));
 	
-	    return gallery;
+	    this.setState({ gallery: gallery });
+	
+	    var galleryDisplay = [];
+	
+	    galleryDisplay.push(gallery[this.state.galleryDisplayPosition1]);
+	    galleryDisplay.push(gallery[this.state.galleryDisplayPosition2]);
+	
+	    this.setState({ galleryDisplay: galleryDisplay });
+	  },
+	
+	  moveGallery: function moveGallery(up) {
+	    var galleryDisplay = [];
+	    if (up) {
+	      var position1 = this.state.galleryDisplayPosition1 + 2;
+	      var position2 = this.state.galleryDisplayPosition2 + 2;
+	      if (position2 > this.state.gallery.length - 1) {
+	        position1 = 0;
+	        position2 = 1;
+	      }
+	
+	      galleryDisplay.push(this.state.gallery[position1]);
+	      galleryDisplay.push(this.state.gallery[position2]);
+	
+	      this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
+	    } else {
+	      var position1 = this.state.galleryDisplayPosition1 - 2;
+	      var position2 = this.state.galleryDisplayPosition2 - 2;
+	      if (position1 < 0) {
+	        position1 = this.state.gallery.length - 2;
+	        position2 = this.state.gallery.length - 1;
+	      }
+	      console.log(position1, position2);
+	      galleryDisplay.push(this.state.gallery[position1]);
+	      galleryDisplay.push(this.state.gallery[position2]);
+	
+	      this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
+	    }
 	  },
 	
 	  render: function render() {
+	    var _this = this;
+	
 	    if (this.state.expandView) {
-	      var gallery = this.populateGallery();
 	      return React.createElement(
 	        "div",
 	        { className: "inspiration-container-mobile-expand" },
@@ -40911,7 +40957,13 @@
 	        React.createElement(
 	          "div",
 	          { className: "inspiration-gallery-container-mobile", style: this.state.galleryStyle },
-	          gallery
+	          React.createElement("i", { className: "fa fa-arrow-circle-up fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
+	              return _this.moveGallery(true);
+	            } }),
+	          this.state.galleryDisplay,
+	          React.createElement("i", { className: "fa fa-arrow-circle-down fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
+	              return _this.moveGallery(false);
+	            } })
 	        )
 	      );
 	    } else {
@@ -40951,7 +41003,7 @@
 	      return React.createElement(
 	         "div",
 	         null,
-	         React.createElement("img", { src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
+	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
 	      );
 	   }
 	});

@@ -124,12 +124,23 @@
   overflow: hidden;
 }
 
+
 .inspiration-gallery-header-mobile {
   cursor: pointer;
 }
 
 .inspiration-gallery-container-mobile {
+}
 
+.photo-mobile{
+  margin: 5px auto;
+  display: flex;
+}
+
+.arrow-gallery-mobile {
+  color: saddlebrown;
+  cursor: pointer;
+  margin-left: 42%;
 }
 
 @media only screen and (min-width: 500px) {
