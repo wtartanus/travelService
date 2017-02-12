@@ -1,17 +1,18 @@
 var React = require("react");
 var GalleryBox = require("./GalleryBox.jsx");
-var PhotoBox = require('./PhotoBox.jsx');
+var DescriptionBox = require("./DescriptionBox.jsx");
+var HistoryBox = require("./HistoryBox.jsx");
 
 var InspirationBox = React.createClass({
 	getInitialState: function() {
        return({
        	 expandView: false,
+       	 expandDescription: false,
+       	 descriptionStyle: {display: "none"},
+       	 expandHistory: false,
+       	 historyStyle: {display: "none"},
        	 expandGallery: false,
-       	 galleryStyle: {display: "none"},
-       	 gallery: [],
-       	 galleryDispaly: [],
-       	 galleryDisplayPosition1: 0,
-       	 galleryDisplayPosition2: 1
+       	 galleryStyle: {display: "none"}
        });
 	},
 
@@ -32,12 +33,47 @@ var InspirationBox = React.createClass({
             });
        }
   	},
+
+  	handleDescriptionClick: function() {
+       if(this.state.expandDescription) {
+            this.setState({
+            	expandDescription: !this.state.expandDescription, 
+            	descriptionStyle: {display: "none"}
+            });
+       } else {
+            this.setState({
+            	expandDescription: !this.state.expandDescription, 
+            	descriptionStyle: {display: "initial"}
+            });
+       }
+  	},
+
+  	handleHistoryClick: function() {
+       if(this.state.expandHistory) {
+            this.setState({
+            	expandHistory: !this.state.expandHistory, 
+            	historyStyle: {display: "none"}
+            });
+       } else {
+            this.setState({
+            	expandHistory: !this.state.expandHistory, 
+            	historyStyle: {display: "initial"}
+            });
+       }
+  	},
    
     render: function() {
    	if(this.state.expandView) {
    		return(
    			<div className="inspiration-container-mobile-expand">
    			  <h3 className="inspiration-header" title="Click to see whole overwiev" onClick={this.handleHeaderClick}>{this.props.inspiration.city.city}</h3>
+
+   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleDescriptionClick}>Description</h4>
+   			  <DescriptionBox visibilityStyle={this.state.descriptionStyle} description={this.props.inspiration.city.description} />
+
+   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleHistoryClick}>History</h4>
+   			  <HistoryBox  visibilityStyle={this.state.historyStyle} history={this.props.inspiration.city.history} />
+
    			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleGalleryClick}>Gallery</h4>
    			  <GalleryBox visibilityStyle={this.state.galleryStyle} gallery={this.props.inspiration.photos} city={this.props.inspiration.city.city} />
    			</div>

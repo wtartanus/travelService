@@ -10,16 +10,14 @@ var Inspirations = React.createClass({
    },
 
    componentDidUpdate: function(prevProps, prevState) {
-   	console.log(prevProps, prevState);
+
    },
 
    componentWillReceiveProps: function(nextProps) {
-     console.log("hhhh", nextProps);
      this.setState({inspirations: nextProps.inspirations});
    },
 
    populateInspiration: function() {
-   	console.log(this.state.inspirations);
      var inspirations = this.state.inspirations.map(function(val, index) {
      	  return <Inspiration inspiration={val} key={index} />
      });
@@ -27,7 +25,6 @@ var Inspirations = React.createClass({
    },
    
    render: function() {
-   	console.log("we",this.state.inspirations)
       if(this.state.inspirations) {
       	var inspirations = this.populateInspiration();
         return (
@@ -36,7 +33,7 @@ var Inspirations = React.createClass({
 	   		</div>
    		);
       } else {
-      	return <p>Wojtek</p>
+      	return <p>Loading</p>
       }
    }
 });

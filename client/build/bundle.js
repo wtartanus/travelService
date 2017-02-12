@@ -40808,17 +40808,13 @@
 	      };
 	   },
 	
-	   componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	      console.log(prevProps, prevState);
-	   },
+	   componentDidUpdate: function componentDidUpdate(prevProps, prevState) {},
 	
 	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	      console.log("hhhh", nextProps);
 	      this.setState({ inspirations: nextProps.inspirations });
 	   },
 	
 	   populateInspiration: function populateInspiration() {
-	      console.log(this.state.inspirations);
 	      var inspirations = this.state.inspirations.map(function (val, index) {
 	         return React.createElement(Inspiration, { inspiration: val, key: index });
 	      });
@@ -40826,7 +40822,6 @@
 	   },
 	
 	   render: function render() {
-	      console.log("we", this.state.inspirations);
 	      if (this.state.inspirations) {
 	         var inspirations = this.populateInspiration();
 	         return React.createElement(
@@ -40838,7 +40833,7 @@
 	         return React.createElement(
 	            "p",
 	            null,
-	            "Wojtek"
+	            "Loading"
 	         );
 	      }
 	   }
@@ -40854,76 +40849,117 @@
 	
 	var React = __webpack_require__(1);
 	var GalleryBox = __webpack_require__(325);
-	var PhotoBox = __webpack_require__(324);
+	var DescriptionBox = __webpack_require__(326);
+	var HistoryBox = __webpack_require__(327);
 	
 	var InspirationBox = React.createClass({
-	  displayName: "InspirationBox",
+	     displayName: "InspirationBox",
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      expandView: false,
-	      expandGallery: false,
-	      galleryStyle: { display: "none" },
-	      gallery: [],
-	      galleryDispaly: [],
-	      galleryDisplayPosition1: 0,
-	      galleryDisplayPosition2: 1
-	    };
-	  },
+	     getInitialState: function getInitialState() {
+	          return {
+	               expandView: false,
+	               expandDescription: false,
+	               descriptionStyle: { display: "none" },
+	               expandHistory: false,
+	               historyStyle: { display: "none" },
+	               expandGallery: false,
+	               galleryStyle: { display: "none" }
+	          };
+	     },
 	
-	  handleHeaderClick: function handleHeaderClick() {
-	    this.setState({ expandView: !this.state.expandView });
-	  },
+	     handleHeaderClick: function handleHeaderClick() {
+	          this.setState({ expandView: !this.state.expandView });
+	     },
 	
-	  handleGalleryClick: function handleGalleryClick() {
-	    if (this.state.expandGallery) {
-	      this.setState({
-	        expandGallery: !this.state.expandGallery,
-	        galleryStyle: { display: "none" }
-	      });
-	    } else {
-	      this.setState({
-	        expandGallery: !this.state.expandGallery,
-	        galleryStyle: { display: "initial" }
-	      });
-	    }
-	  },
+	     handleGalleryClick: function handleGalleryClick() {
+	          if (this.state.expandGallery) {
+	               this.setState({
+	                    expandGallery: !this.state.expandGallery,
+	                    galleryStyle: { display: "none" }
+	               });
+	          } else {
+	               this.setState({
+	                    expandGallery: !this.state.expandGallery,
+	                    galleryStyle: { display: "initial" }
+	               });
+	          }
+	     },
 	
-	  render: function render() {
-	    if (this.state.expandView) {
-	      return React.createElement(
-	        "div",
-	        { className: "inspiration-container-mobile-expand" },
-	        React.createElement(
-	          "h3",
-	          { className: "inspiration-header", title: "Click to see whole overwiev", onClick: this.handleHeaderClick },
-	          this.props.inspiration.city.city
-	        ),
-	        React.createElement(
-	          "h4",
-	          { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
-	          "Gallery"
-	        ),
-	        React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
-	      );
-	    } else {
-	      return React.createElement(
-	        "div",
-	        { className: "inspiration-container" },
-	        React.createElement(
-	          "h3",
-	          { className: "inspiration-header", title: "Click to see whole overwiev", onClick: this.handleHeaderClick },
-	          this.props.inspiration.city.city
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "inspiration-description-mobile" },
-	          this.props.inspiration.city.description
-	        ),
-	        React.createElement("img", { src: this.props.inspiration.photos[0].link, alt: "Smiley face", height: "220", width: "220" })
-	      );
-	    }
-	  }
+	     handleDescriptionClick: function handleDescriptionClick() {
+	          if (this.state.expandDescription) {
+	               this.setState({
+	                    expandDescription: !this.state.expandDescription,
+	                    descriptionStyle: { display: "none" }
+	               });
+	          } else {
+	               this.setState({
+	                    expandDescription: !this.state.expandDescription,
+	                    descriptionStyle: { display: "initial" }
+	               });
+	          }
+	     },
+	
+	     handleHistoryClick: function handleHistoryClick() {
+	          if (this.state.expandHistory) {
+	               this.setState({
+	                    expandHistory: !this.state.expandHistory,
+	                    historyStyle: { display: "none" }
+	               });
+	          } else {
+	               this.setState({
+	                    expandHistory: !this.state.expandHistory,
+	                    historyStyle: { display: "initial" }
+	               });
+	          }
+	     },
+	
+	     render: function render() {
+	          if (this.state.expandView) {
+	               return React.createElement(
+	                    "div",
+	                    { className: "inspiration-container-mobile-expand" },
+	                    React.createElement(
+	                         "h3",
+	                         { className: "inspiration-header", title: "Click to see whole overwiev", onClick: this.handleHeaderClick },
+	                         this.props.inspiration.city.city
+	                    ),
+	                    React.createElement(
+	                         "h4",
+	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleDescriptionClick },
+	                         "Description"
+	                    ),
+	                    React.createElement(DescriptionBox, { visibilityStyle: this.state.descriptionStyle, description: this.props.inspiration.city.description }),
+	                    React.createElement(
+	                         "h4",
+	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleHistoryClick },
+	                         "History"
+	                    ),
+	                    React.createElement(HistoryBox, { visibilityStyle: this.state.historyStyle, history: this.props.inspiration.city.history }),
+	                    React.createElement(
+	                         "h4",
+	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
+	                         "Gallery"
+	                    ),
+	                    React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
+	               );
+	          } else {
+	               return React.createElement(
+	                    "div",
+	                    { className: "inspiration-container" },
+	                    React.createElement(
+	                         "h3",
+	                         { className: "inspiration-header", title: "Click to see whole overwiev", onClick: this.handleHeaderClick },
+	                         this.props.inspiration.city.city
+	                    ),
+	                    React.createElement(
+	                         "p",
+	                         { className: "inspiration-description-mobile" },
+	                         this.props.inspiration.city.description
+	                    ),
+	                    React.createElement("img", { src: this.props.inspiration.photos[0].link, alt: "Smiley face", height: "220", width: "220" })
+	               );
+	          }
+	     }
 	});
 	
 	module.exports = InspirationBox;
@@ -41038,6 +41074,58 @@
 	});
 	
 	module.exports = GalleryBox;
+
+/***/ },
+/* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var DescriptionBox = React.createClass({
+		displayName: "DescriptionBox",
+	
+		render: function render() {
+			return React.createElement(
+				"div",
+				{ className: "inspirations-description-mobile", style: this.props.visibilityStyle },
+				React.createElement(
+					"p",
+					null,
+					this.props.description
+				)
+			);
+		}
+	});
+	
+	module.exports = DescriptionBox;
+
+/***/ },
+/* 327 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var HistoryBox = React.createClass({
+	   displayName: "HistoryBox",
+	
+	   render: function render() {
+	      return React.createElement(
+	         "div",
+	         { className: "inspirations-history-mobile", style: this.props.visibilityStyle },
+	         React.createElement(
+	            "p",
+	            null,
+	            this.props.history
+	         )
+	      );
+	   }
+	});
+	
+	module.exports = HistoryBox;
 
 /***/ }
 /******/ ]);
