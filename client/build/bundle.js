@@ -40853,7 +40853,9 @@
 	"use strict";
 	
 	var React = __webpack_require__(1);
+	var GalleryBox = __webpack_require__(325);
 	var PhotoBox = __webpack_require__(324);
+	
 	var InspirationBox = React.createClass({
 	  displayName: "InspirationBox",
 	
@@ -40869,14 +40871,8 @@
 	    };
 	  },
 	
-	  componentDidMount: function componentDidMount() {
-	    this.populateGallery();
-	  },
-	
 	  handleHeaderClick: function handleHeaderClick() {
-	    var view = this.state.expandView;
-	    view = !view;
-	    this.setState({ expandView: view });
+	    this.setState({ expandView: !this.state.expandView });
 	  },
 	
 	  handleGalleryClick: function handleGalleryClick() {
@@ -40893,53 +40889,7 @@
 	    }
 	  },
 	
-	  populateGallery: function populateGallery() {
-	    var gallery = this.props.inspiration.photos.map(function (val, index) {
-	      return React.createElement(PhotoBox, { link: val.link, alt: this.props.inspiration.city.city, height: 400, width: 400, key: index });
-	    }.bind(this));
-	
-	    this.setState({ gallery: gallery });
-	
-	    var galleryDisplay = [];
-	
-	    galleryDisplay.push(gallery[this.state.galleryDisplayPosition1]);
-	    galleryDisplay.push(gallery[this.state.galleryDisplayPosition2]);
-	
-	    this.setState({ galleryDisplay: galleryDisplay });
-	  },
-	
-	  moveGallery: function moveGallery(up) {
-	    var galleryDisplay = [];
-	    if (up) {
-	      var position1 = this.state.galleryDisplayPosition1 + 2;
-	      var position2 = this.state.galleryDisplayPosition2 + 2;
-	      if (position2 > this.state.gallery.length - 1) {
-	        position1 = 0;
-	        position2 = 1;
-	      }
-	
-	      galleryDisplay.push(this.state.gallery[position1]);
-	      galleryDisplay.push(this.state.gallery[position2]);
-	
-	      this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
-	    } else {
-	      var position1 = this.state.galleryDisplayPosition1 - 2;
-	      var position2 = this.state.galleryDisplayPosition2 - 2;
-	      if (position1 < 0) {
-	        position1 = this.state.gallery.length - 2;
-	        position2 = this.state.gallery.length - 1;
-	      }
-	      console.log(position1, position2);
-	      galleryDisplay.push(this.state.gallery[position1]);
-	      galleryDisplay.push(this.state.gallery[position2]);
-	
-	      this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
-	    }
-	  },
-	
 	  render: function render() {
-	    var _this = this;
-	
 	    if (this.state.expandView) {
 	      return React.createElement(
 	        "div",
@@ -40954,17 +40904,7 @@
 	          { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
 	          "Gallery"
 	        ),
-	        React.createElement(
-	          "div",
-	          { className: "inspiration-gallery-container-mobile", style: this.state.galleryStyle },
-	          React.createElement("i", { className: "fa fa-arrow-circle-up fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
-	              return _this.moveGallery(true);
-	            } }),
-	          this.state.galleryDisplay,
-	          React.createElement("i", { className: "fa fa-arrow-circle-down fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
-	              return _this.moveGallery(false);
-	            } })
-	        )
+	        React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
 	      );
 	    } else {
 	      return React.createElement(
@@ -41009,6 +40949,95 @@
 	});
 	
 	module.exports = PhotoBox;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	var PhotoBox = __webpack_require__(324);
+	
+	var GalleryBox = React.createClass({
+	   displayName: "GalleryBox",
+	
+	   getInitialState: function getInitialState() {
+	      return {
+	         expandGallery: false,
+	         gallery: [],
+	         galleryDispaly: [],
+	         galleryDisplayPosition1: 0,
+	         galleryDisplayPosition2: 1
+	      };
+	   },
+	
+	   componentDidMount: function componentDidMount() {
+	      this.populateGallery();
+	   },
+	
+	   populateGallery: function populateGallery() {
+	      var gallery = this.props.gallery.map(function (val, index) {
+	         return React.createElement(PhotoBox, { link: val.link, alt: this.props.city, height: 400, width: 400, key: index });
+	      }.bind(this));
+	
+	      this.setState({ gallery: gallery });
+	
+	      var galleryDisplay = [];
+	
+	      galleryDisplay.push(gallery[this.state.galleryDisplayPosition1]);
+	      galleryDisplay.push(gallery[this.state.galleryDisplayPosition2]);
+	
+	      this.setState({ galleryDisplay: galleryDisplay });
+	   },
+	
+	   moveGallery: function moveGallery(up) {
+	      var galleryDisplay = [];
+	      if (up) {
+	         var position1 = this.state.galleryDisplayPosition1 + 2;
+	         var position2 = this.state.galleryDisplayPosition2 + 2;
+	         if (position2 > this.state.gallery.length - 1) {
+	            position1 = 0;
+	            position2 = 1;
+	         }
+	
+	         galleryDisplay.push(this.state.gallery[position1]);
+	         galleryDisplay.push(this.state.gallery[position2]);
+	
+	         this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
+	      } else {
+	         var position1 = this.state.galleryDisplayPosition1 - 2;
+	         var position2 = this.state.galleryDisplayPosition2 - 2;
+	         if (position1 < 0) {
+	            position1 = this.state.gallery.length - 2;
+	            position2 = this.state.gallery.length - 1;
+	         }
+	
+	         galleryDisplay.push(this.state.gallery[position1]);
+	         galleryDisplay.push(this.state.gallery[position2]);
+	
+	         this.setState({ galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2 });
+	      }
+	   },
+	
+	   render: function render() {
+	      var _this = this;
+	
+	      return React.createElement(
+	         "div",
+	         { className: "inspiration-gallery-container-mobile", style: this.props.visibilityStyle },
+	         React.createElement("i", { className: "fa fa-arrow-circle-up fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
+	               return _this.moveGallery(true);
+	            } }),
+	         this.state.galleryDisplay,
+	         React.createElement("i", { className: "fa fa-arrow-circle-down fa-5x arrow-gallery-mobile", "aria-hidden": "true", onClick: function onClick() {
+	               return _this.moveGallery(false);
+	            } })
+	      );
+	   }
+	});
+	
+	module.exports = GalleryBox;
 
 /***/ }
 /******/ ]);
