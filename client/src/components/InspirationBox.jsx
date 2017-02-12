@@ -2,6 +2,7 @@ var React = require("react");
 var GalleryBox = require("./GalleryBox.jsx");
 var DescriptionBox = require("./DescriptionBox.jsx");
 var HistoryBox = require("./HistoryBox.jsx");
+var ThingsToDoBox = require("./ThingsToDoBox.jsx");
 
 var InspirationBox = React.createClass({
 	getInitialState: function() {
@@ -12,7 +13,9 @@ var InspirationBox = React.createClass({
        	 expandHistory: false,
        	 historyStyle: {display: "none"},
        	 expandGallery: false,
-       	 galleryStyle: {display: "none"}
+       	 galleryStyle: {display: "none"},
+       	 expandThingsToDo: false,
+       	 thingsToDoStyle: {display: "none"}
        });
 	},
 
@@ -61,6 +64,21 @@ var InspirationBox = React.createClass({
             });
        }
   	},
+
+  	handleThingsToDoClick: function() {
+  		console.log("!!!");
+       if(this.state.expandThingsToDo) {
+            this.setState({
+            	expandThingsToDo: !this.state.expandThingsToDo, 
+            	thingsToDoStyle: {display: "none"}
+            });
+       } else {
+            this.setState({
+            	expandThingsToDo: !this.state.expandThingsToDo, 
+            	thingsToDoStyle: {display: "initial"}
+            });
+       }
+  	},
    
     render: function() {
    	if(this.state.expandView) {
@@ -76,6 +94,9 @@ var InspirationBox = React.createClass({
 
    			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleGalleryClick}>Gallery</h4>
    			  <GalleryBox visibilityStyle={this.state.galleryStyle} gallery={this.props.inspiration.photos} city={this.props.inspiration.city.city} />
+
+   			  <h4 className="inspiration-thingstodo-header-mobile" onClick={this.handleThingsToDoClick} >Things To Do</h4>
+   			  <ThingsToDoBox visibilityStyle={this.state.thingsToDoStyle} activities={this.props.inspiration.activities} />
    			</div>
    			);
    	} else {

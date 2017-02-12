@@ -40851,6 +40851,7 @@
 	var GalleryBox = __webpack_require__(325);
 	var DescriptionBox = __webpack_require__(326);
 	var HistoryBox = __webpack_require__(327);
+	var ThingsToDoBox = __webpack_require__(328);
 	
 	var InspirationBox = React.createClass({
 	     displayName: "InspirationBox",
@@ -40863,7 +40864,9 @@
 	               expandHistory: false,
 	               historyStyle: { display: "none" },
 	               expandGallery: false,
-	               galleryStyle: { display: "none" }
+	               galleryStyle: { display: "none" },
+	               expandThingsToDo: false,
+	               thingsToDoStyle: { display: "none" }
 	          };
 	     },
 	
@@ -40913,6 +40916,21 @@
 	          }
 	     },
 	
+	     handleThingsToDoClick: function handleThingsToDoClick() {
+	          console.log("!!!");
+	          if (this.state.expandThingsToDo) {
+	               this.setState({
+	                    expandThingsToDo: !this.state.expandThingsToDo,
+	                    thingsToDoStyle: { display: "none" }
+	               });
+	          } else {
+	               this.setState({
+	                    expandThingsToDo: !this.state.expandThingsToDo,
+	                    thingsToDoStyle: { display: "initial" }
+	               });
+	          }
+	     },
+	
 	     render: function render() {
 	          if (this.state.expandView) {
 	               return React.createElement(
@@ -40940,7 +40958,13 @@
 	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
 	                         "Gallery"
 	                    ),
-	                    React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
+	                    React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city }),
+	                    React.createElement(
+	                         "h4",
+	                         { className: "inspiration-thingstodo-header-mobile", onClick: this.handleThingsToDoClick },
+	                         "Things To Do"
+	                    ),
+	                    React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities })
 	               );
 	          } else {
 	               return React.createElement(
@@ -41126,6 +41150,89 @@
 	});
 	
 	module.exports = HistoryBox;
+
+/***/ },
+/* 328 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var ThingsToDoBox = React.createClass({
+		displayName: "ThingsToDoBox",
+	
+		getInitialState: function getInitialState() {
+			return {
+				activities: this.props.activities,
+				activityDisplay: {},
+				position: 0
+			};
+		},
+	
+		componentDidMount: function componentDidMount() {
+			this.getFirstActivity();
+		},
+	
+		getFirstActivity: function getFirstActivity() {
+			this.setState({ activityDisplay: this.state.activities[this.state.position] });
+		},
+	
+		handleMove: function handleMove(moveLeft) {
+			var position = this.state.position;
+			var display;
+			if (moveLeft) {
+				position--;
+				if (position < 0) {
+					position = this.state.activities[this.state.activities.length - 1];
+				}
+			} else {
+				position++;
+				if (position > this.state.activities.length - 1) {
+					position = 0;
+				}
+			}
+			display = this.state.activities[position];
+			this.setState({ activityDisplay: display, position: position });
+		},
+	
+		render: function render() {
+			var _this = this;
+	
+			return React.createElement(
+				"div",
+				{ className: "inspirations-thingstodo-mobile", style: this.props.visibilityStyle },
+				React.createElement(
+					"h5",
+					null,
+					this.state.activityDisplay.city
+				),
+				React.createElement("img", { src: this.state.activityDisplay.photoLink, height: "220", width: "220" }),
+				React.createElement(
+					"p",
+					null,
+					this.state.activityDisplay.address
+				),
+				React.createElement(
+					"p",
+					null,
+					this.state.activityDisplay.description
+				),
+				React.createElement(
+					"div",
+					null,
+					React.createElement("i", { className: "fa fa-arrow-circle-o-left", "aria-hidden": "true", onClick: function onClick() {
+							return _this.handleMove(true);
+						} }),
+					React.createElement("i", { className: "fa fa-arrow-circle-o-right", "aria-hidden": "true", onClick: function onClick() {
+							return _this.handleMove(false);
+						} })
+				)
+			);
+		}
+	});
+	
+	module.exports = ThingsToDoBox;
 
 /***/ }
 /******/ ]);

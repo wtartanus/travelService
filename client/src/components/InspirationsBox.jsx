@@ -10,7 +10,7 @@ var Inspirations = React.createClass({
    },
 
    componentDidUpdate: function(prevProps, prevState) {
-
+    
    },
 
    componentWillReceiveProps: function(nextProps) {
