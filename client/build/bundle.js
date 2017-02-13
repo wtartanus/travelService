@@ -40848,10 +40848,11 @@
 	"use strict";
 	
 	var React = __webpack_require__(1);
-	var GalleryBox = __webpack_require__(325);
+	var GalleryBox = __webpack_require__(324);
 	var DescriptionBox = __webpack_require__(326);
 	var HistoryBox = __webpack_require__(327);
 	var ThingsToDoBox = __webpack_require__(328);
+	var WeatherBox = __webpack_require__(329);
 	
 	var InspirationBox = React.createClass({
 	     displayName: "InspirationBox",
@@ -40964,7 +40965,13 @@
 	                         { className: "inspiration-thingstodo-header-mobile", onClick: this.handleThingsToDoClick },
 	                         "Things To Do"
 	                    ),
-	                    React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities })
+	                    React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities }),
+	                    React.createElement(
+	                         "h4",
+	                         null,
+	                         "Average Temperature"
+	                    ),
+	                    React.createElement(WeatherBox, { weather: this.props.inspiration.weather })
 	               );
 	          } else {
 	               return React.createElement(
@@ -40995,29 +41002,7 @@
 	"use strict";
 	
 	var React = __webpack_require__(1);
-	
-	var PhotoBox = React.createClass({
-	   displayName: "PhotoBox",
-	
-	   render: function render() {
-	      return React.createElement(
-	         "div",
-	         null,
-	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
-	      );
-	   }
-	});
-	
-	module.exports = PhotoBox;
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var React = __webpack_require__(1);
-	var PhotoBox = __webpack_require__(324);
+	var PhotoBox = __webpack_require__(325);
 	
 	var GalleryBox = React.createClass({
 	   displayName: "GalleryBox",
@@ -41098,6 +41083,28 @@
 	});
 	
 	module.exports = GalleryBox;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var PhotoBox = React.createClass({
+	   displayName: "PhotoBox",
+	
+	   render: function render() {
+	      return React.createElement(
+	         "div",
+	         null,
+	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
+	      );
+	   }
+	});
+	
+	module.exports = PhotoBox;
 
 /***/ },
 /* 326 */
@@ -41233,6 +41240,96 @@
 	});
 	
 	module.exports = ThingsToDoBox;
+
+/***/ },
+/* 329 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	var Moment = __webpack_require__(180);
+	
+	var WeatherBox = React.createClass({
+		displayName: "WeatherBox",
+	
+		getInitialState: function getInitialState() {
+			return {
+				months: []
+			};
+		},
+	
+		componentDidMount: function componentDidMount() {
+			this.generateMonths();
+		},
+	
+		generateMonths: function generateMonths() {
+			var keys = Object.keys(this.props.weather.temperatures.values);
+			var months = keys.map(function (val, index) {
+				return Moment().month(parseInt(val)).format("MMM");
+			});
+			this.setState({ months: months });
+		},
+	
+		populateTableHead: function populateTableHead() {
+			var headings = this.state.months.map(function (val, index) {
+				return React.createElement(
+					"th",
+					{ key: index },
+					val
+				);
+			});
+	
+			return headings;
+		},
+	
+		populateTableData: function populateTableData() {
+			var keys = Object.keys(this.props.weather.temperatures.values);
+			var data = keys.map(function (val, index) {
+				return React.createElement(
+					"td",
+					{ key: index },
+					this.props.weather.temperatures.values[val],
+					"\u2103"
+				);
+			}.bind(this));
+	
+			return data;
+		},
+	
+		render: function render() {
+			var headings = this.populateTableHead();
+			var data = this.populateTableData();
+			return React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"table",
+					null,
+					React.createElement(
+						"thead",
+						null,
+						React.createElement(
+							"tr",
+							null,
+							headings
+						)
+					),
+					React.createElement(
+						"tbody",
+						null,
+						React.createElement(
+							"tr",
+							null,
+							data
+						)
+					)
+				)
+			);
+		}
+	});
+	
+	module.exports = WeatherBox;
 
 /***/ }
 /******/ ]);

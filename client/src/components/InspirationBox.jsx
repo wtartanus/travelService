@@ -3,6 +3,7 @@ var GalleryBox = require("./GalleryBox.jsx");
 var DescriptionBox = require("./DescriptionBox.jsx");
 var HistoryBox = require("./HistoryBox.jsx");
 var ThingsToDoBox = require("./ThingsToDoBox.jsx");
+var WeatherBox = require("./WeatherBox.jsx");
 
 var InspirationBox = React.createClass({
 	getInitialState: function() {
@@ -97,6 +98,9 @@ var InspirationBox = React.createClass({
 
    			  <h4 className="inspiration-thingstodo-header-mobile" onClick={this.handleThingsToDoClick} >Things To Do</h4>
    			  <ThingsToDoBox visibilityStyle={this.state.thingsToDoStyle} activities={this.props.inspiration.activities} />
+
+   			  <h4>Average Temperature</h4>
+   			  <WeatherBox weather={this.props.inspiration.weather} />
    			</div>
    			);
    	} else {
