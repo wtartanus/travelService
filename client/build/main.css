@@ -124,9 +124,28 @@
   overflow: hidden;
 }
 
+.inspiration-description-header-mobile {
+  cursor: pointer;
+  padding: 25px 0;
+}
+
+.inspiration-history-header-mobile {
+  cursor: pointer;
+  padding: 25px 0;
+}
 
 .inspiration-gallery-header-mobile {
   cursor: pointer;
+  padding: 25px 0;
+}
+
+.inspiration-activities-header-mobile {
+  cursor: pointer;
+  padding: 25px 0;
+}
+
+.inspiration-weather-header-mobile {
+  padding: 25px 0;
 }
 
 .inspiration-gallery-container-mobile {
@@ -141,6 +160,16 @@
   color: saddlebrown;
   cursor: pointer;
   margin-left: 42%;
+}
+
+.a-h-mobile {
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+
+.weather-mobile {
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 500px) {

@@ -86,21 +86,31 @@ var InspirationBox = React.createClass({
    		return(
    			<div className="inspiration-container-mobile-expand">
    			  <h3 className="inspiration-header" title="Click to see whole overwiev" onClick={this.handleHeaderClick}>{this.props.inspiration.city.city}</h3>
-
-   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleDescriptionClick}>Description</h4>
+             
+             <div className="a-h-mobile" >
+   			  <h4 className="inspiration-description-header-mobile" onClick={this.handleDescriptionClick}><i className="fa fa-file-text-o" aria-hidden="true"></i> Description</h4>
    			  <DescriptionBox visibilityStyle={this.state.descriptionStyle} description={this.props.inspiration.city.description} />
+             </div>
 
-   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleHistoryClick}>History</h4>
+             <div className="a-h-mobile" >
+   			  <h4 className="inspiration-history-header-mobile" onClick={this.handleHistoryClick}><i className="fa fa-history" aria-hidden="true"></i> History</h4>
    			  <HistoryBox  visibilityStyle={this.state.historyStyle} history={this.props.inspiration.city.history} />
+             </div>
 
-   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleGalleryClick}>Gallery</h4>
+             <div className="a-h-mobile" >
+   			  <h4 className="inspiration-gallery-header-mobile" onClick={this.handleGalleryClick}><i className="fa fa-picture-o" aria-hidden="true"></i> Gallery</h4>
    			  <GalleryBox visibilityStyle={this.state.galleryStyle} gallery={this.props.inspiration.photos} city={this.props.inspiration.city.city} />
+             </div>
 
-   			  <h4 className="inspiration-thingstodo-header-mobile" onClick={this.handleThingsToDoClick} >Things To Do</h4>
+             <div className="a-h-mobile" >
+   			  <h4 className="inspiration-activities-header-mobile" onClick={this.handleThingsToDoClick} ><i className="fa fa-bicycle" aria-hidden="true"></i> Things To Do</h4>
    			  <ThingsToDoBox visibilityStyle={this.state.thingsToDoStyle} activities={this.props.inspiration.activities} />
+             </div>
 
-   			  <h4>Average Temperature</h4>
+             <div className="a-h-mobile">
+   			  <h4><i className="fa fa-thermometer-empty inspiration-weather-header-mobile" aria-hidden="true"></i> Average Temperature</h4>
    			  <WeatherBox weather={this.props.inspiration.weather} />
+   			 </div>
    			</div>
    			);
    	} else {

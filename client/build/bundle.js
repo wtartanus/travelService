@@ -40943,35 +40943,60 @@
 	                         this.props.inspiration.city.city
 	                    ),
 	                    React.createElement(
-	                         "h4",
-	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleDescriptionClick },
-	                         "Description"
+	                         "div",
+	                         { className: "a-h-mobile" },
+	                         React.createElement(
+	                              "h4",
+	                              { className: "inspiration-description-header-mobile", onClick: this.handleDescriptionClick },
+	                              React.createElement("i", { className: "fa fa-file-text-o", "aria-hidden": "true" }),
+	                              " Description"
+	                         ),
+	                         React.createElement(DescriptionBox, { visibilityStyle: this.state.descriptionStyle, description: this.props.inspiration.city.description })
 	                    ),
-	                    React.createElement(DescriptionBox, { visibilityStyle: this.state.descriptionStyle, description: this.props.inspiration.city.description }),
 	                    React.createElement(
-	                         "h4",
-	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleHistoryClick },
-	                         "History"
+	                         "div",
+	                         { className: "a-h-mobile" },
+	                         React.createElement(
+	                              "h4",
+	                              { className: "inspiration-history-header-mobile", onClick: this.handleHistoryClick },
+	                              React.createElement("i", { className: "fa fa-history", "aria-hidden": "true" }),
+	                              " History"
+	                         ),
+	                         React.createElement(HistoryBox, { visibilityStyle: this.state.historyStyle, history: this.props.inspiration.city.history })
 	                    ),
-	                    React.createElement(HistoryBox, { visibilityStyle: this.state.historyStyle, history: this.props.inspiration.city.history }),
 	                    React.createElement(
-	                         "h4",
-	                         { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
-	                         "Gallery"
+	                         "div",
+	                         { className: "a-h-mobile" },
+	                         React.createElement(
+	                              "h4",
+	                              { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
+	                              React.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
+	                              " Gallery"
+	                         ),
+	                         React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
 	                    ),
-	                    React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city }),
 	                    React.createElement(
-	                         "h4",
-	                         { className: "inspiration-thingstodo-header-mobile", onClick: this.handleThingsToDoClick },
-	                         "Things To Do"
+	                         "div",
+	                         { className: "a-h-mobile" },
+	                         React.createElement(
+	                              "h4",
+	                              { className: "inspiration-activities-header-mobile", onClick: this.handleThingsToDoClick },
+	                              React.createElement("i", { className: "fa fa-bicycle", "aria-hidden": "true" }),
+	                              " Things To Do"
+	                         ),
+	                         React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities })
 	                    ),
-	                    React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities }),
 	                    React.createElement(
-	                         "h4",
-	                         null,
-	                         "Average Temperature"
-	                    ),
-	                    React.createElement(WeatherBox, { weather: this.props.inspiration.weather })
+	                         "div",
+	                         { className: "a-h-mobile" },
+	                         React.createElement(
+	                              "h4",
+	                              null,
+	                              React.createElement("i", { className: "fa fa-thermometer-empty inspiration-weather-header-mobile", "aria-hidden": "true" }),
+	                              " Average Temperature"
+	                         ),
+	                         React.createElement(WeatherBox, { weather: this.props.inspiration.weather })
+	                    )
 	               );
 	          } else {
 	               return React.createElement(
@@ -41251,82 +41276,105 @@
 	var Moment = __webpack_require__(180);
 	
 	var WeatherBox = React.createClass({
-		displayName: "WeatherBox",
+	  displayName: "WeatherBox",
 	
-		getInitialState: function getInitialState() {
-			return {
-				months: []
-			};
-		},
+	  getInitialState: function getInitialState() {
+	    return {
+	      months: []
+	    };
+	  },
 	
-		componentDidMount: function componentDidMount() {
-			this.generateMonths();
-		},
+	  componentDidMount: function componentDidMount() {
+	    this.generateMonths();
+	  },
 	
-		generateMonths: function generateMonths() {
-			var keys = Object.keys(this.props.weather.temperatures.values);
-			var months = keys.map(function (val, index) {
-				return Moment().month(parseInt(val)).format("MMM");
-			});
-			this.setState({ months: months });
-		},
+	  generateMonths: function generateMonths() {
+	    var keys = Object.keys(this.props.weather.temperatures.values);
+	    var months = keys.map(function (val, index) {
+	      return Moment().month(parseInt(val)).format("MMM");
+	    });
+	    this.setState({ months: months });
+	  },
 	
-		populateTableHead: function populateTableHead() {
-			var headings = this.state.months.map(function (val, index) {
-				return React.createElement(
-					"th",
-					{ key: index },
-					val
-				);
-			});
+	  populateTableHead: function populateTableHead() {
+	    var headings = this.state.months.map(function (val, index) {
+	      return React.createElement(
+	        "th",
+	        { key: index },
+	        val
+	      );
+	    });
 	
-			return headings;
-		},
+	    return headings;
+	  },
 	
-		populateTableData: function populateTableData() {
-			var keys = Object.keys(this.props.weather.temperatures.values);
-			var data = keys.map(function (val, index) {
-				return React.createElement(
-					"td",
-					{ key: index },
-					this.props.weather.temperatures.values[val],
-					"\u2103"
-				);
-			}.bind(this));
+	  getColor: function getColor(value) {
+	    console.log(value);
+	    if (parseInt(value) <= 0) {
+	      return { color: "royalblue" };
+	    }
+	    if (parseInt(value) > 0 && parseInt(value) < 10) {
+	      return { color: "lightskyblue" };
+	    }
+	    if (parseInt(value) >= 10 && parseInt(value) < 17) {
+	      return { color: "forestgreen" };
+	    }
+	    if (parseInt(value) >= 17 && parseInt(value) < 22) {
+	      return { color: "gold" };
+	    }
+	    if (parseInt(value) >= 22 && parseInt(value) < 27) {
+	      return { color: "orange" };
+	    }
+	    if (parseInt(value) >= 27) {
+	      return { color: "red" };
+	    }
+	  },
 	
-			return data;
-		},
+	  populateTableData: function populateTableData() {
+	    var keys = Object.keys(this.props.weather.temperatures.values);
+	    var data = keys.map(function (val, index) {
+	      var color = this.getColor(this.props.weather.temperatures.values[val]);
+	      return React.createElement(
+	        "td",
+	        { style: color, key: index },
+	        this.props.weather.temperatures.values[val],
+	        "\u2103"
+	      );
+	    }.bind(this));
 	
-		render: function render() {
-			var headings = this.populateTableHead();
-			var data = this.populateTableData();
-			return React.createElement(
-				"div",
-				null,
-				React.createElement(
-					"table",
-					null,
-					React.createElement(
-						"thead",
-						null,
-						React.createElement(
-							"tr",
-							null,
-							headings
-						)
-					),
-					React.createElement(
-						"tbody",
-						null,
-						React.createElement(
-							"tr",
-							null,
-							data
-						)
-					)
-				)
-			);
-		}
+	    return data;
+	  },
+	
+	  render: function render() {
+	    var headings = this.populateTableHead();
+	    var data = this.populateTableData();
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "table",
+	        { className: "weather-mobile" },
+	        React.createElement(
+	          "thead",
+	          null,
+	          React.createElement(
+	            "tr",
+	            null,
+	            headings
+	          )
+	        ),
+	        React.createElement(
+	          "tbody",
+	          null,
+	          React.createElement(
+	            "tr",
+	            null,
+	            data
+	          )
+	        )
+	      )
+	    );
+	  }
 	});
 	
 	module.exports = WeatherBox;
