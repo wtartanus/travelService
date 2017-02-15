@@ -124,42 +124,95 @@
   overflow: hidden;
 }
 
-.inspiration-description-header-mobile {
-  cursor: pointer;
-  padding: 25px 0;
-}
-
-.inspiration-history-header-mobile {
-  cursor: pointer;
-  padding: 25px 0;
-}
-
-.inspiration-gallery-header-mobile {
-  cursor: pointer;
-  padding: 25px 0;
-}
-
+.inspiration-description-header-mobile,
+.inspiration-history-header-mobile,
+.inspiration-gallery-header-mobile,
 .inspiration-activities-header-mobile {
   cursor: pointer;
   padding: 25px 0;
+  font-size: 1.3em;
+  font-family: 'Playfair Display SC', serif;
+  text-align: center;
 }
 
 .inspiration-weather-header-mobile {
   padding: 25px 0;
+  font-size: 1.3em;
+  font-family: 'Playfair Display SC', serif;
+}
+
+.icon-color-m-headers {
+   color: dodgerblue;
+}
+
+.description-paragrapf-m,
+.history-paragrapf-m {
+  text-align: justify;
+  line-height: 1.4em;
+  padding: 0 25px 30px 15px;
+  font-size: medium;
+  font-family: sans-serif;
 }
 
 .inspiration-gallery-container-mobile {
 }
 
+.photo-box-m {
+  border: 1px solid black;
+  padding: 11px;
+  margin: 18px auto;
+  width: 408px;
+  background-color: skyblue;
+}
+
 .photo-mobile{
-  margin: 5px auto;
   display: flex;
 }
 
 .arrow-gallery-mobile {
   color: saddlebrown;
   cursor: pointer;
-  margin-left: 42%;
+  margin: 0 auto;
+}
+
+.inspirations-activities-mobile {
+  padding: 10px;
+  text-align: left;
+}
+
+.inspirations-activities-mobile h5 {
+  font-size: large;
+  font-family: sans-serif;
+}
+
+.photo-description {
+  margin-top: 25px;
+  text-align: left;
+  font-family: sans-serif;
+  line-height: 1.4em;
+}
+
+.photo-description img {
+  float: right;
+  margin: 10px;
+}
+
+.arrows-box-m {
+  font-size: 3em;
+  color: saddlebrown;
+  clear: both;
+}
+
+.left-arrow-m {
+  float: left;
+  margin-left: 25%;
+  cursor: pointer;
+}
+
+.right-arrow-m {
+  float: right;
+  margin-right: 25%;
+  cursor: pointer;
 }
 
 .a-h-mobile {
@@ -171,6 +224,16 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  }
+
 
 @media only screen and (min-width: 500px) {
     #landing-container {

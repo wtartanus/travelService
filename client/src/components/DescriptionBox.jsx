@@ -4,7 +4,7 @@ var DescriptionBox = React.createClass({
 	render: function() {
 		return(
 			<div className="inspirations-description-mobile" style={this.props.visibilityStyle} >
-			  <p>{this.props.description}</p>
+			  <p className="description-paragrapf-m">{this.props.description}</p>
 			</div>
 			);
 	}

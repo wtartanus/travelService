@@ -18,7 +18,7 @@ var GalleryBox = React.createClass({
 
    populateGallery: function() {
       var gallery = this.props.gallery.map(function(val, index) {
-            return <PhotoBox link={val.link} alt={this.props.city} height={400} width={400} key={index} />
+            return <PhotoBox link={val.link} alt={this.props.city} height={380} width={380} key={index} />
       }.bind(this));
       
       this.setState({gallery: gallery});

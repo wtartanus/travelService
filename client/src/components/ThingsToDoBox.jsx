@@ -37,15 +37,19 @@ var ThingsToDoBox = React.createClass({
 
 	render: function() {
 		return(
-			 <div className="inspirations-thingstodo-mobile" style={this.props.visibilityStyle}>
+			 <div style={this.props.visibilityStyle}>
+			  <div className="inspirations-activities-mobile">
 			   <h5>{this.state.activityDisplay.city}</h5>
-			   <img src={this.state.activityDisplay.photoLink} height="220" width="220" />
 			   <p>{this.state.activityDisplay.address}</p>
-			   <p>{this.state.activityDisplay.description}</p>
-			   <div>
-			   	<i className="fa fa-arrow-circle-o-left" aria-hidden="true" onClick={ () => this.handleMove(true)} ></i>
-			   	<i className="fa fa-arrow-circle-o-right" aria-hidden="true" onClick={ () => this.handleMove(false)} ></i>
+			   <div className="photo-description">
+			     <img src={this.state.activityDisplay.photoLink} height="220" width="220" />
+			     <p>{this.state.activityDisplay.description}</p>
+			   </div>   
+			   <div className="arrows-box-m clearfix">
+			   	<i className="fa fa-arrow-circle-o-left left-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(true)} ></i>
+			   	<i className="fa fa-arrow-circle-o-right right-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(false)} ></i>
 			   </div>
+			  </div>
 			 </div>
 			);
 	}

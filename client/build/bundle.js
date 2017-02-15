@@ -40948,7 +40948,7 @@
 	                         React.createElement(
 	                              "h4",
 	                              { className: "inspiration-description-header-mobile", onClick: this.handleDescriptionClick },
-	                              React.createElement("i", { className: "fa fa-file-text-o", "aria-hidden": "true" }),
+	                              React.createElement("i", { className: "fa fa-file-text-o icon-color-m-headers", "aria-hidden": "true" }),
 	                              " Description"
 	                         ),
 	                         React.createElement(DescriptionBox, { visibilityStyle: this.state.descriptionStyle, description: this.props.inspiration.city.description })
@@ -40959,7 +40959,7 @@
 	                         React.createElement(
 	                              "h4",
 	                              { className: "inspiration-history-header-mobile", onClick: this.handleHistoryClick },
-	                              React.createElement("i", { className: "fa fa-history", "aria-hidden": "true" }),
+	                              React.createElement("i", { className: "fa fa-history icon-color-m-headers", "aria-hidden": "true" }),
 	                              " History"
 	                         ),
 	                         React.createElement(HistoryBox, { visibilityStyle: this.state.historyStyle, history: this.props.inspiration.city.history })
@@ -40970,7 +40970,7 @@
 	                         React.createElement(
 	                              "h4",
 	                              { className: "inspiration-gallery-header-mobile", onClick: this.handleGalleryClick },
-	                              React.createElement("i", { className: "fa fa-picture-o", "aria-hidden": "true" }),
+	                              React.createElement("i", { className: "fa fa-picture-o icon-color-m-headers", "aria-hidden": "true" }),
 	                              " Gallery"
 	                         ),
 	                         React.createElement(GalleryBox, { visibilityStyle: this.state.galleryStyle, gallery: this.props.inspiration.photos, city: this.props.inspiration.city.city })
@@ -40981,8 +40981,8 @@
 	                         React.createElement(
 	                              "h4",
 	                              { className: "inspiration-activities-header-mobile", onClick: this.handleThingsToDoClick },
-	                              React.createElement("i", { className: "fa fa-bicycle", "aria-hidden": "true" }),
-	                              " Things To Do"
+	                              React.createElement("i", { className: "fa fa-bicycle icon-color-m-headers", "aria-hidden": "true" }),
+	                              " Activities"
 	                         ),
 	                         React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities })
 	                    ),
@@ -40991,8 +40991,8 @@
 	                         { className: "a-h-mobile" },
 	                         React.createElement(
 	                              "h4",
-	                              null,
-	                              React.createElement("i", { className: "fa fa-thermometer-empty inspiration-weather-header-mobile", "aria-hidden": "true" }),
+	                              { className: "inspiration-weather-header-mobile" },
+	                              React.createElement("i", { className: "fa fa-thermometer-empty icon-color-m-headers", "aria-hidden": "true" }),
 	                              " Average Temperature"
 	                         ),
 	                         React.createElement(WeatherBox, { weather: this.props.inspiration.weather })
@@ -41048,7 +41048,7 @@
 	
 	   populateGallery: function populateGallery() {
 	      var gallery = this.props.gallery.map(function (val, index) {
-	         return React.createElement(PhotoBox, { link: val.link, alt: this.props.city, height: 400, width: 400, key: index });
+	         return React.createElement(PhotoBox, { link: val.link, alt: this.props.city, height: 380, width: 380, key: index });
 	      }.bind(this));
 	
 	      this.setState({ gallery: gallery });
@@ -41123,7 +41123,7 @@
 	   render: function render() {
 	      return React.createElement(
 	         "div",
-	         null,
+	         { className: "photo-box-m" },
 	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
 	      );
 	   }
@@ -41148,7 +41148,7 @@
 				{ className: "inspirations-description-mobile", style: this.props.visibilityStyle },
 				React.createElement(
 					"p",
-					null,
+					{ className: "description-paragrapf-m" },
 					this.props.description
 				)
 			);
@@ -41174,7 +41174,7 @@
 	         { className: "inspirations-history-mobile", style: this.props.visibilityStyle },
 	         React.createElement(
 	            "p",
-	            null,
+	            { className: "history-paragrapf-m" },
 	            this.props.history
 	         )
 	      );
@@ -41233,32 +41233,40 @@
 	
 			return React.createElement(
 				"div",
-				{ className: "inspirations-thingstodo-mobile", style: this.props.visibilityStyle },
-				React.createElement(
-					"h5",
-					null,
-					this.state.activityDisplay.city
-				),
-				React.createElement("img", { src: this.state.activityDisplay.photoLink, height: "220", width: "220" }),
-				React.createElement(
-					"p",
-					null,
-					this.state.activityDisplay.address
-				),
-				React.createElement(
-					"p",
-					null,
-					this.state.activityDisplay.description
-				),
+				{ style: this.props.visibilityStyle },
 				React.createElement(
 					"div",
-					null,
-					React.createElement("i", { className: "fa fa-arrow-circle-o-left", "aria-hidden": "true", onClick: function onClick() {
-							return _this.handleMove(true);
-						} }),
-					React.createElement("i", { className: "fa fa-arrow-circle-o-right", "aria-hidden": "true", onClick: function onClick() {
-							return _this.handleMove(false);
-						} })
+					{ className: "inspirations-activities-mobile" },
+					React.createElement(
+						"h5",
+						null,
+						this.state.activityDisplay.city
+					),
+					React.createElement(
+						"p",
+						null,
+						this.state.activityDisplay.address
+					),
+					React.createElement(
+						"div",
+						{ className: "photo-description" },
+						React.createElement("img", { src: this.state.activityDisplay.photoLink, height: "220", width: "220" }),
+						React.createElement(
+							"p",
+							null,
+							this.state.activityDisplay.description
+						)
+					),
+					React.createElement(
+						"div",
+						{ className: "arrows-box-m clearfix" },
+						React.createElement("i", { className: "fa fa-arrow-circle-o-left left-arrow-m", "aria-hidden": "true", onClick: function onClick() {
+								return _this.handleMove(true);
+							} }),
+						React.createElement("i", { className: "fa fa-arrow-circle-o-right right-arrow-m", "aria-hidden": "true", onClick: function onClick() {
+								return _this.handleMove(false);
+							} })
+					)
 				)
 			);
 		}

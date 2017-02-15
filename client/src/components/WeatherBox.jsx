@@ -68,8 +68,8 @@ var WeatherBox = React.createClass({
 				<table className="weather-mobile" >
 				  <thead>
 				    <tr>
-					 {headings}
-					</tr>
+					    {headings}
+					  </tr>
 				  </thead>
 				  <tbody>
 				   <tr>
