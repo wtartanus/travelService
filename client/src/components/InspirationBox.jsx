@@ -67,7 +67,6 @@ var InspirationBox = React.createClass({
   	},
 
   	handleThingsToDoClick: function() {
-  		console.log("!!!");
        if(this.state.expandThingsToDo) {
             this.setState({
             	expandThingsToDo: !this.state.expandThingsToDo, 
@@ -118,7 +117,7 @@ var InspirationBox = React.createClass({
          <div className="inspiration-container">
            <h3 className="inspiration-header" title="Click to see whole overwiev" onClick={this.handleHeaderClick}>{this.props.inspiration.city.city}</h3>
            <p className="inspiration-description-mobile">{this.props.inspiration.city.description}</p>
-           <img src={this.props.inspiration.photos[0].link} alt="Smiley face" height="220" width="220" />
+           <img className="city-photo-mobile" src={this.props.inspiration.photos[0].link} alt="Smiley face" />
          </div>
    		);
    	}

@@ -81,6 +81,7 @@ var Travel = React.createClass({
           <div id="landing-container">
             <NavBox windowSize={this.state.windowSize}/>
             <h1 id="logo"><span id="travel-word">Travel</span> <span id="guide-word">Guide</span></h1>
+            <p id="slogan">Everything you looking for in 1 place.</p>
           </div>
           <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
           <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} />

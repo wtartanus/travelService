@@ -21695,6 +21695,11 @@
 	              { id: 'guide-word' },
 	              'Guide'
 	            )
+	          ),
+	          React.createElement(
+	            'p',
+	            { id: 'slogan' },
+	            'Everything you looking for in 1 place.'
 	          )
 	        ),
 	        React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
@@ -40918,7 +40923,6 @@
 	     },
 	
 	     handleThingsToDoClick: function handleThingsToDoClick() {
-	          console.log("!!!");
 	          if (this.state.expandThingsToDo) {
 	               this.setState({
 	                    expandThingsToDo: !this.state.expandThingsToDo,
@@ -41012,7 +41016,7 @@
 	                         { className: "inspiration-description-mobile" },
 	                         this.props.inspiration.city.description
 	                    ),
-	                    React.createElement("img", { src: this.props.inspiration.photos[0].link, alt: "Smiley face", height: "220", width: "220" })
+	                    React.createElement("img", { className: "city-photo-mobile", src: this.props.inspiration.photos[0].link, alt: "Smiley face" })
 	               );
 	          }
 	     }
@@ -41124,7 +41128,7 @@
 	      return React.createElement(
 	         "div",
 	         { className: "photo-box-m" },
-	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt, height: this.props.height, width: this.props.width })
+	         React.createElement("img", { className: "photo-mobile", src: this.props.link, alt: this.props.alt })
 	      );
 	   }
 	});
