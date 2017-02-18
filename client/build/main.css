@@ -127,6 +127,7 @@ a {
   margin-bottom: 10px;
   font-family: 'Playfair Display SC', serif;
   cursor: pointer;
+  border-bottom: 1px solid saddlebrown;
 }
 
 .inspiration-description-mobile {
