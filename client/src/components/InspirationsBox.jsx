@@ -1,11 +1,13 @@
 var React = require("react");
 var Inspiration = require('./InspirationBox.jsx');
+var InspirationMediumBox = require('./InspirationMediumBox.jsx');
 
 var Inspirations = React.createClass({
 
    getInitialState: function() {
      return ({ 
-        inspirations: this.props.inspirations
+        inspirations: null,
+        displayCity: null
      });
    },
 
@@ -14,7 +16,7 @@ var Inspirations = React.createClass({
    },
 
    componentWillReceiveProps: function(nextProps) {
-     this.setState({inspirations: nextProps.inspirations});
+     this.setState({inspirations: nextProps.inspirations, displayCity: nextProps.inspirations[0]});
    },
 
    populateInspiration: function() {
@@ -23,15 +25,43 @@ var Inspirations = React.createClass({
      });
      return inspirations;
    },
+
+   handleHeaderClick(e) {
+    var position = parseInt(e.target.value);
+    this.setState({
+      displayCity: this.state.inspirations[position]
+    });
+   },
+
+   populateHeader: function() {
+    var heading = this.state.inspirations.map(function(value, index){
+            return <li className="city-heading-medium" key={index} value={index} onClick={this.handleHeaderClick} >{value.city.city}</li>
+    }.bind(this));
+    return heading;
+   },
    
    render: function() {
       if(this.state.inspirations) {
-      	var inspirations = this.populateInspiration();
-        return (
-	   	    <div id="inspirations-container" style={this.props.height}>
-	          {inspirations}
-	   		</div>
-   		);
+        if(this.props.width >= 1000) {
+          var header = this.populateHeader();
+          return(
+             <div className="headers-container-medium">
+               <ul className="headers-list-medium">
+                {header}
+               </ul>
+               <InspirationMediumBox inspiration={this.state.displayCity} />
+             </div>
+
+            );
+        } else {
+          var inspirations = this.populateInspiration();
+          return (
+            <div id="inspirations-container" style={this.props.height}>
+              {inspirations}
+            </div>
+          ); 
+        }
+
       } else {
       	return <p>Loading</p>
       }

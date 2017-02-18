@@ -29,7 +29,6 @@ var WeatherBox = React.createClass({
 	},
 
 	getColor: function(value) {
-		console.log(value);
       if(parseInt(value) <= 0 ) {
       	return {color: "royalblue"};
       }

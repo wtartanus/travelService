@@ -256,11 +256,6 @@ a {
   }
 
 
-@media only screen and (min-width: 500px) {
-
-}
-
-
 
 @media only screen and (min-width: 600px) {
    #nav-container {
@@ -286,26 +281,35 @@ a {
    }
 
    #logo {
-   	margin: 25% auto;
-    width: 37%;
+   	margin: 0 auto;
+    margin-top: 25%;
+    margin-bottom: 3%;
+    width: 42%;
    }
+
+   #slogan {
+    margin-left: 35%;
+   }
+
 }
 
 @media only screen and (min-width: 800px) {
   #logo {
     font-size: 3em;
-    width: 45%;
-    margin: 20% auto;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20%;
+    margin-bottom: 3%;
   }
 }
 
 @media only screen and (min-width: 1000px) {
     #landing-container {
-		margin-top: 0;
-		background-image: url(images/bridge.jpg), url(images/sky.jpg), url(images/river.jpg);
-		background-size: 50% 100%, 49.9% 49.9%, 49.9% 49.9%;
-		background-position: 0 0, 100% 0, 100% 100%;
-		background-repeat: no-repeat;
+    		margin-top: 0;
+    		background-image: url(images/bridge.jpg), url(images/sky.jpg), url(images/river.jpg);
+    		background-size: 50% 100%, 49.9% 49.9%, 49.9% 49.9%;
+    		background-position: 0 0, 100% 0, 100% 100%;
+    		background-repeat: no-repeat;
     }
 
     #travel-search {
@@ -328,16 +332,15 @@ a {
     }
     
     #search-form button {
-    	margin-left: 41%;
-    	width: 17%;
-    	height: 30px;
+      margin-left: 35%;
+      width: 31%;
+      height: 42px;
     }
 
     #logo {
-      text-align: right;
-      padding-right: 160px;
     	margin-top: 10%;
-    	font-size: 3.8em;
+    	font-size: 3em;
+      width: 70%;
     }
 
     #guide-word {
@@ -349,7 +352,7 @@ a {
       color: white;
       text-shadow: 1px 1px 1px black;
       font-size: 1.2em;
-      width: 25%;
+      width: 45%;
       float: right;
       margin-right: 14%;
     }
@@ -367,9 +370,7 @@ a {
     }
 
     #nav-bar {
-    	width: 30%;
-    	float: right;
-    	margin-right: 150px;
+    	width: 100%;
     }
 
     .nav-item {
@@ -382,6 +383,56 @@ a {
     .nav-item:hover {
     	color: blue;
       font-size: .7em;
+    }
+    
+    .headers-container-medium {
+      text-align: center;
+      padding-top: 2%;
+    }
+
+    .headers-list-medium {
+      padding: 0;
+    }
+
+    .city-heading-medium {
+      display: inline-block;
+      font-size: 2em;
+      font-family: 'Playfair Display SC', serif;
+      cursor: pointer;
+      padding-left: 20px;
+    }
+
+    .city-heading-medium:nth-child(1n+2) {
+      margin-left: 30px;
+      border-left: 1px solid black;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+
+    .inspiration-menu-container-medium {
+      float: left;
+      border-right: 1px solid black;
+      list-style-type: none;
+      list-style-position: inside;
+      padding: 0;
+      width: 55px;
+    }
+
+    .inspiration-menu-item-medium {
+      width: 33px;
+      word-wrap: break-word;
+      font-family: 'Playfair Display SC', serif;
+      white-space: pre-wrap;
+      font-size: 1em;
+      margin-bottom: 21px;
+      line-height: 1em;
+      border-bottom: 1px solid black;
+      padding: 10px 10px 14px 25px;
+      cursor: pointer;
+    }
+
+    .inspiration-menu-item-medium:nth-last-child(1) {
+      border: none;
     }
 }
 

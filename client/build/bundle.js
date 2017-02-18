@@ -21670,8 +21670,9 @@
 	            'Everything you looking for in 1 place.'
 	          ),
 	          React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
-	          React.createElement(NavBox, { windowSize: this.state.windowSize })
-	        )
+	          React.createElement(NavBox, { windowSize: 0 })
+	        ),
+	        React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations, width: this.state.windowSize.width })
 	      );
 	    } else {
 	      return React.createElement(
@@ -40798,50 +40799,85 @@
 /* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var React = __webpack_require__(1);
 	var Inspiration = __webpack_require__(323);
+	var InspirationMediumBox = __webpack_require__(330);
 	
 	var Inspirations = React.createClass({
-	   displayName: "Inspirations",
+	  displayName: 'Inspirations',
 	
 	
-	   getInitialState: function getInitialState() {
-	      return {
-	         inspirations: this.props.inspirations
-	      };
-	   },
+	  getInitialState: function getInitialState() {
+	    return {
+	      inspirations: null,
+	      displayCity: null
+	    };
+	  },
 	
-	   componentDidUpdate: function componentDidUpdate(prevProps, prevState) {},
+	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {},
 	
-	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	      this.setState({ inspirations: nextProps.inspirations });
-	   },
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    this.setState({ inspirations: nextProps.inspirations, displayCity: nextProps.inspirations[0] });
+	  },
 	
-	   populateInspiration: function populateInspiration() {
-	      var inspirations = this.state.inspirations.map(function (val, index) {
-	         return React.createElement(Inspiration, { inspiration: val, key: index });
-	      });
-	      return inspirations;
-	   },
+	  populateInspiration: function populateInspiration() {
+	    var inspirations = this.state.inspirations.map(function (val, index) {
+	      return React.createElement(Inspiration, { inspiration: val, key: index });
+	    });
+	    return inspirations;
+	  },
 	
-	   render: function render() {
-	      if (this.state.inspirations) {
-	         var inspirations = this.populateInspiration();
-	         return React.createElement(
-	            "div",
-	            { id: "inspirations-container", style: this.props.height },
-	            inspirations
-	         );
+	  handleHeaderClick: function handleHeaderClick(e) {
+	    var position = parseInt(e.target.value);
+	    this.setState({
+	      displayCity: this.state.inspirations[position]
+	    });
+	  },
+	
+	
+	  populateHeader: function populateHeader() {
+	    var heading = this.state.inspirations.map(function (value, index) {
+	      return React.createElement(
+	        'li',
+	        { className: 'city-heading-medium', key: index, value: index, onClick: this.handleHeaderClick },
+	        value.city.city
+	      );
+	    }.bind(this));
+	    return heading;
+	  },
+	
+	  render: function render() {
+	    if (this.state.inspirations) {
+	      if (this.props.width >= 1000) {
+	        var header = this.populateHeader();
+	        return React.createElement(
+	          'div',
+	          { className: 'headers-container-medium' },
+	          React.createElement(
+	            'ul',
+	            { className: 'headers-list-medium' },
+	            header
+	          ),
+	          React.createElement(InspirationMediumBox, { inspiration: this.state.displayCity })
+	        );
 	      } else {
-	         return React.createElement(
-	            "p",
-	            null,
-	            "Loading"
-	         );
+	        var inspirations = this.populateInspiration();
+	        return React.createElement(
+	          'div',
+	          { id: 'inspirations-container', style: this.props.height },
+	          inspirations
+	        );
 	      }
-	   }
+	    } else {
+	      return React.createElement(
+	        'p',
+	        null,
+	        'Loading'
+	      );
+	    }
+	  }
 	});
 	
 	module.exports = Inspirations;
@@ -40856,7 +40892,7 @@
 	var GalleryBox = __webpack_require__(324);
 	var DescriptionBox = __webpack_require__(326);
 	var HistoryBox = __webpack_require__(327);
-	var ThingsToDoBox = __webpack_require__(328);
+	var ActivitiesBox = __webpack_require__(328);
 	var WeatherBox = __webpack_require__(329);
 	
 	var InspirationBox = React.createClass({
@@ -40871,8 +40907,8 @@
 	               historyStyle: { display: "none" },
 	               expandGallery: false,
 	               galleryStyle: { display: "none" },
-	               expandThingsToDo: false,
-	               thingsToDoStyle: { display: "none" }
+	               expandActivities: false,
+	               activitiesStyle: { display: "none" }
 	          };
 	     },
 	
@@ -40922,16 +40958,16 @@
 	          }
 	     },
 	
-	     handleThingsToDoClick: function handleThingsToDoClick() {
-	          if (this.state.expandThingsToDo) {
+	     handleActivitiesClick: function handleActivitiesClick() {
+	          if (this.state.expandActivities) {
 	               this.setState({
-	                    expandThingsToDo: !this.state.expandThingsToDo,
-	                    thingsToDoStyle: { display: "none" }
+	                    expandActivities: !this.state.expandActivities,
+	                    activitiesStyle: { display: "none" }
 	               });
 	          } else {
 	               this.setState({
-	                    expandThingsToDo: !this.state.expandThingsToDo,
-	                    thingsToDoStyle: { display: "initial" }
+	                    expandActivities: !this.state.expandActivities,
+	                    activitiesStyle: { display: "initial" }
 	               });
 	          }
 	     },
@@ -40984,11 +41020,11 @@
 	                         { className: "a-h-mobile" },
 	                         React.createElement(
 	                              "h4",
-	                              { className: "inspiration-activities-header-mobile", onClick: this.handleThingsToDoClick },
+	                              { className: "inspiration-activities-header-mobile", onClick: this.handleActivitiesClick },
 	                              React.createElement("i", { className: "fa fa-bicycle icon-color-m-headers", "aria-hidden": "true" }),
 	                              " Activities"
 	                         ),
-	                         React.createElement(ThingsToDoBox, { visibilityStyle: this.state.thingsToDoStyle, activities: this.props.inspiration.activities })
+	                         React.createElement(ActivitiesBox, { visibilityStyle: this.state.activitiesStyle, activities: this.props.inspiration.activities })
 	                    ),
 	                    React.createElement(
 	                         "div",
@@ -41195,8 +41231,8 @@
 	
 	var React = __webpack_require__(1);
 	
-	var ThingsToDoBox = React.createClass({
-		displayName: "ThingsToDoBox",
+	var ActivitiesBox = React.createClass({
+		displayName: "ActivitiesBox",
 	
 		getInitialState: function getInitialState() {
 			return {
@@ -41276,7 +41312,7 @@
 		}
 	});
 	
-	module.exports = ThingsToDoBox;
+	module.exports = ActivitiesBox;
 
 /***/ },
 /* 329 */
@@ -41321,7 +41357,6 @@
 	  },
 	
 	  getColor: function getColor(value) {
-	    console.log(value);
 	    if (parseInt(value) <= 0) {
 	      return { color: "royalblue" };
 	    }
@@ -41390,6 +41425,135 @@
 	});
 	
 	module.exports = WeatherBox;
+
+/***/ },
+/* 330 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	var DisplayListItemBox = __webpack_require__(331);
+	
+	var InspirationMediumBox = React.createClass({
+	   displayName: "InspirationMediumBox",
+	
+	   getInitialState: function getInitialState() {
+	      return {
+	         inspiration: null,
+	         list: [],
+	         displayPosition: 0
+	      };
+	   },
+	
+	   componentDidMount: function componentDidMount() {
+	      console.log(this.state, this.props);
+	      this.setState({
+	         inspiration: this.props.inspiration,
+	         list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
+	         displayPosition: 0
+	      });
+	   },
+	
+	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	
+	      console.log("InspirationMediumBox", this.nextProps);
+	   },
+	
+	   handleListClick: function handleListClick() {},
+	
+	   render: function render() {
+	      return React.createElement(
+	         "div",
+	         null,
+	         React.createElement(
+	            "ul",
+	            { className: "inspiration-menu-container-medium clearfix" },
+	            React.createElement(
+	               "li",
+	               { className: "inspiration-menu-item-medium", value: "0", onClick: this.handleListClick },
+	               "Description"
+	            ),
+	            React.createElement(
+	               "li",
+	               { className: "inspiration-menu-item-medium", value: "1", onClick: this.handleListClick },
+	               "History"
+	            ),
+	            React.createElement(
+	               "li",
+	               { className: "inspiration-menu-item-medium", value: "2", onClick: this.handleListClick },
+	               "Gallery"
+	            ),
+	            React.createElement(
+	               "li",
+	               { className: "inspiration-menu-item-medium", value: "3", onClick: this.handleListClick },
+	               "Activities"
+	            )
+	         ),
+	         React.createElement(DisplayListItemBox, { displayPosition: this.state.displayPosition, value: this.state.list[this.state.displayPosition] })
+	      );
+	   }
+	});
+	
+	module.exports = InspirationMediumBox;
+
+/***/ },
+/* 331 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var DisplayListItemBox = React.createClass({
+		displayName: "DisplayListItemBox",
+	
+		getInitialState: function getInitialState() {
+			return {
+				value: null,
+				postion: null
+			};
+		},
+	
+		componentDidMount: function componentDidMount() {},
+	
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			this.setState({
+				value: nextProps.value,
+				position: nextProps.displayPosition
+			});
+		},
+	
+		render: function render() {
+			if (this.state.value) {
+				console.log(this.props.displayPosition);
+				if (this.state.position === 0) {
+					return React.createElement(
+						"div",
+						{ className: "description-medium" },
+						this.state.value
+					);
+				}
+				if (this.state.position === 1) {
+					return React.createElement("div", null);
+				}
+				if (this.state.position === 2) {
+					return React.createElement("div", null);
+				}
+				if (this.state.position === 3) {
+					return React.createElement("div", null);
+				}
+			} else {
+				return React.createElement(
+					"p",
+					null,
+					"Loading"
+				);
+			}
+		}
+	});
+	
+	module.exports = DisplayListItemBox;
 
 /***/ }
 /******/ ]);

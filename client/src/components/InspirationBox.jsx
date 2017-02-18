@@ -2,7 +2,7 @@ var React = require("react");
 var GalleryBox = require("./GalleryBox.jsx");
 var DescriptionBox = require("./DescriptionBox.jsx");
 var HistoryBox = require("./HistoryBox.jsx");
-var ThingsToDoBox = require("./ThingsToDoBox.jsx");
+var ActivitiesBox = require("./ActivitiesBox.jsx");
 var WeatherBox = require("./WeatherBox.jsx");
 
 var InspirationBox = React.createClass({
@@ -15,8 +15,8 @@ var InspirationBox = React.createClass({
        	 historyStyle: {display: "none"},
        	 expandGallery: false,
        	 galleryStyle: {display: "none"},
-       	 expandThingsToDo: false,
-       	 thingsToDoStyle: {display: "none"}
+       	 expandActivities: false,
+       	 activitiesStyle: {display: "none"}
        });
 	},
 
@@ -66,16 +66,16 @@ var InspirationBox = React.createClass({
        }
   	},
 
-  	handleThingsToDoClick: function() {
-       if(this.state.expandThingsToDo) {
+  	handleActivitiesClick: function() {
+       if(this.state.expandActivities) {
             this.setState({
-            	expandThingsToDo: !this.state.expandThingsToDo, 
-            	thingsToDoStyle: {display: "none"}
+            	expandActivities: !this.state.expandActivities, 
+            	activitiesStyle: {display: "none"}
             });
        } else {
             this.setState({
-            	expandThingsToDo: !this.state.expandThingsToDo, 
-            	thingsToDoStyle: {display: "initial"}
+            	expandActivities: !this.state.expandActivities, 
+            	activitiesStyle: {display: "initial"}
             });
        }
   	},
@@ -102,8 +102,8 @@ var InspirationBox = React.createClass({
              </div>
 
              <div className="a-h-mobile" >
-   			  <h4 className="inspiration-activities-header-mobile" onClick={this.handleThingsToDoClick} ><i className="fa fa-bicycle icon-color-m-headers" aria-hidden="true"></i> Activities</h4>
-   			  <ThingsToDoBox visibilityStyle={this.state.thingsToDoStyle} activities={this.props.inspiration.activities} />
+   			  <h4 className="inspiration-activities-header-mobile" onClick={this.handleActivitiesClick} ><i className="fa fa-bicycle icon-color-m-headers" aria-hidden="true"></i> Activities</h4>
+   			  <ActivitiesBox visibilityStyle={this.state.activitiesStyle} activities={this.props.inspiration.activities} />
              </div>
 
              <div className="a-h-mobile">

@@ -1,6 +1,6 @@
 var React = require("react");
 
-var ThingsToDoBox = React.createClass({
+var ActivitiesBox = React.createClass({
 	getInitialState: function() {
       return({
       	activities: this.props.activities,
@@ -55,4 +55,4 @@ var ThingsToDoBox = React.createClass({
 	}
 });
 
-module.exports = ThingsToDoBox;
+module.exports = ActivitiesBox;
