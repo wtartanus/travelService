@@ -12,7 +12,6 @@ var InspirationMediumBox = React.createClass({
    },
 
    componentDidMount: function() {
-    console.log(this.state, this.props);
        this.setState({
      	inspiration: this.props.inspiration,
      	list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
@@ -21,12 +20,18 @@ var InspirationMediumBox = React.createClass({
    },
 
    componentWillReceiveProps: function(nextProps) {
-  
-     console.log("InspirationMediumBox",this.nextProps);
+     this.setState({
+     	inspiration: nextProps.inspiration,
+     	list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
+     	displayPosition: 0
+     });
    },
 
-   handleListClick: function() {
-
+   handleListClick: function(e) {
+   	 var position = parseInt(e.target.value);
+     this.setState({
+        displayPosition: position
+     });
    },
 
    render: function() {

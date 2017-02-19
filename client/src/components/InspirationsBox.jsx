@@ -37,6 +37,7 @@ var Inspirations = React.createClass({
     var heading = this.state.inspirations.map(function(value, index){
             return <li className="city-heading-medium" key={index} value={index} onClick={this.handleHeaderClick} >{value.city.city}</li>
     }.bind(this));
+
     return heading;
    },
    

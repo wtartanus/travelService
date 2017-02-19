@@ -40845,6 +40845,7 @@
 	        value.city.city
 	      );
 	    }.bind(this));
+	
 	    return heading;
 	  },
 	
@@ -41447,7 +41448,6 @@
 	   },
 	
 	   componentDidMount: function componentDidMount() {
-	      console.log(this.state, this.props);
 	      this.setState({
 	         inspiration: this.props.inspiration,
 	         list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
@@ -41456,11 +41456,19 @@
 	   },
 	
 	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	
-	      console.log("InspirationMediumBox", this.nextProps);
+	      this.setState({
+	         inspiration: nextProps.inspiration,
+	         list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
+	         displayPosition: 0
+	      });
 	   },
 	
-	   handleListClick: function handleListClick() {},
+	   handleListClick: function handleListClick(e) {
+	      var position = parseInt(e.target.value);
+	      this.setState({
+	         displayPosition: position
+	      });
+	   },
 	
 	   render: function render() {
 	      return React.createElement(
@@ -41504,6 +41512,7 @@
 	"use strict";
 	
 	var React = __webpack_require__(1);
+	var ActivityBoxMedium = __webpack_require__(332);
 	
 	var DisplayListItemBox = React.createClass({
 		displayName: "DisplayListItemBox",
@@ -41535,13 +41544,31 @@
 					);
 				}
 				if (this.state.position === 1) {
-					return React.createElement("div", null);
+					return React.createElement(
+						"div",
+						{ className: "history-medium" },
+						this.state.value
+					);
 				}
 				if (this.state.position === 2) {
-					return React.createElement("div", null);
+					var gallery = this.state.value.map(function (value, index) {
+						return React.createElement("img", { className: "gallery-medium-phot", src: value.link, key: index });
+					});
+					return React.createElement(
+						"div",
+						{ className: "gallery-medium" },
+						gallery
+					);
 				}
 				if (this.state.position === 3) {
-					return React.createElement("div", null);
+					var activities = this.props.value.map(function (value, index) {
+						return React.createElement(ActivityBoxMedium, { activity: value, key: index });
+					});
+					return React.createElement(
+						"div",
+						{ className: "activities-medium" },
+						activities
+					);
 				}
 			} else {
 				return React.createElement(
@@ -41554,6 +41581,47 @@
 	});
 	
 	module.exports = DisplayListItemBox;
+
+/***/ },
+/* 332 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var ActivityMediumBox = React.createClass({
+	    displayName: "ActivityMediumBox",
+	
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "h3",
+	                null,
+	                this.props.activity.city
+	            ),
+	            React.createElement(
+	                "h4",
+	                null,
+	                this.props.activity.address
+	            ),
+	            React.createElement(
+	                "div",
+	                null,
+	                React.createElement("img", { src: this.props.activity.photoLink, height: "220", width: "220" }),
+	                React.createElement(
+	                    "p",
+	                    null,
+	                    this.props.activity.description
+	                )
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = ActivityMediumBox;
 
 /***/ }
 /******/ ]);

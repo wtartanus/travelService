@@ -1,4 +1,5 @@
 var React = require("react");
+var ActivityBoxMedium = require("./ActivityBox.jsx");
 
 var DisplayListItemBox = React.createClass({
    getInitialState: function() {
@@ -31,19 +32,28 @@ var DisplayListItemBox = React.createClass({
 		   }
 		   if(this.state.position === 1) {
             return(
-				<div>
+				<div className="history-medium">
+				  {this.state.value}
 				</div>
 			);
 		   }
 		   if(this.state.position === 2) {
+		   	var gallery = this.state.value.map(function(value, index) {
+                             return <img className="gallery-medium-phot" src={value.link} key={index}></img>
+		   		          });
             return(
-				<div>
+				<div className="gallery-medium">
+				  {gallery}
 				</div>
 			);
 		   }
 		   if(this.state.position === 3) {
+		   	var activities = this.props.value.map(function(value, index) {
+                    return <ActivityBoxMedium activity={value} key={index} />
+		   	});
             return(
-				<div>
+				<div className="activities-medium">
+				  {activities}
 				</div>
 			);
 		   }

@@ -21,12 +21,12 @@ var ActivitiesBox = React.createClass({
 	  var position = this.state.position;
 	  var display;
       if(moveLeft) {
-        position--
+        position--;
         if(position < 0) {
           position = this.state.activities[this.state.activities.length - 1];
         }
       } else {
-        position++
+        position++;
         if(position > this.state.activities.length - 1) {
           position = 0;
         } 
