@@ -461,6 +461,38 @@ a {
     .gallery-medium img {
       width: 100%;
     }
+
+    .activities-medium {
+      width: 85%;
+      height: 60vw;
+      overflow-y: scroll;
+      margin: auto;
+      padding-top: 10%;
+    }
+
+    .activity-container-medium {
+      width: 80%;
+      margin: auto;
+      text-align: left;
+      max-height: 100%;
+      padding: 2%;
+      margin-bottom: 30px;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+    }
+
+    .activity-description-container-muedium p {
+      float: right;
+      width: 60%;
+      padding-top: 5px;
+      font-family: sans-serif;
+    }
+
+    .activity-description-container-muedium img {
+      width: 35%;
+      height: 100%;
+      padding-top: 5px;
+    }
 }
 
 @media only screen and (min-width: 1250px) {

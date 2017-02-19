@@ -41615,21 +41615,21 @@
 	    render: function render() {
 	        return React.createElement(
 	            "div",
-	            null,
+	            { className: "activity-container-medium" },
 	            React.createElement(
-	                "h3",
+	                "h2",
 	                null,
 	                this.props.activity.city
 	            ),
 	            React.createElement(
-	                "h4",
+	                "h5",
 	                null,
 	                this.props.activity.address
 	            ),
 	            React.createElement(
 	                "div",
-	                null,
-	                React.createElement("img", { src: this.props.activity.photoLink, height: "220", width: "220" }),
+	                { className: "activity-description-container-muedium clearfix" },
+	                React.createElement("img", { src: this.props.activity.photoLink }),
 	                React.createElement(
 	                    "p",
 	                    null,
