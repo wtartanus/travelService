@@ -409,30 +409,57 @@ a {
       padding-top: 10px;
     }
 
-    .inspiration-menu-container-medium {
+    #inspiration-menu-container-medium {
       float: left;
       border-right: 1px solid black;
       list-style-type: none;
       list-style-position: inside;
       padding: 0;
+      margin-top: 2%;
       width: 55px;
     }
 
     .inspiration-menu-item-medium {
-      width: 33px;
-      word-wrap: break-word;
-      font-family: 'Playfair Display SC', serif;
-      white-space: pre-wrap;
-      font-size: 1em;
-      margin-bottom: 21px;
-      line-height: 1em;
-      border-bottom: 1px solid black;
-      padding: 10px 10px 14px 25px;
-      cursor: pointer;
+        font-family: 'Playfair Display SC', serif;
+        font-size: 1.3em;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+        writing-mode: vertical-rl;
+        width: 100%;
+        padding-right: 13px;
+        padding-bottom: 35px;
+        padding-top: 35px;
     }
 
     .inspiration-menu-item-medium:nth-last-child(1) {
       border: none;
+    }
+
+    .inspiration-menu-item-medium-select {
+      color: white;
+      text-shadow: 1px 1px 1px black;
+    }
+
+    .description-medium,
+    .history-medium {
+      width: 85%;
+      margin: auto;
+      padding: 10%;
+      font-family: sans-serif;
+      line-height: 1.5em;
+      text-align: left;
+    }
+
+    .gallery-medium {
+      width: 85%;
+      height: 60vw;
+      overflow-y: scroll;
+      margin: auto;
+      padding: 4% 10%;
+    }
+
+    .gallery-medium img {
+      width: 100%;
     }
 }
 

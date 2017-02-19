@@ -21670,7 +21670,7 @@
 	            'Everything you looking for in 1 place.'
 	          ),
 	          React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
-	          React.createElement(NavBox, { windowSize: 0 })
+	          React.createElement(NavBox, { windowSize: this.state.windowSize })
 	        ),
 	        React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations, width: this.state.windowSize.width })
 	      );
@@ -40812,7 +40812,8 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      inspirations: null,
-	      displayCity: null
+	      displayCity: null,
+	      selectStyle: { color: "white", textShadow: "1px 1px 2px black" }
 	    };
 	  },
 	
@@ -40839,11 +40840,19 @@
 	
 	  populateHeader: function populateHeader() {
 	    var heading = this.state.inspirations.map(function (value, index) {
-	      return React.createElement(
-	        'li',
-	        { className: 'city-heading-medium', key: index, value: index, onClick: this.handleHeaderClick },
-	        value.city.city
-	      );
+	      if (value.city === this.state.displayCity.city) {
+	        return React.createElement(
+	          'li',
+	          { className: 'city-heading-medium', style: this.state.selectStyle, key: index, value: index, onClick: this.handleHeaderClick },
+	          value.city.city
+	        );
+	      } else {
+	        return React.createElement(
+	          'li',
+	          { className: 'city-heading-medium', key: index, value: index, onClick: this.handleHeaderClick },
+	          value.city.city
+	        );
+	      }
 	    }.bind(this));
 	
 	    return heading;
@@ -41461,6 +41470,15 @@
 	         list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
 	         displayPosition: 0
 	      });
+	      this.changeSelection(0);
+	   },
+	
+	   changeSelection: function changeSelection(position) {
+	      var ul = document.getElementById("inspiration-menu-container-medium");
+	      var selected = document.getElementsByClassName("inspiration-menu-item-medium-select");
+	      selected[0].classList.remove("inspiration-menu-item-medium-select");
+	
+	      ul.childNodes[position].classList.add("inspiration-menu-item-medium-select");
 	   },
 	
 	   handleListClick: function handleListClick(e) {
@@ -41468,18 +41486,19 @@
 	      this.setState({
 	         displayPosition: position
 	      });
+	      this.changeSelection(position);
 	   },
 	
 	   render: function render() {
 	      return React.createElement(
 	         "div",
-	         null,
+	         { className: "clearfix" },
 	         React.createElement(
 	            "ul",
-	            { className: "inspiration-menu-container-medium clearfix" },
+	            { id: "inspiration-menu-container-medium", className: "clearfix" },
 	            React.createElement(
 	               "li",
-	               { className: "inspiration-menu-item-medium", value: "0", onClick: this.handleListClick },
+	               { className: "inspiration-menu-item-medium inspiration-menu-item-medium-select", value: "0", onClick: this.handleListClick },
 	               "Description"
 	            ),
 	            React.createElement(
@@ -41552,7 +41571,7 @@
 				}
 				if (this.state.position === 2) {
 					var gallery = this.state.value.map(function (value, index) {
-						return React.createElement("img", { className: "gallery-medium-phot", src: value.link, key: index });
+						return React.createElement("img", { className: "gallery-medium-phot clearfix", src: value.link, key: index });
 					});
 					return React.createElement(
 						"div",

@@ -71,7 +71,7 @@ var Travel = React.createClass({
             <h1 id="logo"><span id="travel-word">Travel</span> <span id="guide-word">Guide</span></h1>
             <p id="slogan">Everything you looking for in 1 place.</p>
             <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
-            <NavBox windowSize={0}/>
+            <NavBox windowSize={this.state.windowSize}/>
           </div>
           <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} width={this.state.windowSize.width} />
         </div>

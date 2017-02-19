@@ -7,7 +7,8 @@ var Inspirations = React.createClass({
    getInitialState: function() {
      return ({ 
         inspirations: null,
-        displayCity: null
+        displayCity: null,
+        selectStyle: {color: "white", textShadow: "1px 1px 2px black"}
      });
    },
 
@@ -35,7 +36,11 @@ var Inspirations = React.createClass({
 
    populateHeader: function() {
     var heading = this.state.inspirations.map(function(value, index){
+          if(value.city === this.state.displayCity.city) {
+            return <li className="city-heading-medium" style={this.state.selectStyle} key={index} value={index} onClick={this.handleHeaderClick} >{value.city.city}</li>
+          } else {
             return <li className="city-heading-medium" key={index} value={index} onClick={this.handleHeaderClick} >{value.city.city}</li>
+          }
     }.bind(this));
 
     return heading;

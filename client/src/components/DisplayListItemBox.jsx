@@ -39,7 +39,7 @@ var DisplayListItemBox = React.createClass({
 		   }
 		   if(this.state.position === 2) {
 		   	var gallery = this.state.value.map(function(value, index) {
-                             return <img className="gallery-medium-phot" src={value.link} key={index}></img>
+                             return <img className="gallery-medium-phot clearfix" src={value.link} key={index}></img>
 		   		          });
             return(
 				<div className="gallery-medium">
