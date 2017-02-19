@@ -493,6 +493,13 @@ a {
       height: 100%;
       padding-top: 5px;
     }
+
+    .icon-activities-medium {
+      color: saddlebrown;
+      font-size: 8em;
+      transition: 0.4;
+      opacity: 0.1;
+    }
 }
 
 @media only screen and (min-width: 1250px) {
@@ -510,17 +517,6 @@ a {
    #logo {
     margin-right: 22%;
    }
-
-   .nav-item {
-    margin-right: 35px;
-    width: 20%;
-   }
-
-   #nav-bar {
-    text-align: right;
-    width: 50%;
-   }
-
 }
 
 @media only screen and (min-width: 1650px) {

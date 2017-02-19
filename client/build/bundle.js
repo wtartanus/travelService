@@ -41452,7 +41452,8 @@
 	      return {
 	         inspiration: null,
 	         list: [],
-	         displayPosition: 0
+	         displayPosition: 0,
+	         weather: []
 	      };
 	   },
 	
@@ -41460,17 +41461,21 @@
 	      this.setState({
 	         inspiration: this.props.inspiration,
 	         list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
-	         displayPosition: 0
+	         displayPosition: 0,
+	         weather: this.props.inspiration.weather
 	      });
+	      console.log(this.props);
 	   },
 	
 	   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	      this.setState({
 	         inspiration: nextProps.inspiration,
 	         list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
-	         displayPosition: 0
+	         displayPosition: 0,
+	         weather: this.props.inspiration.weather
 	      });
 	      this.changeSelection(0);
+	      console.log(nextProps);
 	   },
 	
 	   changeSelection: function changeSelection(position) {
@@ -41517,7 +41522,7 @@
 	               "Activities"
 	            )
 	         ),
-	         React.createElement(DisplayListItemBox, { displayPosition: this.state.displayPosition, value: this.state.list[this.state.displayPosition] })
+	         React.createElement(DisplayListItemBox, { displayPosition: this.state.displayPosition, value: this.state.list[this.state.displayPosition], weather: this.state.weather })
 	      );
 	   }
 	});
@@ -41532,6 +41537,7 @@
 	
 	var React = __webpack_require__(1);
 	var ActivityBoxMedium = __webpack_require__(332);
+	var WeatherBox = __webpack_require__(329);
 	
 	var DisplayListItemBox = React.createClass({
 		displayName: "DisplayListItemBox",
@@ -41539,7 +41545,8 @@
 		getInitialState: function getInitialState() {
 			return {
 				value: null,
-				postion: null
+				postion: null,
+				weather: null
 			};
 		},
 	
@@ -41548,25 +41555,37 @@
 		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 			this.setState({
 				value: nextProps.value,
-				position: nextProps.displayPosition
+				position: nextProps.displayPosition,
+				weather: nextProps.weather
 			});
+			console.log(nextProps);
 		},
 	
 		render: function render() {
 			if (this.state.value) {
-				console.log(this.props.displayPosition);
 				if (this.state.position === 0) {
 					return React.createElement(
 						"div",
-						{ className: "description-medium" },
-						this.state.value
+						null,
+						React.createElement(
+							"div",
+							{ className: "description-medium" },
+							this.state.value
+						),
+						React.createElement("i", { className: "fa fa-thermometer-full icon-activities-medium fa-5x", "aria-hidden": "true" }),
+						React.createElement(WeatherBox, { weather: this.state.weather })
 					);
 				}
 				if (this.state.position === 1) {
 					return React.createElement(
 						"div",
-						{ className: "history-medium" },
-						this.state.value
+						null,
+						React.createElement(
+							"div",
+							{ className: "history-medium" },
+							this.state.value
+						),
+						React.createElement("i", { className: "fa fa-university icon-activities-medium fa-5x", "aria-hidden": "true" })
 					);
 				}
 				if (this.state.position === 2) {

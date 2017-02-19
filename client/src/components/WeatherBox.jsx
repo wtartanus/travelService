@@ -61,7 +61,7 @@ var WeatherBox = React.createClass({
 
 	render: function() {
 		var headings = this.populateTableHead();
-        var data = this.populateTableData();
+    var data = this.populateTableData();
 		return(
 			<div>
 				<table className="weather-mobile" >

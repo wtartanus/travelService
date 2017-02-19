@@ -6,7 +6,8 @@ var InspirationMediumBox = React.createClass({
      return({
      	inspiration: null,
      	list: [],
-     	displayPosition: 0
+     	displayPosition: 0,
+     	weather: []
      });
 
    },
@@ -15,17 +16,21 @@ var InspirationMediumBox = React.createClass({
        this.setState({
      	inspiration: this.props.inspiration,
      	list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
-     	displayPosition: 0
+     	displayPosition: 0,
+     	weather: this.props.inspiration.weather
      });
+       console.log(this.props);
    },
 
    componentWillReceiveProps: function(nextProps) {
      this.setState({
      	inspiration: nextProps.inspiration,
      	list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
-     	displayPosition: 0
+     	displayPosition: 0,
+     	weather: this.props.inspiration.weather
      });
      this.changeSelection(0);
+     console.log(nextProps);
    },
 
    changeSelection: function(position) {
@@ -53,7 +58,7 @@ var InspirationMediumBox = React.createClass({
    		   	 <li className="inspiration-menu-item-medium" value="2" onClick={this.handleListClick} >Gallery</li>
    		   	 <li className="inspiration-menu-item-medium" value="3" onClick={this.handleListClick} >Activities</li>
    		   </ul>
-   		   <DisplayListItemBox displayPosition={this.state.displayPosition} value={this.state.list[this.state.displayPosition]} />
+   		   <DisplayListItemBox displayPosition={this.state.displayPosition} value={this.state.list[this.state.displayPosition]} weather={this.state.weather} />
    		 </div>
    		);
    }
