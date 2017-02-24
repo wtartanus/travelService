@@ -1,5 +1,6 @@
 var React = require("react");
 var Moment = require("moment");
+var BarChart = require('react-d3-basic').BarChart;
 
 var WeatherBox = React.createClass({
 	getInitialState: function() {

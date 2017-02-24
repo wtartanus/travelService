@@ -1,18 +1,16 @@
 var React = require("react");
 var ActivityBoxMedium = require("./ActivityBox.jsx");
-var WeatherBox = require("./WeatherBox.jsx");
+var WeatherMediumBox = require("./WeatherMediumBox.jsx");
+var Moment = require("moment");
 
 var DisplayListItemBox = React.createClass({
    getInitialState: function() {
       return({
       	value: null,
       	postion: null,
-      	weather: null
+      	weather: null,
+      	data: null
       });
-   },
-
-   componentDidMount: function() {
-
    },
 
    componentWillReceiveProps: function(nextProps) {
@@ -21,21 +19,29 @@ var DisplayListItemBox = React.createClass({
      	position: nextProps.displayPosition,
      	weather: nextProps.weather
      });
-     console.log(nextProps);
+     this.createChartData(nextProps);
+   },
+
+   createChartData: function(props) {
+   	  console.log("DisplayListItemBox",props.weather.temperatures.values);
+     var data = props.weather.temperatures.values.map(function(value, index) {
+         return { month: Moment().month(index).format("MMM"), value: value}
+     });
+     this.setState({data: data});
+     this.forceUpdate();
    },
 
 	render: function() {
 		if(this.state.value) {
 		   if(this.state.position === 0) {
-            return(
-            	<div>
-				   <div className="description-medium" >
-					 {this.state.value}
-					</div>
-				 <i className="fa fa-thermometer-full icon-activities-medium fa-5x" aria-hidden="true"></i>
-				 <WeatherBox weather={this.state.weather} />
-				</div>
-			);
+              return(
+              	<div>
+              	  <div className="description-medium">
+					  {this.state.value}
+				  </div>
+              	 <WeatherMediumBox data={this.state.data}/>
+              	</div>
+              	);
 		   }
 		   if(this.state.position === 1) {
             return(

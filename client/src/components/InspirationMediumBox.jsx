@@ -19,7 +19,6 @@ var InspirationMediumBox = React.createClass({
      	displayPosition: 0,
      	weather: this.props.inspiration.weather
      });
-       console.log(this.props);
    },
 
    componentWillReceiveProps: function(nextProps) {
@@ -27,10 +26,9 @@ var InspirationMediumBox = React.createClass({
      	inspiration: nextProps.inspiration,
      	list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
      	displayPosition: 0,
-     	weather: this.props.inspiration.weather
+     	weather: nextProps.inspiration.weather
      });
      this.changeSelection(0);
-     console.log(nextProps);
    },
 
    changeSelection: function(position) {

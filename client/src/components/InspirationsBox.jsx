@@ -4,28 +4,24 @@ var InspirationMediumBox = require('./InspirationMediumBox.jsx');
 
 var Inspirations = React.createClass({
 
-   getInitialState: function() {
+  getInitialState: function() {
      return ({ 
         inspirations: null,
         displayCity: null,
         selectStyle: {color: "white", textShadow: "1px 1px 2px black"}
      });
-   },
+  },
 
-   componentDidUpdate: function(prevProps, prevState) {
-    
-   },
-
-   componentWillReceiveProps: function(nextProps) {
+  componentWillReceiveProps: function(nextProps) {
      this.setState({inspirations: nextProps.inspirations, displayCity: nextProps.inspirations[0]});
-   },
+  },
 
-   populateInspiration: function() {
+  populateInspiration: function() {
      var inspirations = this.state.inspirations.map(function(val, index) {
      	  return <Inspiration inspiration={val} key={index} />
      });
      return inspirations;
-   },
+  },
 
    handleHeaderClick(e) {
     var position = parseInt(e.target.value);
