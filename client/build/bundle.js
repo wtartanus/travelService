@@ -21817,7 +21817,7 @@
 	          React.createElement(
 	            'div',
 	            null,
-	            'Loading ... '
+	            React.createElement('i', { className: 'fa fa-spinner', 'aria-hidden': 'true' })
 	          )
 	        );
 	      } else if (this.state.windowSize.width >= 1000) {
@@ -21853,7 +21853,7 @@
 	          React.createElement(
 	            'div',
 	            null,
-	            'Loading ...'
+	            React.createElement('i', { className: 'fa fa-spinner', 'aria-hidden': 'true' })
 	          )
 	        );
 	      } else {
@@ -21889,7 +21889,7 @@
 	          React.createElement(
 	            'div',
 	            null,
-	            'Loading ...'
+	            React.createElement('i', { className: 'fa fa-spinner', 'aria-hidden': 'true' })
 	          )
 	        );
 	      }
@@ -21982,7 +21982,6 @@
 	
 	  handleSubmit: function handleSubmit(event) {
 	    event.preventDefault();
-	    console.log(event.target.childNodes[4]);
 	    var search = {
 	      destination: event.target.childNodes[0].childNodes[5].value.toLowerCase(),
 	      startCity: event.target.childNodes[1].childNodes[2].value.toLowerCase(),
@@ -41069,7 +41068,7 @@
 	      return React.createElement(
 	        'p',
 	        null,
-	        'Loading'
+	        React.createElement('i', { className: 'fa fa-spinner', 'aria-hidden': 'true' })
 	      );
 	    }
 	  }
@@ -66757,7 +66756,6 @@
 	  },
 	
 	  createChartData: function createChartData(props) {
-	    console.log("DisplayListItemBox", props.weather.temperatures.values);
 	    var data = props.weather.temperatures.values.map(function (value, index) {
 	      return { month: Moment().month(index).format("MMM"), value: value };
 	    });
@@ -66815,7 +66813,7 @@
 	      return React.createElement(
 	        "p",
 	        null,
-	        "Loading"
+	        React.createElement("i", { className: "fa fa-spinner", "aria-hidden": "true" })
 	      );
 	    }
 	  }
@@ -66921,7 +66919,6 @@
 	    var _this = this;
 	
 	    if (this.props.data && this.props.data.length) {
-	      console.log("jskdjf");
 	      return React.createElement(
 	        "div",
 	        { className: "weather-chart-medium" },
@@ -66947,7 +66944,7 @@
 	      return React.createElement(
 	        "div",
 	        null,
-	        "Loading"
+	        React.createElement("i", { className: "fa fa-spinner", "aria-hidden": "true" })
 	      );
 	    }
 	  }

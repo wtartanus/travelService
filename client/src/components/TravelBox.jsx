@@ -112,7 +112,7 @@ var Travel = React.createClass({
                 <p id="slogan">Everything you looking for in 1 place.</p>
                 <NavBox windowSize={this.state.windowSize} />
               </div>
-              <div>Loading ... </div>
+              <div><i className="fa fa-spinner" aria-hidden="true"></i></div>
             </div>
           );
         } else if(this.state.windowSize.width >= 1000) {
@@ -124,7 +124,7 @@ var Travel = React.createClass({
                 <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
                 <NavBox windowSize={this.state.windowSize}/>
               </div>
-              <div>Loading ...</div>
+              <div><i className="fa fa-spinner" aria-hidden="true"></i></div>
             </div>
           );
         } else {
@@ -136,7 +136,7 @@ var Travel = React.createClass({
                 <p id="slogan">Everything you looking for in 1 place.</p>
               </div>
               <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
-              <div>Loading ...</div>
+              <div><i className="fa fa-spinner" aria-hidden="true"></i></div>
             </div>
           );
         }

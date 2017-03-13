@@ -7,10 +7,10 @@ var ActivityMediumBox = React.createClass({
                <h2>{this.props.activity.city}</h2>
                <h5>{this.props.activity.address}</h5>
                <div className="activity-description-container-muedium clearfix">
-			     <img src={this.props.activity.photoLink} />
-			     <p>{this.props.activity.description}</p>
-			   </div>  
-             </div>
+			           <img src={this.props.activity.photoLink} />
+			           <p>{this.props.activity.description}</p>
+			         </div>  
+            </div>
     		);
     }
 });

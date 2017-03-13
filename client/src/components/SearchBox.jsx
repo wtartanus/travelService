@@ -78,7 +78,6 @@ var Search = React.createClass({
 
   handleSubmit: function(event) {
     event.preventDefault();
-    console.log(event.target.childNodes[4]);
     var search = {
       destination: event.target.childNodes[0].childNodes[5].value.toLowerCase(),
       startCity: event.target.childNodes[1].childNodes[2].value.toLowerCase(),

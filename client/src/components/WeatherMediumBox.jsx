@@ -46,7 +46,6 @@ const SimpleBarChart = React.createClass({
 
   render () {
     if(this.props.data && this.props.data.length) {
-      console.log("jskdjf");
        return (
         <div className="weather-chart-medium">
           <BarChart width={600} height={300} data={this.props.data}>
@@ -68,7 +67,7 @@ const SimpleBarChart = React.createClass({
     );
     } else {
       return (
-        <div>Loading</div>
+        <div><i className="fa fa-spinner" aria-hidden="true"></i></div>
     );
     }
    

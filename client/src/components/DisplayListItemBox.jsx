@@ -23,7 +23,6 @@ var DisplayListItemBox = React.createClass({
    },
 
    createChartData: function(props) {
-   	  console.log("DisplayListItemBox",props.weather.temperatures.values);
      var data = props.weather.temperatures.values.map(function(value, index) {
          return { month: Moment().month(index).format("MMM"), value: value}
      });
@@ -74,7 +73,12 @@ var DisplayListItemBox = React.createClass({
 			);
 		   }
 		}else {
-			return <p>Loading</p>
+			return (
+          <p>
+            <i className="fa fa-spinner" aria-hidden="true"></i>
+          </p>
+        );
+      
 		}
 		
 	}

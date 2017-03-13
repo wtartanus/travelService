@@ -65,7 +65,12 @@ var Inspirations = React.createClass({
         }
 
       } else {
-      	return <p>Loading</p>
+      	return (
+            <p>
+              <i className="fa fa-spinner" aria-hidden="true"></i>
+            </p>
+          );
+        
       }
    }
 });
