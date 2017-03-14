@@ -9,26 +9,26 @@ var InspirationMediumBox = React.createClass({
      	displayPosition: 0,
      	weather: []
      });
-
    },
 
    componentDidMount: function() {
-       this.setState({
+    this.setState({
      	inspiration: this.props.inspiration,
      	list: [this.props.inspiration.city.description, this.props.inspiration.city.history, this.props.inspiration.photos, this.props.inspiration.activities],
      	displayPosition: 0,
      	weather: this.props.inspiration.weather
-     });
+    });
    },
 
    componentWillReceiveProps: function(nextProps) {
-     this.setState({
+    this.setState({
      	inspiration: nextProps.inspiration,
      	list: [nextProps.inspiration.city.description, nextProps.inspiration.city.history, nextProps.inspiration.photos, nextProps.inspiration.activities],
      	displayPosition: 0,
      	weather: nextProps.inspiration.weather
-     });
-     this.changeSelection(0);
+    });
+    
+    this.changeSelection(0);
    },
 
    changeSelection: function(position) {

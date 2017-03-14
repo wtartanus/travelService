@@ -19,21 +19,28 @@ var Travel = React.createClass({
     this.getData(this.props.url);
   },
 
-
-
   getWindowSize: function() {
     var windowW = window.innerWidth;
     var windowH = window.innerHeight;
-    var size = {width: windowW, heigth: windowH };
-    var heightStyle = {height: windowH.toString() + "px"};
-    this.setState({windowSize: size, heightStyle: heightStyle});
+    var size = {
+      width: windowW, 
+      heigth: windowH 
+    };
+
+    var heightStyle = {
+      height: windowH.toString() + "px"
+    };
+
+    this.setState({
+      windowSize: size, 
+      heightStyle: heightStyle
+    });
   },
 
   setSearchItem: function(value) {
-    var wojtek = value.destination;
-         this.setState({searchItem: value}, function() {
+    this.setState({
+      searchItem: value
     });
-    
   },
 
   getData: function(url) {
@@ -42,7 +49,9 @@ var Travel = React.createClass({
    request.onload = function() {
      if(request.status === 200 ) {
        var result = JSON.parse(request.responseText);
-       this.setState({inspirations: result });
+       this.setState({
+        inspirations: result 
+      });
        this.forceUpdate();
      } 
    }.bind(this);

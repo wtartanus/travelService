@@ -1,5 +1,4 @@
 var React = require("react");
-var ReactDOM = require("react-dom");
 var BarChart = require("recharts").BarChart;
 var Bar = require("recharts").Bar;
 var ReferenceLine = require("recharts").ReferenceLine;
@@ -7,7 +6,6 @@ var XAxis = require("recharts").XAxis;
 var YAxis = require("recharts").YAxis;
 var CartesianGrid = require("recharts").CartesianGrid;
 var Tooltip = require("recharts").Tooltip;
-var Legend = require("recharts").Legend;
 var Cell = require("recharts").Cell;
 var Area = require("recharts").Area;
 
@@ -41,7 +39,10 @@ const SimpleBarChart = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-     this.setState({data: nextProps.data});
+     this.setState(
+      {
+        data: nextProps.data
+      });
   },
 
   render () {
@@ -67,8 +68,10 @@ const SimpleBarChart = React.createClass({
     );
     } else {
       return (
-        <div><i className="fa fa-spinner" aria-hidden="true"></i></div>
-    );
+        <div>
+          <i className="fa fa-spinner" aria-hidden="true"></i>
+        </div>
+      );
     }
    
   }

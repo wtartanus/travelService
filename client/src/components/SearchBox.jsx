@@ -2,8 +2,6 @@ var React = require('react');
 var moment = require('moment');
 var DatePicker = require("./DatePicker.jsx");
 
-
-
 var Search = React.createClass({
 
   getInitialState: function() {
@@ -15,8 +13,7 @@ var Search = React.createClass({
           buttonStyle: {},
           buttonTittle: "Destination must be set."
         }
-      );
-    
+    );
   },
 
   isValid: function() {
@@ -26,6 +23,7 @@ var Search = React.createClass({
      var dateFrom = dateFromValue ? moment(dateFromValue) : null;
      var dateToValue = form.childNodes[3].childNodes[0].childNodes[2].value;
      var dateTo = dateToValue ? moment(dateToValue) : null;
+
      if(dateFrom !== null && dateTo !== null && dateFrom.isAfter(dateTo)) {
         this.disableSearchButton();
         var title = "From date can't be after until date."
@@ -45,16 +43,27 @@ var Search = React.createClass({
   disableSearchButton() {
     var style = {cursor: "not-allowed"}
     
-    this.setState({buttonStyle: style, searchEnable: false});
+    this.setState({
+      buttonStyle: style, 
+      searchEnable: false
+    });
   },
 
   enableSearchButton() {
    if(!this.state.searchEnable) {
-      var style = {cursor: "pointer",backgroundColor: "blue"}
-      var title = ""
+      var style = {
+        cursor: "pointer",
+        backgroundColor: "blue"
+      };
 
-      this.setState({buttonStyle: style, buttonTittle: title, searchEnable: true});
-   }
+      var title = "";
+
+      this.setState({
+        buttonStyle: style, 
+        buttonTittle: title, 
+        searchEnable: true
+      });
+    }
   },
 
   checkSearchType: function(search) {

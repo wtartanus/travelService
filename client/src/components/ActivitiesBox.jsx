@@ -14,7 +14,9 @@ var ActivitiesBox = React.createClass({
 	},
 
 	getFirstActivity: function() {
-       this.setState({activityDisplay: this.state.activities[this.state.position]});
+       this.setState({
+       	activityDisplay: this.state.activities[this.state.position]
+       });
 	},
 
 	handleMove: function(moveLeft) {
@@ -32,26 +34,29 @@ var ActivitiesBox = React.createClass({
         } 
       } 
       display = this.state.activities[position];
-      this.setState({activityDisplay: display, position: position});
+      this.setState({
+      	activityDisplay: display, 
+      	position: position
+      });
 	},
 
 	render: function() {
 		return(
-			 <div style={this.props.visibilityStyle}>
-			  <div className="inspirations-activities-mobile">
-			   <h5>{this.state.activityDisplay.city}</h5>
-			   <p>{this.state.activityDisplay.address}</p>
-			   <div className="photo-description">
-			     <img src={this.state.activityDisplay.photoLink} height="220" width="220" />
-			     <p>{this.state.activityDisplay.description}</p>
-			   </div>   
-			   <div className="arrows-box-m clearfix">
-			   	<i className="fa fa-arrow-circle-o-left left-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(true)} ></i>
-			   	<i className="fa fa-arrow-circle-o-right right-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(false)} ></i>
-			   </div>
-			  </div>
-			 </div>
-			);
+		 <div style={this.props.visibilityStyle}>
+		  <div className="inspirations-activities-mobile">
+		   <h5>{this.state.activityDisplay.city}</h5>
+		   <p>{this.state.activityDisplay.address}</p>
+		   <div className="photo-description">
+		     <img src={this.state.activityDisplay.photoLink} height="220" width="220" />
+		     <p>{this.state.activityDisplay.description}</p>
+		   </div>   
+		   <div className="arrows-box-m clearfix">
+		   	<i className="fa fa-arrow-circle-o-left left-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(true)} ></i>
+		   	<i className="fa fa-arrow-circle-o-right right-arrow-m" aria-hidden="true" onClick={ () => this.handleMove(false)} ></i>
+		   </div>
+		  </div>
+		 </div>
+		);
 	}
 });
 

@@ -48,9 +48,6 @@
   font-family: sans-serif;
 }
 
-.inspiration-gallery-container-mobile {
-}
-
 .city-photo-mobile {
  width: 45%;
  height: 200px;
@@ -133,7 +130,8 @@
       padding-top: 2%;
     }
 
-    .headers-list-medium {
+    .headers-list-medium,
+    #inspiration-menu-container-medium {
       padding: 0;
     }
 
@@ -157,9 +155,13 @@
       border-right: 1px solid black;
       list-style-type: none;
       list-style-position: inside;
-      padding: 0;
       margin-top: 2%;
       width: 55px;
+    }
+
+    .inspiration-menu-item-medium,
+    .gallery-medium img {
+      width: 100%;
     }
 
     .inspiration-menu-item-medium {
@@ -168,7 +170,6 @@
         border-bottom: 1px solid black;
         cursor: pointer;
         writing-mode: vertical-rl;
-        width: 100%;
         padding-right: 13px;
         padding-bottom: 35px;
         padding-top: 35px;
@@ -184,9 +185,16 @@
     }
 
     .description-medium,
+    .history-medium,
+    .gallery-medium,
+    .activities-medium,
+    .activity-container-medium {
+      margin: auto;
+    }
+
+    .description-medium,
     .history-medium {
       width: 85%;
-      margin: auto;
       padding: 10%;
       font-family: sans-serif;
       line-height: 1.5em;
@@ -197,25 +205,18 @@
       width: 85%;
       height: 60vw;
       overflow-y: scroll;
-      margin: auto;
       padding: 4% 10%;
-    }
-
-    .gallery-medium img {
-      width: 100%;
     }
 
     .activities-medium {
       width: 85%;
       height: 60vw;
       overflow-y: scroll;
-      margin: auto;
       padding-top: 10%;
     }
 
     .activity-container-medium {
       width: 80%;
-      margin: auto;
       text-align: left;
       max-height: 100%;
       padding: 2%;

@@ -6,7 +6,7 @@ var TableData = React.createClass({
    return({
       date: this.props.date
       }
-   	);
+   );
  },
 
  handleClick: function() {

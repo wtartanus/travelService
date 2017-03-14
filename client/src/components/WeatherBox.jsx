@@ -1,6 +1,5 @@
 var React = require("react");
 var Moment = require("moment");
-var BarChart = require('react-d3-basic').BarChart;
 
 var WeatherBox = React.createClass({
 	getInitialState: function() {
@@ -18,15 +17,18 @@ var WeatherBox = React.createClass({
       var months = keys.map(function(val, index) {
         return Moment().month(parseInt(val)).format("MMM");
       });
-      this.setState({months: months});
+      this.setState(
+        {
+          months: months
+        });
 	},
 
 	populateTableHead: function() {
-       var headings = this.state.months.map(function(val, index) {
-               return <th key={index}>{val}</th>
-		});
+     var headings = this.state.months.map(function(val, index) {
+             return <th key={index}>{val}</th>
+	   });
        
-      return headings;
+    return headings;
 	},
 
 	getColor: function(value) {

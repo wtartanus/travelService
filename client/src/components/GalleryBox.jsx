@@ -3,13 +3,13 @@ var PhotoBox = require("./PhotoBox.jsx");
 
 var GalleryBox = React.createClass({
    getInitialState: function() {
-   	    return({
-          expandGallery: false,
-       	  gallery: [],
-       	  galleryDispaly: [],
-       	  galleryDisplayPosition1: 0,
-       	  galleryDisplayPosition2: 1
-   	    });
+ 	    return({
+        expandGallery: false,
+     	  gallery: [],
+     	  galleryDispaly: [],
+     	  galleryDisplayPosition1: 0,
+     	  galleryDisplayPosition2: 1
+ 	    });
    },
 
    componentDidMount: function() {
@@ -21,14 +21,18 @@ var GalleryBox = React.createClass({
             return <PhotoBox link={val.link} alt={this.props.city} height={380} width={380} key={index} />
       }.bind(this));
       
-      this.setState({gallery: gallery});
+      this.setState({
+        gallery: gallery
+      });
 
       var galleryDisplay = [];
       
       galleryDisplay.push(gallery[this.state.galleryDisplayPosition1]);
       galleryDisplay.push(gallery[this.state.galleryDisplayPosition2]);
       
-      this.setState({galleryDisplay: galleryDisplay});
+      this.setState({
+        galleryDisplay: galleryDisplay
+      });
    },
 
    moveGallery: function(up) {
@@ -44,7 +48,11 @@ var GalleryBox = React.createClass({
       galleryDisplay.push(this.state.gallery[position1]);
       galleryDisplay.push(this.state.gallery[position2]);
          
-      this.setState({galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2});
+      this.setState({
+        galleryDisplay: galleryDisplay, 
+        galleryDisplayPosition1: position1, 
+        galleryDisplayPosition2: position2
+      });
 
     } else {
         var position1 = this.state.galleryDisplayPosition1 -2;
@@ -57,7 +65,11 @@ var GalleryBox = React.createClass({
       galleryDisplay.push(this.state.gallery[position1]);
       galleryDisplay.push(this.state.gallery[position2]);
      
-     this.setState({galleryDisplay: galleryDisplay, galleryDisplayPosition1: position1, galleryDisplayPosition2: position2});
+     this.setState({
+      galleryDisplay: galleryDisplay, 
+      galleryDisplayPosition1: position1, 
+      galleryDisplayPosition2: position2
+     });
     }
    },
 
@@ -68,7 +80,7 @@ var GalleryBox = React.createClass({
    			   {this.state.galleryDisplay}
    		   <i className="fa fa-arrow-circle-down fa-5x arrow-gallery-mobile" aria-hidden="true" onClick={() => this.moveGallery(false)} ></i>
    		</div>
-   		);
+   	);
    }
 });
 

@@ -125,7 +125,7 @@ a {
   content: " ";
   clear: both;
   height: 0;
-  }
+}
 
 
 
@@ -184,9 +184,13 @@ a {
     		background-repeat: no-repeat;
     }
 
+    #travel-search,
+    .nav-item {
+      border: none;
+    }
+
     #travel-search {
     	margin-top: 10%;
-    	border: none;
     	text-align: initial;
     }
 
@@ -246,7 +250,6 @@ a {
     }
 
     .nav-item {
-    	border: none;
     	padding-bottom: 0;
     	margin: 0;
     	vertical-align: baseline;
@@ -259,13 +262,13 @@ a {
 }
 
 @media only screen and (min-width: 1250px) {
-   #slogan {
+   #slogan,
+   #logo {
     margin-right: 11%;
    }
 
    #logo {
     width: 59%;
-    margin-right: 11%;
    }
 }
 
@@ -276,31 +279,40 @@ a {
 }
 
 @media only screen and (min-width: 1650px) {
+  #photo-1,
+  #photo-2,
+  #photo-3,
+  #photo-4,
+  #photo-5,
+  #landing-container {
+    background-size: cover;
+  }
+
   #landing-container {
     background-image: url(images/2ndSet/lake.jpg);
-    background-size: cover;
     background-color: rgba(127,126,117,.3);
   }
 
-  #logo {
+  #logo,
+  #slogan,
+  #search-form {
     position: absolute;
+    margin: 0;
+  }
+
+  #logo {
     top: 25px;
     left: 200px;
-    margin: 0;
     z-index: 200;
   }
 
   #slogan {
-    position: absolute;
-    margin: 0;
     top: 150px;
     left: 1000px;
     font-size: 1.6em;
   }
 
   #search-form {
-    position: absolute;
-    margin: 0;
     height: 600px;
     width: 300px;
     right: 220px;
@@ -327,7 +339,6 @@ a {
 
   #photo-1 {
     background-image: url(images/2ndSet/bali.jpg);
-    background-size: cover;
     width: 350px;
     height: 450px;
     left: 35px;
@@ -337,7 +348,6 @@ a {
   #photo-2 {
     background-image: url(images/2ndSet/barcelona.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
     width: 550px;
     height: 450px;
     top: 125px;
@@ -348,7 +358,6 @@ a {
 
   #photo-3 {
     background-image: url(images/2ndSet/cracow.jpg);
-    background-size: cover;
     width: 450px;
     height: 350px;
     left: 100px;
@@ -357,7 +366,6 @@ a {
 
   #photo-4 {
     background-image: url(images/2ndSet/protaras.jpg);
-    background-size: cover;
     width: 450px;
     height: 350px;
     left: 600px;
@@ -366,7 +374,6 @@ a {
 
   #photo-5 {
     background-image: url(images/2ndSet/ny.jpg);
-    background-size: cover;
     width: 350px;
     height: 600px;
     left: 1100px;
@@ -388,20 +395,21 @@ a {
     font-size: 2em;
   }
 
-  .heart {
-    color: red;
+  .heart,
+  .star {
     position: absolute;
     bottom: -30px;
-    right: 10px;
     font-size: 2em;
+  }
+
+  .heart {
+    color: red;
+    right: 10px;
   }
 
   .star {
     color: gold;
-    position: absolute;
-    bottom: -30px;
     right: 35px;
-    font-size: 2em;
   }
 
   .star-1 {

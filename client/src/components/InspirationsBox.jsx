@@ -3,7 +3,6 @@ var Inspiration = require('./InspirationBox.jsx');
 var InspirationMediumBox = require('./InspirationMediumBox.jsx');
 
 var Inspirations = React.createClass({
-
   getInitialState: function() {
      return ({ 
         inspirations: null,
@@ -13,7 +12,10 @@ var Inspirations = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-     this.setState({inspirations: nextProps.inspirations, displayCity: nextProps.inspirations[0]});
+     this.setState({
+      inspirations: nextProps.inspirations, 
+      displayCity: nextProps.inspirations[0]
+     });
   },
 
   populateInspiration: function() {
@@ -53,8 +55,7 @@ var Inspirations = React.createClass({
                </ul>
                <InspirationMediumBox inspiration={this.state.displayCity} />
              </div>
-
-            );
+          );
         } else {
           var inspirations = this.populateInspiration();
           return (
@@ -63,14 +64,12 @@ var Inspirations = React.createClass({
             </div>
           ); 
         }
-
       } else {
       	return (
-            <p>
-              <i className="fa fa-spinner" aria-hidden="true"></i>
-            </p>
-          );
-        
+          <p>
+            <i className="fa fa-spinner" aria-hidden="true"></i>
+          </p>
+        ); 
       }
    }
 });
