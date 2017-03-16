@@ -140,7 +140,7 @@ a {
    }
 
    #nav-bar-toggle {
-   	display: none;
+   	display: initial;
    }
 
    #nav-bar {
@@ -319,6 +319,10 @@ a {
     bottom: 150px;
     text-align: center;
     padding: 0;
+    border: 3px solid black;
+    border-radius: 5px 5px;
+    background-color: white;
+    display: none;    
   }
 
   #search-form label {

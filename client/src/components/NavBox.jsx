@@ -13,7 +13,7 @@ var NavBox = React.createClass({
   	this.toggleNavBar();
   },
    
-   toggleNavBar: function() {
+  toggleNavBar: function() {
    	if(this.props.windowSize.width < 600) {
          if(!this.state.navStatus) {
             this.setState({
@@ -35,10 +35,18 @@ var NavBox = React.createClass({
       	}
    	}
 
-      if(this.props.windowSize.width >= 1000) {
-         this.setState({navConatinerStyle: {
+    if(this.props.windowSize.width >= 1000) {
+         this.setState({
+          navConatinerStyle: {
             top: this.props.windowSize.heigth - 80 + "px"
-         }});
+          },
+          navUlStyle: {
+            display: 'flex'
+          },
+          navToggleStyle: {
+            display: 'none'
+          }
+       });
       }   
    },
 
@@ -46,7 +54,7 @@ var NavBox = React.createClass({
       return (
          <div id="nav-container" style={this.state.navConatinerStyle}>
             <i id="nav-bar-toggle" onClick={this.toggleNavBar} style={this.state.navToggleStyle} className="fa fa-bars" aria-hidden="true"></i>
-            <NavList navStyle={ this.state.navUlStyle} />
+            <NavList navStyle={ this.state.navUlStyle} windowSize={this.props.windowSize}/>
          </div>
       )
    }
