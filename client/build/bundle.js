@@ -21556,6 +21556,11 @@
 	    request.send(null);
 	  },
 	
+	  insertInspirationInSearch: function insertInspirationInSearch(city) {
+	    var form = document.getElementById("search-form").children[0].childNodes[5];
+	    form.value = city;
+	  },
+	
 	  render: function render() {
 	    if (this.state.inspirations && this.state.inspirations.length) {
 	
@@ -21723,7 +21728,7 @@
 	            )
 	          ),
 	          React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
-	          React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations })
+	          React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations, insertInspirationInSearch: this.insertInspirationInSearch })
 	        );
 	      }
 	    } else {
@@ -41114,8 +41119,8 @@
 	
 	  populateInspiration: function populateInspiration() {
 	    var inspirations = this.state.inspirations.map(function (val, index) {
-	      return React.createElement(Inspiration, { inspiration: val, key: index });
-	    });
+	      return React.createElement(Inspiration, { inspiration: val, key: index, insertInspirationInSearch: this.props.insertInspirationInSearch });
+	    }.bind(this));
 	    return inspirations;
 	  },
 	
@@ -41272,6 +41277,8 @@
 	   },
 	
 	   render: function render() {
+	      var _this = this;
+	
 	      if (this.state.expandView) {
 	         return React.createElement(
 	            "div",
@@ -41351,7 +41358,10 @@
 	               { className: "inspiration-description-mobile" },
 	               this.props.inspiration.city.description
 	            ),
-	            React.createElement("img", { className: "city-photo-mobile", src: this.props.inspiration.photos[0].link, alt: "Smiley face" })
+	            React.createElement("img", { className: "city-photo-mobile", src: this.props.inspiration.photos[0].link, alt: "Smiley face" }),
+	            React.createElement("i", { className: "fa fa-search go-to", "aria-hidden": "true", onClick: function onClick() {
+	                  return _this.props.insertInspirationInSearch(_this.props.inspiration.city.city);
+	               } })
 	         );
 	      }
 	   }
@@ -41971,7 +41981,8 @@
 	          "p",
 	          null,
 	          this.props.activity.description
-	        )
+	        ),
+	        React.createElement("i", { className: "fa fa-search", "aria-hidden": "true" })
 	      )
 	    );
 	  }

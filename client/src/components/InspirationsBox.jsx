@@ -20,8 +20,8 @@ var Inspirations = React.createClass({
 
   populateInspiration: function() {
      var inspirations = this.state.inspirations.map(function(val, index) {
-     	  return <Inspiration inspiration={val} key={index} />
-     });
+     	  return <Inspiration inspiration={val} key={index} insertInspirationInSearch={this.props.insertInspirationInSearch}/>
+     }.bind(this));
      return inspirations;
   },
 

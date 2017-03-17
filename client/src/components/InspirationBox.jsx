@@ -118,6 +118,7 @@ var InspirationBox = React.createClass({
            <h3 className="inspiration-header" title="Click to see whole overwiev" onClick={this.handleHeaderClick}>{this.props.inspiration.city.city}</h3>
            <p className="inspiration-description-mobile">{this.props.inspiration.city.description}</p>
            <img className="city-photo-mobile" src={this.props.inspiration.photos[0].link} alt="Smiley face" />
+           <i className="fa fa-search go-to" aria-hidden="true" onClick={() => this.props.insertInspirationInSearch(this.props.inspiration.city.city)} ></i>
          </div>
    		);
    	}

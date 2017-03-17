@@ -59,6 +59,11 @@ var Travel = React.createClass({
    request.send(null);
   },
 
+  insertInspirationInSearch: function(city) {
+    var form = document.getElementById("search-form").children[0].childNodes[5];
+    form.value = city;
+  },
+
 
   render: function() {
     if(this.state.inspirations && this.state.inspirations.length) {
@@ -101,7 +106,7 @@ var Travel = React.createClass({
                 <p id="slogan">Everything you looking for in 1 place.</p>
               </div>
               <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
-              <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} />
+              <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} insertInspirationInSearch={this.insertInspirationInSearch} />
             </div>
           );
         }

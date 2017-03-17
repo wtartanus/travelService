@@ -124,6 +124,12 @@
   margin-bottom: 20px;
 }
 
+.go-to {
+  margin-top: 5px;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 1000px) {
     .headers-container-medium {
       text-align: center;

@@ -3,6 +3,7 @@ package data.models;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import org.postgresql.*;
 
@@ -51,6 +52,12 @@ public class DbConnection {
 		  } catch ( Exception e ) {
 		      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
 		      System.exit(0);
+		  } finally {
+			  try {
+				this.connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		  }
 		  return rs;
 	}
