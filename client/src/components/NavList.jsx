@@ -28,7 +28,7 @@ var NavList = React.createClass({
         <li className="nav-item"><a href="#">About</a></li>
         <li className="nav-item"><a href="#">Sign In</a></li>
         <li className="nav-item"><a href="#">Log In</a></li>
-        <li className="nav-item" onClick={this.toggleSearchModal}><a href="#">Search</a></li>
+        <li id="search-link" className="nav-item" onClick={this.toggleSearchModal}><a href="#">Search</a></li>
       </ul>
 		);
 	}

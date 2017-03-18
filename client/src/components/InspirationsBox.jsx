@@ -53,7 +53,7 @@ var Inspirations = React.createClass({
                <ul className="headers-list-medium">
                 {header}
                </ul>
-               <InspirationMediumBox inspiration={this.state.displayCity} />
+               <InspirationMediumBox inspiration={this.state.displayCity} insertInspirationInSearch={this.props.insertInspirationInSearch} />
              </div>
           );
         } else {

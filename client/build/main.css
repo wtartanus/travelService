@@ -52,6 +52,10 @@ a {
   cursor: pointer;
 }
 
+#search-link {
+    display: none;
+}
+
 #logo {
 	margin: 10px auto;
 	width: 70%;
@@ -140,7 +144,7 @@ a {
    }
 
    #nav-bar-toggle {
-   	display: initial;
+   	display: none;
    }
 
    #nav-bar {

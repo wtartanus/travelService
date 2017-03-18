@@ -21511,7 +21511,7 @@
 	    };
 	  },
 	
-	  componentDidMount: function componentDidMount() {
+	  componentWillMount: function componentWillMount() {
 	    this.getWindowSize();
 	    this.getData(this.props.url);
 	  },
@@ -21696,7 +21696,7 @@
 	            React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
 	            React.createElement(NavBox, { windowSize: this.state.windowSize })
 	          ),
-	          React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations, width: this.state.windowSize.width })
+	          React.createElement(Inspirations, { height: this.state.heightStyle, inspirations: this.state.inspirations, width: this.state.windowSize.width, insertInspirationInSearch: this.insertInspirationInSearch })
 	        );
 	      } else {
 	        return React.createElement(
@@ -37375,7 +37375,7 @@
 	
 	   getInitialState: function getInitialState() {
 	      return {
-	         navStatus: false,
+	         navStatus: true,
 	         navUlStyle: { display: 'none' }
 	      };
 	   },
@@ -37393,6 +37393,7 @@
 	               navConatinerStyle: { width: '100%',
 	                  backgroundColor: 'rgba(0,0,0,.9)' },
 	               navToggleStyle: { color: 'white' }
+	
 	            });
 	         }
 	
@@ -37404,6 +37405,12 @@
 	               navToggleStyle: { color: 'black' }
 	            });
 	         }
+	      }
+	
+	      if (this.props.windowSize.width >= 600 && this.props.windowSize.width < 1000) {
+	         this.setState({
+	            navUlStyle: { display: 'inherit' }
+	         });
 	      }
 	
 	      if (this.props.windowSize.width >= 1000) {
@@ -37505,7 +37512,7 @@
 	      ),
 	      React.createElement(
 	        "li",
-	        { className: "nav-item", onClick: this.toggleSearchModal },
+	        { id: "search-link", className: "nav-item", onClick: this.toggleSearchModal },
 	        React.createElement(
 	          "a",
 	          { href: "#" },
@@ -41164,7 +41171,7 @@
 	            { className: 'headers-list-medium' },
 	            header
 	          ),
-	          React.createElement(InspirationMediumBox, { inspiration: this.state.displayCity })
+	          React.createElement(InspirationMediumBox, { inspiration: this.state.displayCity, insertInspirationInSearch: this.props.insertInspirationInSearch })
 	        );
 	      } else {
 	        var inspirations = this.populateInspiration();
@@ -41839,7 +41846,7 @@
 	               "Activities"
 	            )
 	         ),
-	         React.createElement(DisplayListItemBox, { displayPosition: this.state.displayPosition, value: this.state.list[this.state.displayPosition], weather: this.state.weather })
+	         React.createElement(DisplayListItemBox, { displayPosition: this.state.displayPosition, value: this.state.list[this.state.displayPosition], weather: this.state.weather, city: this.state.inspiration, insertInspirationInSearch: this.props.insertInspirationInSearch })
 	      );
 	   }
 	});
@@ -41889,11 +41896,16 @@
 	  },
 	
 	  render: function render() {
+	    var _this = this;
+	
 	    if (this.state.value) {
 	      if (this.state.position === 0) {
 	        return React.createElement(
 	          "div",
 	          null,
+	          React.createElement("i", { className: "fa fa-search go-to", "aria-hidden": "true", onClick: function onClick() {
+	              return _this.props.insertInspirationInSearch(_this.props.city.city.city);
+	            } }),
 	          React.createElement(
 	            "div",
 	            { className: "description-medium" },

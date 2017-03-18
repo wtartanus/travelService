@@ -14,7 +14,7 @@ var Travel = React.createClass({
     });
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.getWindowSize();
     this.getData(this.props.url);
   },
@@ -94,7 +94,7 @@ var Travel = React.createClass({
                 <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
                 <NavBox windowSize={this.state.windowSize}/>
               </div>
-              <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} width={this.state.windowSize.width} />
+              <Inspirations height={this.state.heightStyle} inspirations={this.state.inspirations} width={this.state.windowSize.width} insertInspirationInSearch={this.insertInspirationInSearch} />
             </div>
           );
         } else {

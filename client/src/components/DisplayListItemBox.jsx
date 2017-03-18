@@ -37,6 +37,7 @@ var DisplayListItemBox = React.createClass({
 		   if(this.state.position === 0) {
         return(
           <div>
+            <i className="fa fa-search go-to" aria-hidden="true" onClick={() => this.props.insertInspirationInSearch(this.props.city.city.city)} ></i>
             <div className="description-medium">
 					   {this.state.value}
 				    </div>

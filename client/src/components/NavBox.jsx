@@ -4,7 +4,7 @@ var NavList = require("./NavList");
 var NavBox = React.createClass({
   getInitialState: function() {
       return { 
-      	navStatus: false,
+      	navStatus: true,
          navUlStyle: {display: 'none'}               
       };
   },
@@ -20,8 +20,9 @@ var NavBox = React.createClass({
                navStatus: true,
                navUlStyle: {display: 'initial'}, 
                navConatinerStyle: {width: '100%', 
-               backgroundColor: 'rgba(0,0,0,.9)'}, 
-               navToggleStyle: {color: 'white'}
+                                   backgroundColor: 'rgba(0,0,0,.9)'}, 
+              navToggleStyle: {color: 'white'}
+                                  
             });
       	}
 
@@ -35,6 +36,12 @@ var NavBox = React.createClass({
       	}
    	}
 
+    if(this.props.windowSize.width >= 600 && this.props.windowSize.width < 1000) {
+      this.setState({
+        navUlStyle: {display: 'inherit'}
+      });
+    }
+
     if(this.props.windowSize.width >= 1000) {
          this.setState({
           navConatinerStyle: {
@@ -47,7 +54,7 @@ var NavBox = React.createClass({
             display: 'none'
           }
        });
-      }   
+    }   
    },
 
     render: function () {

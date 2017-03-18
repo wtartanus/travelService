@@ -56,7 +56,7 @@ var InspirationMediumBox = React.createClass({
    		   	 <li className="inspiration-menu-item-medium" value="2" onClick={this.handleListClick} >Gallery</li>
    		   	 <li className="inspiration-menu-item-medium" value="3" onClick={this.handleListClick} >Activities</li>
    		   </ul>
-   		   <DisplayListItemBox displayPosition={this.state.displayPosition} value={this.state.list[this.state.displayPosition]} weather={this.state.weather} />
+   		   <DisplayListItemBox displayPosition={this.state.displayPosition} value={this.state.list[this.state.displayPosition]} weather={this.state.weather} city={this.state.inspiration} insertInspirationInSearch={this.props.insertInspirationInSearch} />
    		 </div>
    		);
    }
