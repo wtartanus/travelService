@@ -64,6 +64,20 @@ var Travel = React.createClass({
     form.value = city;
   },
 
+  handleMouseMove: function(e) {
+    var target = document.getElementById("landing-container");
+    var movementStrength = 500;
+    var height = movementStrength / window.innerHeight;
+    var width = movementStrength / window.innerWidth;
+
+    var pageX = e.pageX - (window.innerWidth / 2);
+    var pageY = e.pageY - (window.innerHeight / 2);
+    var newvalueX = width * pageX * -1 - 250;
+    var newvalueY = height * pageY * -1 - 250;
+    console.log("@@",newvalueY, newvalueX);
+    target.style.backgroundPosition = newvalueX + "px " + newvalueY + "px";
+  },
+
 
   render: function() {
     if(this.state.inspirations && this.state.inspirations.length) {
@@ -71,12 +85,7 @@ var Travel = React.createClass({
         if(this.state.windowSize.width >= 1650) {
           return (
             <div>  
-              <div id="landing-container" style={this.state.heightStyle}>
-                <div id="photo-1" className="images"><span className="name">Bali, Indonesia</span><i className="fa fa-heart heart" aria-hidden="true"></i><i className="fa fa-star star star" aria-hidden="true"></i><i className="fa fa-star star star-1" aria-hidden="true"></i><i className="fa fa-star star star-2" aria-hidden="true"></i><i className="fa fa-star star star-3" aria-hidden="true"></i></div>
-                <div id="photo-2" className="images"><span className="name">Barcelona, Spain</span><i className="fa fa-heart heart" aria-hidden="true"></i><i className="fa fa-star star star" aria-hidden="true"></i><i className="fa fa-star star star-1" aria-hidden="true"></i><i className="fa fa-star star star-2" aria-hidden="true"></i><i className="fa fa-star star star-3" aria-hidden="true"></i></div>
-                <div id="photo-3" className="images"><span className="name">Cracow, Poland</span><i className="fa fa-heart heart" aria-hidden="true"></i><i className="fa fa-star star star" aria-hidden="true"></i><i className="fa fa-star star star-1" aria-hidden="true"></i><i className="fa fa-star star star-2" aria-hidden="true"></i><i className="fa fa-star star star-3" aria-hidden="true"></i></div>
-                <div id="photo-4" className="images"><span className="name">Protaras, Cyprus</span><i className="fa fa-heart heart" aria-hidden="true"></i><i className="fa fa-star star star" aria-hidden="true"></i><i className="fa fa-star star star-1" aria-hidden="true"></i><i className="fa fa-star star star-2" aria-hidden="true"></i><i className="fa fa-star star star-3" aria-hidden="true"></i></div>
-                <div id="photo-5" className="images"><span className="name">New York, US</span><i className="fa fa-heart heart" aria-hidden="true"></i><i className="fa fa-star star star" aria-hidden="true"></i><i className="fa fa-star star star-1" aria-hidden="true"></i><i className="fa fa-star star star-2" aria-hidden="true"></i><i className="fa fa-star star star-3" aria-hidden="true"></i></div>
+              <div id="landing-container" style={this.state.heightStyle} onMouseMove={this.handleMouseMove}>
                 <SearchBox setState={this.setState} setSearch={this.setSearchItem}/>
                 <div id="logo"><span id="travel-word">Travel</span> <span id="guide-word">Guide</span></div>
                 <p id="slogan">Everything you looking for in 1 place.</p>

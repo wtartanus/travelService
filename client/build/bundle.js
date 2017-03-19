@@ -21561,6 +21561,20 @@
 	    form.value = city;
 	  },
 	
+	  handleMouseMove: function handleMouseMove(e) {
+	    var target = document.getElementById("landing-container");
+	    var movementStrength = 500;
+	    var height = movementStrength / window.innerHeight;
+	    var width = movementStrength / window.innerWidth;
+	
+	    var pageX = e.pageX - window.innerWidth / 2;
+	    var pageY = e.pageY - window.innerHeight / 2;
+	    var newvalueX = width * pageX * -1 - 250;
+	    var newvalueY = height * pageY * -1 - 250;
+	    console.log("@@", newvalueY, newvalueX);
+	    target.style.backgroundPosition = newvalueX + "px " + newvalueY + "px";
+	  },
+	
 	  render: function render() {
 	    if (this.state.inspirations && this.state.inspirations.length) {
 	
@@ -21570,77 +21584,7 @@
 	          null,
 	          React.createElement(
 	            'div',
-	            { id: 'landing-container', style: this.state.heightStyle },
-	            React.createElement(
-	              'div',
-	              { id: 'photo-1', className: 'images' },
-	              React.createElement(
-	                'span',
-	                { className: 'name' },
-	                'Bali, Indonesia'
-	              ),
-	              React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'photo-2', className: 'images' },
-	              React.createElement(
-	                'span',
-	                { className: 'name' },
-	                'Barcelona, Spain'
-	              ),
-	              React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'photo-3', className: 'images' },
-	              React.createElement(
-	                'span',
-	                { className: 'name' },
-	                'Cracow, Poland'
-	              ),
-	              React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'photo-4', className: 'images' },
-	              React.createElement(
-	                'span',
-	                { className: 'name' },
-	                'Protaras, Cyprus'
-	              ),
-	              React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'photo-5', className: 'images' },
-	              React.createElement(
-	                'span',
-	                { className: 'name' },
-	                'New York, US'
-	              ),
-	              React.createElement('i', { className: 'fa fa-heart heart', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-1', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-2', 'aria-hidden': 'true' }),
-	              React.createElement('i', { className: 'fa fa-star star star-3', 'aria-hidden': 'true' })
-	            ),
+	            { id: 'landing-container', style: this.state.heightStyle, onMouseMove: this.handleMouseMove },
 	            React.createElement(SearchBox, { setState: this.setState, setSearch: this.setSearchItem }),
 	            React.createElement(
 	              'div',
