@@ -3,8 +3,9 @@
 	box-sizing: border-box;
 }
 
-body {
-	overflow: hidden;
+a {
+  color: white;
+  text-decoration: none;
 }
 
 #landing-container {
@@ -51,10 +52,24 @@ body {
   cursor: pointer;
 }
 
+#search-link {
+    display: none;
+}
+
 #logo {
 	margin: 10px auto;
-	width: 56%;
+	width: 70%;
 	font-family: 'Emblema One', cursive;
+}
+
+#slogan {
+  font-family: 'Emblema One', cursive;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.2em;
+  width: 65%;
+  margin-left: 11%;
+  text-align: center;
 }
 
 #travel-word {
@@ -107,92 +122,13 @@ body {
 	border: 2px solid green;
 }
 
-@media only screen and (min-width: 100px) {
-    #landing-container {
-      margin-top: 0;
-      background-image: url(images/bridge.jpg), url(images/sky.jpg), url(images/river.jpg);
-      background-size: 50% 100%, 49.9% 49.9%, 49.9% 49.9%;
-      background-position: 0 0, 100% 0, 100% 100%;
-      background-repeat: no-repeat;
-    }
-
-    #travel-search {
-      margin-top: 10%;
-      border: none;
-      text-align: initial;
-    }
-
-    #travel-search label {
-      color: white;
-      font-size: 1.2em;
-      font-weight: bold;
-      text-shadow: 2px 2px 2px black;
-    }
-
-    #search-form {
-      width: 43%;
-      margin: 0 auto;
-      padding-bottom: 1em;
-    }
-    
-    #search-form button {
-      margin-left: 41%;
-      width: 17%;
-      height: 30px;
-    }
-
-    #logo {
-      text-align: right;
-      padding-right: 160px;
-      margin-top: 10%;
-      font-size: 2.8em;
-      width: 75%;
-    }
-
-    #guide-word {
-      font-size: 2em;
-    }
-
-    #slogan {
-      font-family: 'Emblema One', cursive;
-      color: white;
-      text-shadow: 1px 1px 1px black;
-      font-size: 1.2em;
-      width: 25%;
-      float: right;
-      margin-right: 16%;
-      margin-top: -17%;
-    }
-
-    .form-input {
-      display: inline-block;
-      margin: 10px;
-    }
-
-    #nav-container {
-      background-color: rgba(43,138,65,.9);
-      height: 80px;
-      position: fixed;
-      top: 0;
-    }
-
-    #nav-bar {
-      width: initial;
-      float: none;
-      margin-right: 0;
-    }
-
-    .nav-item {
-      border: none;
-      padding-bottom: 0;
-      margin: 0;
-      vertical-align: baseline;
-    }
-
-    .nav-item:hover {
-      color: blue;
-      font-size: .7em;
-    }
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 
 
@@ -221,31 +157,44 @@ body {
    }
 
    #logo {
-   	margin: 25% auto;
-    width: 37%;
+   	margin: 0 auto;
+    margin-top: 25%;
+    margin-bottom: 3%;
+    width: 42%;
    }
+
+   #slogan {
+    margin-left: 35%;
+   }
+
 }
 
 @media only screen and (min-width: 800px) {
   #logo {
     font-size: 3em;
-    width: 45%;
-    margin: 20% auto;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20%;
+    margin-bottom: 3%;
   }
 }
 
 @media only screen and (min-width: 1000px) {
     #landing-container {
-		margin-top: 0;
-		background-image: url(images/bridge.jpg), url(images/sky.jpg), url(images/river.jpg);
-		background-size: 50% 100%, 49.9% 49.9%, 49.9% 49.9%;
-		background-position: 0 0, 100% 0, 100% 100%;
-		background-repeat: no-repeat;
+    		margin-top: 0;
+    		background-image: url(images/bridge.jpg), url(images/sky.jpg), url(images/river.jpg);
+    		background-size: 50% 100%, 49.9% 49.9%, 49.9% 49.9%;
+    		background-position: 0 0, 100% 0, 100% 100%;
+    		background-repeat: no-repeat;
+    }
+
+    #travel-search,
+    .nav-item {
+      border: none;
     }
 
     #travel-search {
     	margin-top: 10%;
-    	border: none;
     	text-align: initial;
     }
 
@@ -263,16 +212,15 @@ body {
     }
     
     #search-form button {
-    	margin-left: 41%;
-    	width: 17%;
-    	height: 30px;
+      margin-left: 35%;
+      width: 31%;
+      height: 42px;
     }
 
     #logo {
-      text-align: right;
-      padding-right: 160px;
     	margin-top: 10%;
-    	font-size: 3.8em;
+    	font-size: 3em;
+      width: 70%;
     }
 
     #guide-word {
@@ -284,7 +232,7 @@ body {
       color: white;
       text-shadow: 1px 1px 1px black;
       font-size: 1.2em;
-      width: 25%;
+      width: 45%;
       float: right;
       margin-right: 14%;
     }
@@ -302,13 +250,10 @@ body {
     }
 
     #nav-bar {
-    	width: 30%;
-    	float: right;
-    	margin-right: 150px;
+    	width: 100%;
     }
 
     .nav-item {
-    	border: none;
     	padding-bottom: 0;
     	margin: 0;
     	vertical-align: baseline;
@@ -321,13 +266,13 @@ body {
 }
 
 @media only screen and (min-width: 1250px) {
-   #slogan {
+   #slogan,
+   #logo {
     margin-right: 11%;
    }
 
    #logo {
     width: 59%;
-    margin-right: 11%;
    }
 }
 
@@ -335,51 +280,49 @@ body {
    #logo {
     margin-right: 22%;
    }
-
-   .nav-item {
-    margin-right: 35px;
-    width: 20%;
-   }
-
-   #nav-bar {
-    text-align: right;
-    width: 50%;
-   }
-
 }
+
 
 @media only screen and (min-width: 1650px) {
   #landing-container {
-    background-image: url(images/2ndSet/lake.jpg);
-    background-size: cover;
-    background-color: rgba(127,126,117,.3);
+    background: url(images/2ndSet/lake.jpg);
+    background-repeat: no-repeat;
+    background-position: -250px -250px;
+    width:100%;
+    height:100%;
+    background-size: calc(100% + 500px);
+  }
+
+  #logo,
+  #slogan,
+  #search-form {
+    position: absolute;
+    margin: 0;
   }
 
   #logo {
-    position: absolute;
     top: 25px;
     left: 200px;
-    margin: 0;
     z-index: 200;
   }
 
   #slogan {
-    position: absolute;
-    margin: 0;
     top: 150px;
     left: 1000px;
     font-size: 1.6em;
   }
 
   #search-form {
-    position: absolute;
-    margin: 0;
     height: 600px;
     width: 300px;
     right: 220px;
     bottom: 150px;
     text-align: center;
     padding: 0;
+    border: 3px solid black;
+    border-radius: 5px 5px;
+    background-color: white;
+    display: none;    
   }
 
   #search-form label {
@@ -398,54 +341,6 @@ body {
     margin: 25px 0;
   }
 
-  #photo-1 {
-    background-image: url(images/2ndSet/bali.jpg);
-    background-size: cover;
-    width: 350px;
-    height: 450px;
-    left: 35px;
-    top: 5px;
-  }
-
-  #photo-2 {
-    background-image: url(images/2ndSet/barcelona.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 550px;
-    height: 450px;
-    top: 125px;
-    left: 400px;
-    z-index: 100;
-  }
-
-
-  #photo-3 {
-    background-image: url(images/2ndSet/cracow.jpg);
-    background-size: cover;
-    width: 450px;
-    height: 350px;
-    left: 100px;
-    bottom: 100px;
-  }
-
-  #photo-4 {
-    background-image: url(images/2ndSet/protaras.jpg);
-    background-size: cover;
-    width: 450px;
-    height: 350px;
-    left: 600px;
-    bottom: 200px;
-  }
-
-  #photo-5 {
-    background-image: url(images/2ndSet/ny.jpg);
-    background-size: cover;
-    width: 350px;
-    height: 600px;
-    left: 1100px;
-    bottom: 120px;
-  }
-
   .images {
     border: 4px solid white;
     border-bottom: 50px solid white;
@@ -461,20 +356,21 @@ body {
     font-size: 2em;
   }
 
-  .heart {
-    color: red;
+  .heart,
+  .star {
     position: absolute;
     bottom: -30px;
-    right: 10px;
     font-size: 2em;
+  }
+
+  .heart {
+    color: red;
+    right: 10px;
   }
 
   .star {
     color: gold;
-    position: absolute;
-    bottom: -30px;
     right: 35px;
-    font-size: 2em;
   }
 
   .star-1 {

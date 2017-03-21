@@ -4,7 +4,11 @@ var TableData = require("./TableData.jsx");
 
 var TableRaw = React.createClass({
 getInitialState: function() {
-   return({days: this.props.days, weekDays: [0,1,2,3,4,5,6], update: this.props.update});
+   return({
+    days: this.props.days, 
+    weekDays: [0,1,2,3,4,5,6], 
+    update: this.props.update
+   });
 },
 
 componentDidMount: function() {
@@ -35,7 +39,7 @@ populateTableData: function() {
         } 
        }
 
-       return <TableData title={title} date={date} day={day} styleClass={styleClass} setDate={this.props.setDate} key={index} />
+    return <TableData title={title} date={date} day={day} styleClass={styleClass} setDate={this.props.setDate} key={index} />
  }.bind(this));
  return tableData;
 
@@ -44,8 +48,7 @@ populateTableData: function() {
 componentDidUpdate: function() {
  if(!this.state.update) {
    this.populateTableData();
- }
- 
+ } 
 },
 
 render: function() {
@@ -54,7 +57,7 @@ render: function() {
   		<tr>
   		 {display}
   		</tr>
-  		);
+  	);
   }
 });
 

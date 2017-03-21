@@ -1,21 +1,36 @@
 var React = require("React");
-var NavItem = require("./NavItem");
 
 var NavList = React.createClass({
-	getInitialState: function() {
-       return { navItems: ["Inspiration", "About", "Sign In", "Log In"] }
-	},
+  getInitialState: function() {
+     return({
+       searchOpen: false
+     });
+  },
+
+  toggleSearchModal: function() {
+    if(this.props.windowSize.width >= 1000) {
+      var search = document.getElementById("search-form");
+      if(this.state.searchOpen) {
+         search.style.display = "none";
+        this.setState({searchOpen: !this.state.searchOpen});
+      } else {
+        search.style.display = "initial";
+        this.setState({searchOpen: !this.state.searchOpen});
+      }
+    }
+  
+  },
 
 	render: function() {
-		var listItems = this.state.navItems.map(function(item,index) {
-			return ( <NavItem listItem={item} key={index} /> );
-		}); 
-
 		return (
-              <ul id="nav-bar" style={this.props.navStyle}>
-               {listItems}
-              </ul>
-			);
+      <ul id="nav-bar" style={this.props.navStyle}>
+        <li className="nav-item"><a href="#inspirations-container">Inspiration</a></li>
+        <li className="nav-item"><a href="#">About</a></li>
+        <li className="nav-item"><a href="#">Sign In</a></li>
+        <li className="nav-item"><a href="#">Log In</a></li>
+        <li id="search-link" className="nav-item" onClick={this.toggleSearchModal}><a href="#">Search</a></li>
+      </ul>
+		);
 	}
 });
 
