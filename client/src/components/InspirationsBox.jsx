@@ -46,7 +46,8 @@ var Inspirations = React.createClass({
    
    render: function() {
       if(this.state.inspirations) {
-        if(this.props.width >= 1000) {
+        console.log("@@", window.innerWidth);
+        if(window.innerWidth >= 1000) {
           var header = this.populateHeader();
           return(
              <div className="headers-container-medium">

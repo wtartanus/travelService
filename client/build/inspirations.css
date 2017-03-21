@@ -256,3 +256,24 @@
       left: 23%;
     }
 }
+
+@media only screen and (min-width: 1500px) {
+  .recharts-wrapper {
+    left: 20%;
+  }
+
+  .gallery-medium {
+    height: 41vw;
+  }
+
+}
+
+@media only screen and (min-width: 165px) {
+  .recharts-wrapper {
+    left: 40%;
+  }
+
+  .gallery-medium {
+    height: 40vw;
+  }
+}
