@@ -1,3 +1,5 @@
 /node_modules
 /client/build/images
 /bin/
+/angular-client/nbproject/private/
+/angular-client/node_modules
