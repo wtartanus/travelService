@@ -1,1 +1,28 @@
-<h1>Hello World!</h1>
+<div *ngIf="windowSize.width < 600" id="nav-container-small">
+    <h1>Small</h1>
+    <nav class="menu" id="nav nav-small">
+        
+    </nav>
+</div>
+<div *ngIf="windowSize.width >= 600 && windowSize.width < 1000" id="nav-container-medium">
+    <h1>Medium</h1>
+    <nav class="menu" id="nav-medium">
+        
+    </nav>
+</div>
+<div *ngIf="windowSize.width >= 1000" id="nav-container-full">
+    <nav class="menu" id="nav-full-1">
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Inspirations</a></li>
+        </ul>
+    </nav>
+    <span id="logo-nav-full">Travel Guide</span>
+    <nav class="menu" id="nav-full-2">
+        <ul>
+            <li><a href="#">Search</a></li>
+          <li><a href="#">Sign Up / Login In</a></li>
+        </ul> 
+    </nav>
+</div>
+    

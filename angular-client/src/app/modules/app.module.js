@@ -10,6 +10,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_js_1 = require("./../components/app.component.js");
+var common_service_js_1 = require("./../services/common.service.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,6 +26,7 @@ AppModule = __decorate([
         declarations: [
             app_component_js_1.AppComponent,
         ],
+        providers: [common_service_js_1.CommonService],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);
