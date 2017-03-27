@@ -14,24 +14,78 @@ ul {
 
 .menu {
     font-family: 'Forum', cursive;
-    font-size: 3em;
 }
-#nav-container-full {
+
+/*Medium Size*/
+@media screen and (min-width: 800px) {
+    #nav-container-medium {
+        display: flex;
+        padding-bottom: 1em;
+        padding-top: .4em;
+        border-bottom: 2px solid black;
+    }
+    
+    .menu {
+        font-size: 1.5em;
+    }
+    
+    #logo-nav-medium {
+        flex-grow: 1;
+        font-size: 1.5em;
+        color: blue;
+        margin-left: 25px;
+    }
+    
+    #nav-container-medium ul {
+        display: flex;
+        flex-grow: 4;
+    }
+    
+    #nav-container-medium ul li {
+        margin-right: 20px;
+    }
+    
+    #nav-container-medium ul li a:hover {
+        color: purple;
+    }
+    
+}
+
+@media screen and (min-width: 1000px) {
+    #logo-nav-medium {
+        font-size: 2em;
+    }
+    
+    .menu {
+        font-size: 2em;
+    }
+}
+/*------------------*/
+
+/*Full Size*/
+@media screen and (min-width: 1200px) {
+  #nav-container-full {
     display: flex;
     text-align: center;
     border-bottom: 2px solid black;
     positon: fixed;
     z-index: 1000;
-}
-
-#logo-nav-full {
-    font-family: 'Archivo Black', sans-serif;
-    color: blue;
-    font-size: 4em;
-    letter-spacing: 4px;
-    flex-grow: 2;
-}
-
+    padding-bottom: 1em;
+  }
+  .menu {
+    font-family: 'Forum', cursive;
+    font-size: 2em;
+  }
+  
+  #logo-nav-full {
+     font-size: 2em;
+     letter-spacing: 2px;
+     margin-left: 10px;
+     font-family: 'Archivo Black', sans-serif;
+     color: blue;
+     flex-grow: 3;
+  }
+  
 #nav-full-1,
 #nav-full-2 {
     flex-grow: 1;
@@ -51,5 +105,19 @@ ul {
     color: white;
     text-shadow: 1px 1px 5px black;
 }
+}
+
+@media screen and (min-width: 1700px) {
+    #logo-nav-full {
+        font-size: 3em;
+        letter-spacing: 4px;
+    }
+    
+    .menu {
+        font-size: 3em;
+    }
+}
+
+/*---------------------------*/
 
 
