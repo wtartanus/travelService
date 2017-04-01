@@ -8,7 +8,8 @@ import {CommonService} from './../services/common.service.js';
     providers: [CommonService]
 })
 export class AppComponent implements OnInit {
-   private windowSize = {};
+   windowSize = {};
+   showNav = false;
    
    constructor(private commonService: CommonService) {}
    

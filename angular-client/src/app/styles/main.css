@@ -16,6 +16,52 @@ ul {
     font-family: 'Forum', cursive;
 }
 
+
+.menu-heading-small {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#logo-heading-small {
+    font-family: 'Archivo Black', sans-serif;
+    color: blue;
+    font-size: 2em;
+    float: right;
+    margin-right: 5%;
+}
+
+#nav-small {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1.5px solid black;
+    background-color: rgba(255,255,255,.8);
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+#nav-small ul {
+    padding: 0;
+    text-align: center;
+}
+
+#nav-small ul li a {
+    font-size: 2em;
+    display: block;
+    line-height: 1.6em;
+}
+
+#nav-small ul li a:hover {
+    background-color: black;
+    color: white;
+}
+
+.splash-container-small {
+    background-image: url("./../../../images/sky.jpg");
+    background-size: cover;
+    height: 400px;
+}
+
 /*Medium Size*/
 @media screen and (min-width: 800px) {
     #nav-container-medium {
@@ -49,9 +95,15 @@ ul {
         color: purple;
     }
     
+    .splash-container-medium {
+      background-image: url("./../../../images/sky.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 700px;
+    }   
 }
 
-@media screen and (min-width: 1000px) {
+/*@media screen and (min-width: 1000px) {
     #logo-nav-medium {
         font-size: 2em;
     }
@@ -59,7 +111,8 @@ ul {
     .menu {
         font-size: 2em;
     }
-}
+     
+}*/
 /*------------------*/
 
 /*Full Size*/
@@ -105,6 +158,23 @@ ul {
     color: white;
     text-shadow: 1px 1px 5px black;
 }
+
+  .splash-container-full {
+      background-image: url("./../../../images/river.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-wrap: wrap;
+    }  
+    
+    .splash-box-full {
+        width: 50%;
+        height: 50%;
+    }
+    
+    .back-white {
+        background-color: white;
+    }
 }
 
 @media screen and (min-width: 1700px) {

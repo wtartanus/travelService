@@ -14,6 +14,7 @@ var AppComponent = (function () {
     function AppComponent(commonService) {
         this.commonService = commonService;
         this.windowSize = {};
+        this.showNav = false;
     }
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
