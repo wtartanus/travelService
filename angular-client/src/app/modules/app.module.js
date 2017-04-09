@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var mydatepicker_1 = require("mydatepicker");
 var app_component_js_1 = require("./../components/app.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var AppModule = (function () {
@@ -22,6 +23,7 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
+            mydatepicker_1.MyDatePickerModule
         ],
         declarations: [
             app_component_js_1.AppComponent,

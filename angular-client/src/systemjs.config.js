@@ -49,6 +49,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      'mydatepicker': './../node_modules/mydatepicker/bundles/mydatepicker.umd.js',
 
       // other libraries
       'rxjs':                      'npm:rxjs@5.0.1',
@@ -70,7 +71,7 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
     }
   });
 

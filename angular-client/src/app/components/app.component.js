@@ -15,10 +15,68 @@ var AppComponent = (function () {
         this.commonService = commonService;
         this.windowSize = {};
         this.showNav = false;
+        this.today = new Date();
+        this.returnDate = new Date();
+        this.returnOptions = {};
+        this.departOptions = {
+            dateFormat: 'dd.mm.yyyy',
+            showTodayBtn: false,
+            sunHighlight: true,
+            disableUntil: {
+                year: this.today.getFullYear(),
+                month: this.today.getMonth() + 1,
+                day: this.today.getDate() - 1
+            },
+            showClearDateBtn: false,
+            height: '50px',
+            editableDateField: false,
+            openSelectorOnInputClick: true,
+            selectionTxtFontSize: '1.5em'
+        };
+        this.departDateValue = {
+            date: {
+                year: this.today.getFullYear(),
+                month: this.today.getMonth() + 1,
+                day: this.today.getDate()
+            }
+        };
+        this.returnDateValue = {
+            date: {
+                year: this.today.getFullYear(),
+                month: this.today.getMonth() + 1,
+                day: this.today.getDate()
+            }
+        };
     }
+    AppComponent.prototype.setReturnOptions = function () {
+        this.returnOptions = {
+            dateFormat: 'dd.mm.yyyy',
+            showTodayBtn: false,
+            sunHighlight: true,
+            disableUntil: {
+                year: this.returnDate.getFullYear(),
+                month: this.returnDate.getMonth() + 1,
+                day: this.returnDate.getDate() - 1
+            },
+            showClearDateBtn: false,
+            height: '50px',
+            editableDateField: false,
+            openSelectorOnInputClick: true,
+            selectionTxtFontSize: '1.5em'
+        };
+    };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         console.info("Window size", this.windowSize);
+        console.info("Today: ", this.today, this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
+        this.setReturnOptions();
+    };
+    AppComponent.prototype.onDateChanged = function (event) {
+        this.returnDate = new Date(event.jsdate);
+        console.info("departDateValue: ", this.departDateValue);
+        this.setReturnOptions();
+        this.returnDateValue = { date: event.date };
+        console.info("returnDateValue: ", this.returnDateValue);
     };
     return AppComponent;
 }());
