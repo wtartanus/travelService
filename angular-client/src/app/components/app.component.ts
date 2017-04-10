@@ -14,42 +14,31 @@ export class AppComponent implements OnInit {
    showNav = false;
    private today = new Date();
    returnDate = new Date();
-   private returnOptions: IMyOptions = {}
+   private returnOptions: IMyOptions = {};
+   private departOptions: IMyOptions = {};
+   private width = '100%';
+   private height = '50px';
    
-   setReturnOptions() {
-      this.returnOptions = {
+   setOptions(isReturn: boolean) {
+      let date = isReturn ? this.returnDate : this.today;
+      return {
         dateFormat: 'dd.mm.yyyy',
         showTodayBtn: false,
         sunHighlight: true,
         disableUntil: {
-            year: this.returnDate.getFullYear(), 
-            month: this.returnDate.getMonth() + 1, 
-            day: this.returnDate.getDate() - 1
+            year: date.getFullYear(), 
+            month: date.getMonth() + 1, 
+            day: date.getDate() - 1
             },
         showClearDateBtn: false,
-        height: '50px',
-        editableDateField: false,
-        openSelectorOnInputClick: true,
-        selectionTxtFontSize: '1.5em'
-    }
-   }
-   
-   private departOptions: IMyOptions = {
-        dateFormat: 'dd.mm.yyyy',
-        showTodayBtn: false,
-        sunHighlight: true,
-        disableUntil: {
-            year: this.today.getFullYear(), 
-            month: this.today.getMonth() + 1, 
-            day: this.today.getDate() - 1
-            },
-        showClearDateBtn: false,
-        height: '50px',
+        height: this.height,
+        width: this.width,
         editableDateField: false,
         openSelectorOnInputClick: true,
         selectionTxtFontSize: '1.5em'
     };
-    
+   }
+   
     private departDateValue: Object = { 
              date: { 
                  year: this.today.getFullYear(), 
@@ -71,16 +60,18 @@ export class AppComponent implements OnInit {
    
    ngOnInit(): void {
        this.windowSize = this.commonService.getWindowSize();
+       //let size = this.commonService.getWindowWidth();
        console.info("Window size", this.windowSize)
-       console.info("Today: ", this.today, this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
-       this.setReturnOptions();
+       
+       this.departOptions = this.setOptions(false);
+       this.returnOptions = this.setOptions(true);
    }
 
    
    onDateChanged(event: IMyDateModel) {
        this.returnDate = new Date(event.jsdate);
       console.info("departDateValue: ", this.departDateValue);
-      this.setReturnOptions();
+      this.setOptions(true);
       this.returnDateValue = { 
           date: event.date
        };

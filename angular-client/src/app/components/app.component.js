@@ -18,21 +18,9 @@ var AppComponent = (function () {
         this.today = new Date();
         this.returnDate = new Date();
         this.returnOptions = {};
-        this.departOptions = {
-            dateFormat: 'dd.mm.yyyy',
-            showTodayBtn: false,
-            sunHighlight: true,
-            disableUntil: {
-                year: this.today.getFullYear(),
-                month: this.today.getMonth() + 1,
-                day: this.today.getDate() - 1
-            },
-            showClearDateBtn: false,
-            height: '50px',
-            editableDateField: false,
-            openSelectorOnInputClick: true,
-            selectionTxtFontSize: '1.5em'
-        };
+        this.departOptions = {};
+        this.width = '100%';
+        this.height = '50px';
         this.departDateValue = {
             date: {
                 year: this.today.getFullYear(),
@@ -48,18 +36,20 @@ var AppComponent = (function () {
             }
         };
     }
-    AppComponent.prototype.setReturnOptions = function () {
-        this.returnOptions = {
+    AppComponent.prototype.setOptions = function (isReturn) {
+        var date = isReturn ? this.returnDate : this.today;
+        return {
             dateFormat: 'dd.mm.yyyy',
             showTodayBtn: false,
             sunHighlight: true,
             disableUntil: {
-                year: this.returnDate.getFullYear(),
-                month: this.returnDate.getMonth() + 1,
-                day: this.returnDate.getDate() - 1
+                year: date.getFullYear(),
+                month: date.getMonth() + 1,
+                day: date.getDate() - 1
             },
             showClearDateBtn: false,
-            height: '50px',
+            height: this.height,
+            width: this.width,
             editableDateField: false,
             openSelectorOnInputClick: true,
             selectionTxtFontSize: '1.5em'
@@ -67,14 +57,15 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
+        //let size = this.commonService.getWindowWidth();
         console.info("Window size", this.windowSize);
-        console.info("Today: ", this.today, this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
-        this.setReturnOptions();
+        this.departOptions = this.setOptions(false);
+        this.returnOptions = this.setOptions(true);
     };
     AppComponent.prototype.onDateChanged = function (event) {
         this.returnDate = new Date(event.jsdate);
         console.info("departDateValue: ", this.departDateValue);
-        this.setReturnOptions();
+        this.setOptions(true);
         this.returnDateValue = {
             date: event.date
         };

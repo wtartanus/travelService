@@ -8,13 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var CommonService = (function () {
     function CommonService() {
+        this.width = 0;
     }
     CommonService.prototype.getWindowSize = function () {
         var windowSize = {
             width: window.innerWidth,
             height: window.innerHeight
         };
+        this.width = windowSize.width;
         return windowSize;
+    };
+    CommonService.prototype.getWindowWidth = function () {
+        return this.width;
     };
     return CommonService;
 }());
