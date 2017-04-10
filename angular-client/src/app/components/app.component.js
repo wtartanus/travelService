@@ -75,7 +75,9 @@ var AppComponent = (function () {
         this.returnDate = new Date(event.jsdate);
         console.info("departDateValue: ", this.departDateValue);
         this.setReturnOptions();
-        this.returnDateValue = { date: event.date };
+        this.returnDateValue = {
+            date: event.date
+        };
         console.info("returnDateValue: ", this.returnDateValue);
     };
     return AppComponent;

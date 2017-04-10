@@ -7,7 +7,6 @@
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="#">Inspirations</a></li>
-            <li><a href="#">Search</a></li>
             <li><a href="#">Sign Up / Login In</a></li>
         </ul>
     </nav>
@@ -43,7 +42,6 @@
           <ul>
               <li><a href="#">About</a></li>
               <li><a href="#">Inspirations</a></li>
-              <li><a href="#">Search</a></li>
               <li><a href="#">Sign Up / Login In</a></li>
           </ul>
       </nav>
@@ -56,6 +54,19 @@
                 est at zril affert.
             </p>
         </div>
+    </div>
+        <div class="form-container-medium">
+        <form>
+            <p class="input-label-medium" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+            <input class="input-medium" type="text" required>
+            <p class="input-label-medium" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+            <input class="input-medium" type="text" />
+            <p class="input-label-medium" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+            <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+            <p class="input-label-medium" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+            <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+            <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+        </form>
     </div>
 </div>
 

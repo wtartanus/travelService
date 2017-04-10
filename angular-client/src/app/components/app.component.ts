@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {IMyOptions} from 'mydatepicker';
-import {IMyDate} from "mydatepicker";
+import {IMyOptions, IMyDateModel} from 'mydatepicker';
+
 
 import {CommonService} from './../services/common.service.js';
 
@@ -77,11 +77,13 @@ export class AppComponent implements OnInit {
    }
 
    
-   onDateChanged(event: IMyDate) {
-      this.returnDate = new Date(event.jsdate);
+   onDateChanged(event: IMyDateModel) {
+       this.returnDate = new Date(event.jsdate);
       console.info("departDateValue: ", this.departDateValue);
       this.setReturnOptions();
-      this.returnDateValue = { date: event.date };
+      this.returnDateValue = { 
+          date: event.date
+       };
       console.info("returnDateValue: ", this.returnDateValue);
    }
    
