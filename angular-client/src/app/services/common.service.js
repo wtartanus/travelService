@@ -6,20 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var windowSize_js_1 = require("./../models/windowSize.js");
 var CommonService = (function () {
     function CommonService() {
-        this.width = 0;
+        this.windowSize = new windowSize_js_1.WindowSize(window.innerWidth, window.innerHeight);
     }
     CommonService.prototype.getWindowSize = function () {
-        var windowSize = {
-            width: window.innerWidth,
-            height: window.innerHeight
-        };
-        this.width = windowSize.width;
-        return windowSize;
-    };
-    CommonService.prototype.getWindowWidth = function () {
-        return this.width;
+        return this.windowSize;
     };
     return CommonService;
 }());

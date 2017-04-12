@@ -294,6 +294,26 @@ ul {
         height: 85%;
         margin-top: 5%;
     }
+    
+    .form-modal-full {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        background-color: darkgrey;
+        opacity: 0.9;
+    }
+    
+    .form-container-full {
+        border: 1px solid black;
+        width: 95%;
+        height: 40%;
+        position: relative;
+        left: 2.5%;
+        top: 36%;
+        background-color: white;
+    }
 }
 
 @media screen and (min-width: 1700px) {

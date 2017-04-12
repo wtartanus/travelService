@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 
-
 import {CommonService} from './../services/common.service.js';
+import { WindowSize } from './../models/windowSize.js';
 
 @Component({
     selector: 'my-app',
@@ -10,10 +10,10 @@ import {CommonService} from './../services/common.service.js';
     providers: [CommonService]
 })
 export class AppComponent implements OnInit {
-   windowSize = {};
    showNav = false;
    private today = new Date();
    returnDate = new Date();
+   private windowSize: WindowSize;
    private returnOptions: IMyOptions = {};
    private departOptions: IMyOptions = {};
    private width = '100%';
@@ -60,7 +60,6 @@ export class AppComponent implements OnInit {
    
    ngOnInit(): void {
        this.windowSize = this.commonService.getWindowSize();
-       //let size = this.commonService.getWindowWidth();
        console.info("Window size", this.windowSize)
        
        this.departOptions = this.setOptions(false);
@@ -69,7 +68,7 @@ export class AppComponent implements OnInit {
 
    
    onDateChanged(event: IMyDateModel) {
-       this.returnDate = new Date(event.jsdate);
+      this.returnDate = new Date(event.jsdate);
       console.info("departDateValue: ", this.departDateValue);
       this.setOptions(true);
       this.returnDateValue = { 

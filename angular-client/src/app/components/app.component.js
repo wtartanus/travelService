@@ -13,7 +13,6 @@ var common_service_js_1 = require("./../services/common.service.js");
 var AppComponent = (function () {
     function AppComponent(commonService) {
         this.commonService = commonService;
-        this.windowSize = {};
         this.showNav = false;
         this.today = new Date();
         this.returnDate = new Date();
@@ -57,7 +56,6 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
-        //let size = this.commonService.getWindowWidth();
         console.info("Window size", this.windowSize);
         this.departOptions = this.setOptions(false);
         this.returnOptions = this.setOptions(true);

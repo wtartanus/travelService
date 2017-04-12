@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 var mydatepicker_1 = require("mydatepicker");
 var app_component_js_1 = require("./../components/app.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
+var windowSize_js_1 = require("./../models/windowSize.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,7 +29,7 @@ AppModule = __decorate([
         declarations: [
             app_component_js_1.AppComponent,
         ],
-        providers: [common_service_js_1.CommonService],
+        providers: [common_service_js_1.CommonService, windowSize_js_1.WindowSize],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);

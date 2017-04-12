@@ -7,6 +7,8 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { AppComponent } from './../components/app.component.js';
 
 import { CommonService } from './../services/common.service.js';
+import { WindowSize } from './../models/windowSize.js';
+
 
 
 @NgModule({
@@ -19,7 +21,7 @@ import { CommonService } from './../services/common.service.js';
   declarations: [
     AppComponent,
   ],
-  providers: [CommonService],
+  providers: [CommonService, WindowSize],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

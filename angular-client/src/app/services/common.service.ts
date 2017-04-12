@@ -1,18 +1,11 @@
 import {Injectable} from '@angular/core';
+import { WindowSize } from './../models/windowSize.js';
 
 @Injectable()
 export class CommonService {
-   private width = 0;
-   getWindowSize(): {} {
-     const windowSize = {
-        width: window.innerWidth,
-        height: window.innerHeight
-     }
-     this.width = windowSize.width;
-     return windowSize;
-   }
+    private windowSize = new WindowSize(window.innerWidth, window.innerHeight);
    
-   getWindowWidth(): number {
-       return this.width;
-   }
+    getWindowSize(): WindowSize {
+        return this.windowSize;
+    }
 }
