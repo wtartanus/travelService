@@ -14,6 +14,7 @@ var AppComponent = (function () {
     function AppComponent(commonService) {
         this.commonService = commonService;
         this.showNav = false;
+        this.showModal = false;
         this.today = new Date();
         this.returnDate = new Date();
         this.returnOptions = {};
@@ -57,6 +58,9 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         console.info("Window size", this.windowSize);
+        if (this.windowSize.getWidth() >= 1200) {
+            this.height = '40px';
+        }
         this.departOptions = this.setOptions(false);
         this.returnOptions = this.setOptions(true);
     };

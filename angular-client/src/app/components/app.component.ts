@@ -10,9 +10,10 @@ import { WindowSize } from './../models/windowSize.js';
     providers: [CommonService]
 })
 export class AppComponent implements OnInit {
-   showNav = false;
+   private showNav = false;
+   private showModal = false;
    private today = new Date();
-   returnDate = new Date();
+   private returnDate = new Date();
    private windowSize: WindowSize;
    private returnOptions: IMyOptions = {};
    private departOptions: IMyOptions = {};
@@ -60,7 +61,11 @@ export class AppComponent implements OnInit {
    
    ngOnInit(): void {
        this.windowSize = this.commonService.getWindowSize();
-       console.info("Window size", this.windowSize)
+       console.info("Window size", this.windowSize);
+       
+       if (this.windowSize.getWidth() >= 1200) {
+           this.height = '40px';
+       }
        
        this.departOptions = this.setOptions(false);
        this.returnOptions = this.setOptions(true);

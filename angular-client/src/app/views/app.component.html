@@ -85,7 +85,7 @@
       <span id="logo-nav-full">Travel Guide</span>
       <nav class="menu" id="nav-full-2">
           <ul>
-              <li><a href="#">Search</a></li>
+              <li (click)="showModal = !showModal"><a href="#">Search</a></li>
               <li><a href="#">Sign Up / Login In</a></li>
          </ul> 
       </nav>
@@ -106,19 +106,47 @@
             </p>
         </div>
         <div class="splash-box-full back-lake"></div>
-        <div class="form-modal-full">
+        <div *ngIf="showModal" class="form-modal-full">
             <div class="form-container-full">
-               <form>
-                  <p class="input-label-full" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
-                  <input class="input-full" type="text" required>
-                  <p class="input-label-full" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
-                  <input class="input-full" type="text" />
-                  <p class="input-label-full" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
-                  <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
-                  <p class="input-label-full" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
-                  <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
-                  <button type="submit" class="search-button-full">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
-               </form>     
+                <div class="modal-header">
+                  <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
+                  <h1>Search</h1>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="input-full" type="text" required>
+                            </td>
+                            <td>
+                                <input class="input-full" type="text" />
+                            </td>
+                            <td>
+                                <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+                            </td>
+                            <td>
+                                 <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer clearfix">
+                    <button type="submit" class="search-button-full">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+                </div>
             </div> 
         </div>
     </div>
