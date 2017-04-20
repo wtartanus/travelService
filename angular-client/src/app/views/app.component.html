@@ -75,23 +75,25 @@
 </div>
 
 <div *ngIf="windowSize.width >= 1200" >
-    <div id="nav-container-full">
+ 
+    <div class="splash-container-full" [style.height]=" windowSize.height + 'px'">
+     <div id="nav-container-full">
       <nav class="menu" id="nav-full-1">
           <ul>
               <li><a href="#">About</a></li>
               <li><a href="#">Inspirations</a></li>
+              <li (click)="showModal = !showModal"><a href="#">Search</a></li>
+              <li><a href="#">Sign Up / Login In</a></li>
           </ul>
       </nav>
       <span id="logo-nav-full">Travel Guide</span>
-      <nav class="menu" id="nav-full-2">
+      <!--<nav class="menu" id="nav-full-2">
           <ul>
-              <li (click)="showModal = !showModal"><a href="#">Search</a></li>
-              <li><a href="#">Sign Up / Login In</a></li>
+              
          </ul> 
-      </nav>
+      </nav> -->
     </div>
-    <div class="splash-container-full" [style.height]=" windowSize.height - 90 + 'px'">
-         <div class="splash-box-full back-city"></div>
+        <!-- <div class="splash-box-full back-city"></div>
          <div class="splash-box-full back-white">
             <p class="splash-par-top-full">
                 Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, 
@@ -105,7 +107,10 @@
                 Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. 
             </p>
         </div>
-        <div class="splash-box-full back-lake"></div>
+        <div class="splash-box-full back-lake"></div> -->
+        <div class="form-new">
+            
+        </div>
         <div *ngIf="showModal" class="form-modal-full">
             <div class="form-container-full">
                 <div class="modal-header">

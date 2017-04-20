@@ -211,24 +211,32 @@ ul {
 /*Full Size*/
 @media screen and (min-width: 1200px) {
   #nav-container-full {
+    width: 100%;
+    height: 10%;
     display: flex;
     text-align: center;
-    border-bottom: 2px solid black;
+   /* border-bottom: 2px solid black; */
     positon: fixed;
     z-index: 1000;
     padding-bottom: 1em;
   }
   .menu {
-    font-family: 'Forum', cursive;
-    font-size: 2em;
+    font-family: 'Macondo', cursive;
+  }
+  
+  .menu a {
+      color: chocolate;
+      text-shadow: 1px 1px 1px white;
+      font-size: xx-large;
   }
   
   #logo-nav-full {
      font-size: 2em;
      letter-spacing: 2px;
      margin-left: 10px;
-     font-family: 'Archivo Black', sans-serif;
-     color: blue;
+     font-family: 'Cinzel', serif;
+     color: brown;
+     padding-top: 1%;
      flex-grow: 3;
   }
   
@@ -253,8 +261,9 @@ ul {
 }
 
   .splash-container-full {
-      background-repeat: no-repeat;
+      background-image: url("./../../../images/road.jpg");
       background-size: cover;
+      background-repeat: no-repeat;
       display: flex;
       flex-wrap: wrap;
     }  
@@ -284,6 +293,7 @@ ul {
         background-image: url("./../../../images/morskie-oko.jpg");
         background-size: cover;
     }
+ 
     
     .arrows-container-full p {
         width: 30%;
@@ -395,6 +405,13 @@ ul {
     
      .modal-footer {
         padding: 1%;
+    }
+    
+    .form-new {
+        width: 75%;
+        height: 30%;
+        background-color: rgba(139, 69, 19,.4);
+        margin: 0 auto;
     }
     
 }
