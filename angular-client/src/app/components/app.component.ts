@@ -64,7 +64,8 @@ export class AppComponent implements OnInit {
        console.info("Window size", this.windowSize);
        
        if (this.windowSize.getWidth() >= 1200) {
-           this.height = '40px';
+           this.height = '38px';
+           this.width = '90%';
        }
        
        this.departOptions = this.setOptions(false);

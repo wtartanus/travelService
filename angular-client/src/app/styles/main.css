@@ -19,75 +19,181 @@ ul {
 }
 
 .menu {
-    font-family: 'Forum', cursive;
+    font-family: 'Macondo', cursive;
+}
+
+.menu a,
+.bottom-menu {
+    font-size: xx-large; 
+}
+
+.menu a {
+      color: chocolate;
+      text-shadow: 1px 1px 1px brown;
+}
+
+.menu-heading-small,
+#nav-small {
+    padding-top: 5px;
 }
 
 
 .menu-heading-small {
     padding-bottom: 5px;
-    padding-top: 5px;
+}
+
+#logo-heading-small,
+#logo-nav-medium,
+#logo-nav-full {
+    font-family: 'Cinzel', serif;
+}
+
+#logo-heading-small,
+#logo-nav-medium,
+#logo-nav-full {
+    color: brown;
+}
+
+#logo-heading-small,
+#nav-small ul li a,
+#logo-nav-full {
+    font-size: 2em;
+}
+
+#logo-heading-small,
+.close-modal,
+.modal-footer button {
+    float: right;
 }
 
 #logo-heading-small {
-    font-family: 'Archivo Black', sans-serif;
-    color: blue;
-    font-size: 2em;
-    float: right;
     margin-right: 5%;
 }
 
+#nav-small,
+.form-new {
+    background-color: rgba(139, 69, 19, .7);
+}
+
+#nav-small,
+.bottom-menu,
+.input-small,
+search-button-small,
+.input-medium,
+#nav-container-full,
+.modal-body table {
+    width: 100%;
+}
+
+#nav-small,
+.bottom-menu,
+#nav-container-full {
+    z-index: 1000;
+}
+
 #nav-small {
-    padding-top: 5px;
     padding-bottom: 15px;
     border-bottom: 1.5px solid black;
-    background-color: rgba(255,255,255,.8);
     position: absolute;
-    width: 100%;
-    z-index: 1000;
+}
+
+#nav-small ul,
+#nav-container-full {
+    text-align: center;
 }
 
 #nav-small ul {
     padding: 0;
-    text-align: center;
 }
 
 #nav-small ul li a {
-    font-size: 2em;
     display: block;
     line-height: 1.6em;
 }
 
 #nav-small ul li a:hover {
-    background-color: black;
     color: white;
+    background-color: brown;
+}
+
+.splash-container-small,
+.splash-container-medium,
+.splash-container-full {
+    background-size: cover; 
 }
 
 .splash-container-small {
     background-image: url("./../../../images/sky.jpg");
-    background-size: cover;
     height: 400px;
 }
 
+.splash-box-small,
+.modal-header,
+.modal-body {
+    border-bottom: 1px solid black;
+}
+
+
 .splash-box-small {
     padding: 2em 3%;
-    border-bottom: 1px solid black;
+}
+
+.splash-par-small,
+.splash-par-medium {
+    font-size: large;
 }
 
 .splash-par-small {
     line-height: 1.4em;
-    font-size: large;
 }
 
-.form-container-small {
+.bottom-menu,
+#nav-container-full {
+    position: fixed;
+}
+
+.bottom-menu,
+#nav-container-medium,
+#nav-container-medium ul,
+#nav-container-full,
+#nav-full-1 > ul {
+    display: flex;
+}
+
+.bottom-menu,
+.search-button-small,
+.splash-par-medium,
+.search-button-medium,
+.modal-header,
+.modal-body p,
+.modal-footer button {
+    color: white;
+}
+
+.bottom-menu {
+    height: 6%;
+    background-color: chocolate;
+    bottom: 0;
+    justify-content: space-around;
+    padding-top: 2%;
+}
+
+.form-container-small,
+.form-container-medium > form > div,
+.modal-header,
+.modal-footer {
     padding: 1%;
 }
 
-.input-small {
-    width: 100%;
+.input-small,
+.search-button-small,
+.input-medium,
+.search-button-medium {
     height: 50px;
 }
 
-.input-label-small {
+.input-label-small,
+.input-label-medium {
     margin: 2%;
 }
 
@@ -95,38 +201,43 @@ ul {
     margin-right: 5px;
 }
 
-.search-button-small {
-    width: 100%;
-    height: 50px;
+.search-button-small,
+.search-button-medium {
     margin-top: 5%;
     background-color: dodgerblue;
-    color: white;
     font-size: 1.2em;
     letter-spacing: .2em;
+}
+
+#nav-container-medium,
+#nav-container-full {
+    padding-bottom: 1em;
 }
 
 /*Medium Size*/
 @media screen and (min-width: 800px) {
     #nav-container-medium {
-        display: flex;
-        padding-bottom: 1em;
         padding-top: .4em;
-        border-bottom: 2px solid black;
+        background-color: rgba(139, 69, 19, .4);
+        justify-content: space-between;
     }
     
-    .menu {
+    .menu,
+    #logo-nav-medium {
         font-size: 1.5em;
+    }
+    
+    #log-nav-medium,
+    #nav-full-1 {
+        flex-grow: 1;
     }
     
     #logo-nav-medium {
-        flex-grow: 1;
-        font-size: 1.5em;
         color: blue;
         margin-left: 25px;
     }
     
     #nav-container-medium ul {
-        display: flex;
         flex-grow: 4;
     }
     
@@ -135,19 +246,27 @@ ul {
     }
     
     #nav-container-medium ul li a:hover {
-        color: purple;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
+    
+    .splash-container-medium,
+    .splash-container-full {
+        background-repeat: no-repeat;
     }
     
     .splash-container-medium {
       background-image: url("./../../../images/sky.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
       height: 700px;
     }   
     
+    .splash-box-medium,
+    .search-button-medium {
+        width: 50%; 
+    }
+    
     .splash-box-medium {
         background-color: rgba(255,0,0,.2);
-        width: 50%;
         padding: 3em;
         position: relative;
         top: 28%;
@@ -155,8 +274,6 @@ ul {
     }
     
     .splash-par-medium {
-        color: white;
-        font-size: large;
         line-height: 1.3em;
         font-weight: 600;
     }
@@ -171,84 +288,30 @@ ul {
         justify-content: center;
     }
     
-    .form-container-medium > form > div {
-        padding: 1%;
-    }
-    
-    .input-label-medium {
-        margin: 2%;
+    .input-label-medium,
+    .modal-body p {
         font-size: larger;
     }
-    
-    .input-medium {
-        width: 100%;
-        height: 50px;
-    }
-    
-    .search-button-medium {
-        width: 50%;
-        height: 50px;
-        margin-top: 5%;
-        background-color: dodgerblue;
-        color: white;
-        font-size: 1.2em;
-        letter-spacing: .2em;
-    }
 }
-
-/*@media screen and (min-width: 1000px) {
-    #logo-nav-medium {
-        font-size: 2em;
-    }
-    
-    .menu {
-        font-size: 2em;
-    }
-     
-}*/
-/*------------------*/
 
 /*Full Size*/
 @media screen and (min-width: 1200px) {
   #nav-container-full {
-    width: 100%;
     height: 10%;
-    display: flex;
-    text-align: center;
-   /* border-bottom: 2px solid black; */
-    positon: fixed;
-    z-index: 1000;
-    padding-bottom: 1em;
-  }
-  .menu {
-    font-family: 'Macondo', cursive;
+    background-color: rgba(139, 69, 19, .5);
   }
   
-  .menu a {
-      color: chocolate;
-      text-shadow: 1px 1px 1px white;
-      font-size: xx-large;
+  #logo-nav-full,
+  .modal-body p,
+  .modal-body input {
+     margin-left: 10px; 
   }
   
   #logo-nav-full {
-     font-size: 2em;
      letter-spacing: 2px;
-     margin-left: 10px;
-     font-family: 'Cinzel', serif;
-     color: brown;
      padding-top: 1%;
      flex-grow: 3;
   }
-  
-#nav-full-1,
-#nav-full-2 {
-    flex-grow: 1;
-}
-
-#nav-full-1 > ul,
-#nav-full-2 > ul {
-    display: flex;
-}
 
 #nav-container-full li {
     margin-left: 50px;
@@ -261,101 +324,45 @@ ul {
 }
 
   .splash-container-full {
-      background-image: url("./../../../images/road.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-wrap: wrap;
-    }  
+      background-image: url("./../../../images/35.jpg");
+  }  
+  
+  .form-new,
+  .modal-header {
+      height: 30%;
+  }
     
-    .splash-box-full {
-        width: 50%;
-        height: 50%;
+    .form-new {
+        width: 75%;
+        position: absolute;
+        bottom: 20%;
+        left: 14%;
     }
     
-    .splash-par-top-full {
-        width: 85%;
-        margin: 12% auto;
-        line-height: 2em;
-        font-size: x-large;
-    }
-    
-    .back-white {
-        background-color: white;
-    }
-    
-    .back-city {
-        background-image: url("./../../../images/city.jpg");
-        background-size: cover;
-    }
-    
-    .back-lake {
-        background-image: url("./../../../images/morskie-oko.jpg");
-        background-size: cover;
-    }
- 
-    
-    .arrows-container-full p {
-        width: 30%;
-        display: inline-block;
-        font-size: x-large;
-        vertical-align: top;
-        line-height: 2em;
-        margin-left: 11%;
-        margin-top: 20%;
-    }
-    
-    .arrows-splash-full {
-        width: 30%;
-        height: 85%;
-        margin-top: 5%;
-    }
-    
-    .form-modal-full {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        left: 0%;
-        top: 0%;
-        background-color: darkgrey;
-        opacity: 0.9;
-    }
-    
-    .form-container-full {
-        border: 1px solid black;
-        width: 95%;
-        height: 40%;
-        position: relative;
-        left: 2.5%;
-        top: 36%;
-        background-color: white;
-    }
-    
-    .close-modal {
-        float: right;
-        font-size: x-large;
+    .close-modal,
+    .modal-footer button {
         cursor: pointer;
     }
     
-    .modal-header h1 {
-        margin: 0;
+    .close-modal {
+        font-size: x-large;
     }
     
-    .modal-header {
-        padding: 2%;
-        border-bottom: 1px solid black;
-        height: 20%;
+   /* .modal-header h1 {
+        margin: 0;
+    } */
+    
+    .modal-header,
+    .modal-body p {
+       text-shadow: 1px 1px 1px black;
     }
     
     .modal-body {
-        padding: 2%;
-        height: 60%;
-        border-bottom: 1px solid black;
+        height: 50%;
     }
     
     .modal-body table {
-        width: 100%;
-        margin-top: 25px;
+        height: 85%;
     }
     
     .modal-body table td {
@@ -363,57 +370,34 @@ ul {
         margin-left: 3%;
     }
     
-    .modal-body p {
-        font-size: larger;
-    }
-    
-    .modal-body i {
-        margin-right: 5%;
-    }
-    
     .modal-body input {
-        width: 100%;
+        width: 90%;
         height: 40px;
     }
     
     .modal-footer {
         height: 20%;
-        padding: 1%;
     }
     
     .modal-footer button {
         background-color: blue;
-        color: white;
         height: 35px;
         width: 150px;
         border: none;
         border-radius: 5px;
-        float: right;
-        cursor: pointer;
     }
 }
 
 @media screen and (min-width: 1700px) {
+    
+    .menu,
     #logo-nav-full {
-        font-size: 3em;
-        letter-spacing: 4px;
+       font-size: 3em;  
     }
     
-    .menu {
-        font-size: 3em;
+    #logo-nav-full {
+       letter-spacing: 4px;
     }
-    
-     .modal-footer {
-        padding: 1%;
-    }
-    
-    .form-new {
-        width: 75%;
-        height: 30%;
-        background-color: rgba(139, 69, 19,.4);
-        margin: 0 auto;
-    }
-    
 }
 
 /*---------------------------*/

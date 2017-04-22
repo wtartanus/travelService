@@ -13,6 +13,12 @@
     <div class="splash-container-small">
         
     </div>
+    <div class="bottom-menu">
+        <span><i class="fa fa-search" aria-hidden="true"></i></span>
+        <span><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+        <span><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+        <span><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span>
+    </div>
     <div class="splash-box-small">
         <p class="splash-par-small">
             Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, 
@@ -87,34 +93,10 @@
           </ul>
       </nav>
       <span id="logo-nav-full">Travel Guide</span>
-      <!--<nav class="menu" id="nav-full-2">
-          <ul>
-              
-         </ul> 
-      </nav> -->
     </div>
-        <!-- <div class="splash-box-full back-city"></div>
-         <div class="splash-box-full back-white">
-            <p class="splash-par-top-full">
-                Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, 
-                velit simul malorum an vel. Te putant detracto mei. Nonumy dictas possim ne nec, inani soleat no est,
-                est at zril affert.
-            </p>
-        </div>
-        <div class="splash-box-full back-white arrows-container-full">
-            <img class="arrows-splash-full" src="./../../../images/arrows1.jpg">
-            <p>
-                Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. 
-            </p>
-        </div>
-        <div class="splash-box-full back-lake"></div> -->
-        <div class="form-new">
-            
-        </div>
-        <div *ngIf="showModal" class="form-modal-full">
-            <div class="form-container-full">
-                <div class="modal-header">
-                  <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
+        <div *ngIf="showModal"  class="form-new">
+           <div class="modal-header">
+                 <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
                   <h1>Search</h1>
                 </div>
                 <div class="modal-body">
@@ -152,7 +134,6 @@
                 <div class="modal-footer clearfix">
                     <button type="submit" class="search-button-full">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
                 </div>
-            </div> 
         </div>
     </div>
 </div>
