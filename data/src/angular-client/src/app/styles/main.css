@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+   list-style: none; 
+}
+
+.menu {
+    font-family: 'Josefin Slab', serif;
+}
+
+.navigation-element,
+.bottom-menu {
+    font-size: xx-large; 
+}
+
+.navigation-element {
+      color: chocolate;
+      text-shadow: 1px 1px 1px brown;
+}
+
+.menu-heading-small,
+#nav-small {
+    padding-top: 5px;
+}
+
+
+.menu-heading-small {
+    padding-bottom: 5px;
+}
+
+#logo-heading-small,
+#logo-nav-medium,
+#logo-nav-full {
+    font-family: 'Cinzel', serif;
+}
+
+#logo-heading-small,
+#logo-nav-medium,
+#logo-nav-full {
+    color: brown;
+}
+
+#logo-heading-small,
+#nav-small ul li a,
+#logo-nav-full {
+    font-size: 2em;
+}
+
+#logo-heading-small,
+.close-modal,
+.modal-footer button {
+    float: right;
+}
+
+#logo-heading-small {
+    margin-right: 5%;
+}
+
+#nav-small,
+.form-new {
+    background-color: rgba(139, 69, 19, .7);
+}
+
+#nav-small,
+.bottom-menu,
+.input-small,
+search-button-small,
+.input-medium,
+#nav-container-full,
+.modal-body table {
+    width: 100%;
+}
+
+#nav-small,
+.bottom-menu,
+#nav-container-full {
+    z-index: 1000;
+}
+
+#nav-small {
+    padding-bottom: 15px;
+    border-bottom: 1.5px solid black;
+    position: absolute;
+}
+
+#nav-small ul,
+#nav-container-full {
+    text-align: center;
+}
+
+#nav-small ul {
+    padding: 0;
+}
+
+#nav-small ul li a {
+    display: block;
+    line-height: 1.6em;
+}
+
+#nav-small ul li a:hover {
+    color: white;
+    background-color: brown;
+}
+
+.splash-container-small,
+.splash-container-medium,
+.splash-container-full {
+    background-size: cover; 
+}
+
+.splash-container-small {
+    background-image: url("./../../../images/sky.jpg");
+    height: 400px;
+}
+
+.splash-box-small,
+.modal-header,
+.modal-body {
+    border-bottom: 1px solid black;
+}
+
+
+.splash-box-small {
+    padding: 2em 3%;
+}
+
+.splash-par-small,
+.splash-par-medium {
+    font-size: large;
+}
+
+.splash-par-small {
+    line-height: 1.4em;
+}
+
+.bottom-menu,
+#nav-container-full {
+    position: fixed;
+}
+
+.bottom-menu,
+#nav-container-medium,
+#nav-container-medium ul,
+#nav-container-full,
+#nav-full-1 > ul {
+    display: flex;
+}
+
+.bottom-menu,
+.search-button-small,
+.splash-par-medium,
+.search-button-medium,
+.modal-header,
+.modal-body p,
+.modal-footer button {
+    color: white;
+}
+
+.bottom-menu {
+    height: 6%;
+    background-color: chocolate;
+    bottom: 0;
+    justify-content: space-around;
+    padding-top: 2%;
+}
+
+.form-container-small,
+.form-container-medium > form > div,
+.modal-header,
+.modal-footer {
+    padding: 1%;
+}
+
+.input-small,
+.search-button-small,
+.input-medium,
+.search-button-medium {
+    height: 50px;
+}
+
+.input-label-small,
+.input-label-medium {
+    margin: 2%;
+}
+
+.form-icon {
+    margin-right: 5px;
+}
+
+.search-button-small,
+.search-button-medium {
+    margin-top: 5%;
+    background-color: dodgerblue;
+    font-size: 1.2em;
+    letter-spacing: .2em;
+}
+
+#nav-container-medium,
+#nav-container-full {
+    padding-bottom: 1em;
+}
+
+/*Medium Size*/
+@media screen and (min-width: 800px) {
+    #nav-container-medium {
+        padding-top: .4em;
+        background-color: rgba(139, 69, 19, .4);
+        justify-content: space-between;
+    }
+    
+    .menu,
+    #logo-nav-medium {
+        font-size: 1.5em;
+    }
+    
+    #log-nav-medium,
+    #nav-full-1 {
+        flex-grow: 1;
+    }
+    
+    #logo-nav-medium {
+        color: blue;
+        margin-left: 25px;
+    }
+    
+    #nav-container-medium ul {
+        flex-grow: 4;
+    }
+    
+    #nav-container-medium ul li {
+        margin-right: 20px;
+    }
+    
+    #nav-container-medium ul li a:hover {
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
+    
+    .splash-container-medium,
+    .splash-container-full {
+        background-repeat: no-repeat;
+    }
+    
+    .splash-container-medium {
+      background-image: url("./../../../images/sky.jpg");
+      height: 700px;
+    }   
+    
+    .splash-box-medium,
+    .search-button-medium {
+        width: 50%; 
+    }
+    
+    .splash-box-medium {
+        background-color: rgba(255,0,0,.2);
+        padding: 3em;
+        position: relative;
+        top: 28%;
+        left: 5%;
+    }
+    
+    .splash-par-medium {
+        line-height: 1.3em;
+        font-weight: 600;
+    }
+    
+    .form-container-medium {
+        padding: 3%;
+    }
+    
+    .form-container-medium form {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .input-label-medium,
+    .modal-body p {
+        font-size: larger;
+    }
+}
+
+/*Full Size*/
+@media screen and (min-width: 1200px) {
+  #nav-container-full {
+    height: 10%;
+    background-color: rgba(139, 69, 19, .5);
+  }
+  
+  #logo-nav-full,
+  .modal-body p,
+  .modal-body input {
+     margin-left: 10px; 
+  }
+  
+  #logo-nav-full {
+     letter-spacing: 2px;
+     padding-top: 1%;
+     flex-grow: 3;
+  }
+
+#nav-container-full li {
+    margin-left: 50px;
+    padding-top: 17px;
+}
+
+#nav-container-full a:hover {
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+  .splash-container-full {
+      background-image: url("./../../../images/35.jpg");
+  }  
+  
+  .form-new,
+  .modal-header {
+      height: 30%;
+  }
+    
+    .form-new {
+        width: 75%;
+        position: absolute;
+        bottom: 20%;
+        left: 14%;
+    }
+    
+    .close-modal,
+    .modal-footer button {
+        cursor: pointer;
+    }
+    
+    .close-modal {
+        font-size: x-large;
+    }
+    
+   /* .modal-header h1 {
+        margin: 0;
+    } */
+    
+    .modal-header,
+    .modal-body p {
+       text-shadow: 1px 1px 1px black;
+    }
+    
+    .modal-body {
+        height: 50%;
+    }
+    
+    .modal-body table {
+        height: 85%;
+    }
+    
+    .modal-body table td {
+        width: 24%;
+        margin-left: 3%;
+    }
+    
+    .modal-body input {
+        width: 90%;
+        height: 40px;
+    }
+    
+    .modal-footer {
+        height: 20%;
+    }
+    
+    .modal-footer button {
+        background-color: blue;
+        height: 35px;
+        width: 150px;
+        border: none;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    
+    .menu,
+    #logo-nav-full {
+       font-size: 3em;  
+    }
+    
+    #logo-nav-full {
+       letter-spacing: 4px;
+    }
+}
+
+/*---------------------------*/
+
+

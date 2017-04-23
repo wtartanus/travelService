@@ -1,0 +1,140 @@
+<div *ngIf="windowSize.width < 800" id="nav-container-small">
+    <div class="menu-heading-small" [style.border-bottom]="showNav ? 'none' : '1.5px solid black' " (click)="showNav = !showNav" >
+         <span [style.cursor]="'pointer'" [style.margin-left]="'2%'" ><i class="fa fa-bars fa-3x" aria-hidden="true"></i> </span>
+       <span id="logo-heading-small">Travel Guide</span>
+    </div>
+    <nav *ngIf="showNav" class="menu" id="nav-small">
+        <ul>
+            <li><a class="navigation-element" href="#">About</a></li>
+            <li><a class="navigation-element" href="#">Inspirations</a></li>
+            <li><a class="navigation-element" href="#">Sign Up / Login In</a></li>
+        </ul>
+    </nav>
+    <div class="splash-container-small">
+        
+    </div>
+    <div class="bottom-menu">
+        <span><i class="fa fa-search" aria-hidden="true"></i></span>
+        <span><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+        <span><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+        <span><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span>
+    </div>
+    <div class="splash-box-small">
+        <p class="splash-par-small">
+            Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, 
+            velit simul malorum an vel. Te putant detracto mei. Nonumy dictas possim ne nec, inani soleat no est,
+            est at zril affert.
+        </p>
+    </div>
+    <div class="form-container-small">
+        <form>
+              <p class="input-label-small" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+              <input class="input-small" type="text" required>
+              <p class="input-label-small" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+              <input class="input-small" type="text" />
+              <p class="input-label-small" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+              <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+              <p class="input-label-small" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+              <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+            <button type="submit" class="search-button-small">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="windowSize.width >= 800 && windowSize.width < 1200" >
+    <div id="nav-container-medium">
+      <span id="logo-nav-medium">Travel Guide</span>
+      <nav class="menu" id="nav-medium">
+          <ul>
+              <li><a class="navigation-element" href="#">About</a></li>
+              <li><a class="navigation-element" href="#">Inspirations</a></li>
+              <li><a class="navigation-element" href="#">Sign Up / Login In</a></li>
+          </ul>
+      </nav>
+    </div>
+    <div class="splash-container-medium">
+        <div class="splash-box-medium">
+            <p class="splash-par-medium">
+                Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, 
+                velit simul malorum an vel. Te putant detracto mei. Nonumy dictas possim ne nec, inani soleat no est,
+                est at zril affert.
+            </p>
+        </div>
+    </div>
+        <div class="form-container-medium">
+        <form>
+           <div [style.width]="'50%'" >
+             <p class="input-label-medium" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+             <input class="input-medium" type="text" required>
+             <p class="input-label-medium" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+             <input class="input-medium" type="text" />
+           </div>
+           <div [style.width]="'50%'">
+            <p class="input-label-medium" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+            <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+            <p class="input-label-medium" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+            <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+           </div>
+            <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="windowSize.width >= 1200" >
+ 
+    <div class="splash-container-full" [style.height]=" windowSize.height + 'px'">
+     <div id="nav-container-full">
+      <nav class="menu" id="nav-full-1">
+          <ul>
+              <li><a class="navigation-element" href="#">About</a></li>
+              <li><a class="navigation-element" href="#">Inspirations</a></li>
+              <li (click)="showModal = !showModal"><a class="navigation-element" href="#">Search</a></li>
+              <li><a class="navigation-element" href="#">Sign Up / Login In</a></li>
+          </ul>
+      </nav>
+      <span id="logo-nav-full">Travel Guide</span>
+    </div>
+        <div *ngIf="showModal"  class="form-new">
+           <div class="modal-header">
+                 <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
+                  <h1>Search</h1>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+                            </td>
+                            <td>
+                                <p class="input-label-full" ><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="input-full" type="text" required>
+                            </td>
+                            <td>
+                                <input class="input-full" type="text" />
+                            </td>
+                            <td>
+                                <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+                            </td>
+                            <td>
+                                 <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer clearfix">
+                    <button type="submit" class="search-button-full">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+                </div>
+        </div>
+    </div>
+</div>
+    
