@@ -55,14 +55,8 @@ ul {
 }
 
 #logo-heading-small,
-#nav-small ul li a,
-#logo-nav-full {
-    font-size: 2em;
-}
-
-#logo-heading-small,
 .close-modal,
-.modal-footer button {
+.search-button-full {
     float: right;
 }
 
@@ -97,23 +91,18 @@ search-button-small,
     position: absolute;
 }
 
-#nav-small ul,
+.nav-small-list,
 #nav-container-full {
     text-align: center;
 }
 
-#nav-small ul {
+.nav-small-list {
     padding: 0;
 }
 
-#nav-small ul li a {
+.nav-item-small {
     display: block;
     line-height: 1.6em;
-}
-
-#nav-small ul li a:hover {
-    color: white;
-    background-color: brown;
 }
 
 .splash-container-small,
@@ -154,9 +143,9 @@ search-button-small,
 
 .bottom-menu,
 #nav-container-medium,
-#nav-container-medium ul,
+.nav-list-medium,
 #nav-container-full,
-#nav-full-1 > ul {
+.nav-list-full {
     display: flex;
 }
 
@@ -166,7 +155,7 @@ search-button-small,
 .search-button-medium,
 .modal-header,
 .modal-body p,
-.modal-footer button {
+.search-button-full {
     color: white;
 }
 
@@ -179,7 +168,7 @@ search-button-small,
 }
 
 .form-container-small,
-.form-container-medium > form > div,
+.form-medium,
 .modal-header,
 .modal-footer {
     padding: 1%;
@@ -228,7 +217,7 @@ search-button-small,
     }
     
     #log-nav-medium,
-    #nav-full-1 {
+    #nav-full {
         flex-grow: 1;
     }
     
@@ -237,17 +226,12 @@ search-button-small,
         margin-left: 25px;
     }
     
-    #nav-container-medium ul {
+    .nav-list-medium {
         flex-grow: 4;
     }
     
-    #nav-container-medium ul li {
+    .nav-list-item-medium {
         margin-right: 20px;
-    }
-    
-    #nav-container-medium ul li a:hover {
-        color: white;
-        text-shadow: 1px 1px 1px black;
     }
     
     .splash-container-medium,
@@ -282,14 +266,14 @@ search-button-small,
         padding: 3%;
     }
     
-    .form-container-medium form {
+    .form-medium {
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: center;
     }
     
     .input-label-medium,
-    .modal-body p {
+    .input-label-full {
         font-size: larger;
     }
 }
@@ -302,8 +286,8 @@ search-button-small,
   }
   
   #logo-nav-full,
-  .modal-body p,
-  .modal-body input {
+  .input-label-full,
+  .input-full {
      margin-left: 10px; 
   }
   
@@ -313,12 +297,12 @@ search-button-small,
      flex-grow: 3;
   }
 
-#nav-container-full li {
+.nav-list-item-full {
     margin-left: 50px;
     padding-top: 17px;
 }
 
-#nav-container-full a:hover {
+.navigation-element:hover {
     color: white;
     text-shadow: 1px 1px 5px black;
 }
@@ -340,7 +324,7 @@ search-button-small,
     }
     
     .close-modal,
-    .modal-footer button {
+    .search-button-full {
         cursor: pointer;
     }
     
@@ -353,7 +337,7 @@ search-button-small,
     } */
     
     .modal-header,
-    .modal-body p {
+    .input-label-full {
        text-shadow: 1px 1px 1px black;
     }
     
@@ -361,16 +345,16 @@ search-button-small,
         height: 50%;
     }
     
-    .modal-body table {
+    .form-table {
         height: 85%;
     }
     
-    .modal-body table td {
+    .form-table-td {
         width: 24%;
         margin-left: 3%;
     }
     
-    .modal-body input {
+    .input-full {
         width: 90%;
         height: 40px;
     }
@@ -379,7 +363,7 @@ search-button-small,
         height: 20%;
     }
     
-    .modal-footer button {
+    .search-button-full {
         background-color: blue;
         height: 35px;
         width: 150px;
