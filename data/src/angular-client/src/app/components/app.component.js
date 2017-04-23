@@ -9,9 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var common_service_js_1 = require("./../services/common.service.js");
 var AppComponent = (function () {
-    function AppComponent(commonService) {
+    function AppComponent(commonService, http) {
         this.commonService = commonService;
         this.showNav = false;
         this.showModal = false;
@@ -35,6 +38,7 @@ var AppComponent = (function () {
                 day: this.today.getDate()
             }
         };
+        this.http = http;
     }
     AppComponent.prototype.setOptions = function (isReturn) {
         var date = isReturn ? this.returnDate : this.today;
@@ -55,6 +59,7 @@ var AppComponent = (function () {
             selectionTxtFontSize: '1.5em'
         };
     };
+    ;
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         console.info("Window size", this.windowSize);
@@ -82,7 +87,7 @@ AppComponent = __decorate([
         templateUrl: 'src/app/views/app.component.html',
         providers: [common_service_js_1.CommonService]
     }),
-    __metadata("design:paramtypes", [common_service_js_1.CommonService])
+    __metadata("design:paramtypes", [common_service_js_1.CommonService, http_1.Http])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

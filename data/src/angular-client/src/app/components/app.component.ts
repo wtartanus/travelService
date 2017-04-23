@@ -1,8 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import {CommonService} from './../services/common.service.js';
 import { WindowSize } from './../models/windowSize.js';
+import { Inspiration } from './../models/inspiration.js';
 
 @Component({
     selector: 'my-app',
@@ -19,6 +24,8 @@ export class AppComponent implements OnInit {
    private departOptions: IMyOptions = {};
    private width = '100%';
    private height = '50px';
+   private http: Http;
+   public inspirations: Array<Inspiration>;
    
    setOptions(isReturn: boolean) {
       let date = isReturn ? this.returnDate : this.today;
@@ -56,13 +63,15 @@ export class AppComponent implements OnInit {
                  }
     };
   
-   constructor(private commonService: CommonService) {
-   }
+  
+   constructor(private commonService: CommonService, http: Http) {
+      this.http = http;
+   };
    
    ngOnInit(): void {
        this.windowSize = this.commonService.getWindowSize();
        console.info("Window size", this.windowSize);
-       
+
        if (this.windowSize.getWidth() >= 1200) {
            this.height = '38px';
            this.width = '90%';

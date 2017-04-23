@@ -52,6 +52,7 @@ var Travel = React.createClass({
        this.setState({
         inspirations: result 
       });
+       console.log(this.state.inspirations);
        this.forceUpdate();
      } 
    }.bind(this);

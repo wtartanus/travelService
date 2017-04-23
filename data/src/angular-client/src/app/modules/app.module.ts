@@ -8,6 +8,8 @@ import { AppComponent } from './../components/app.component.js';
 
 import { CommonService } from './../services/common.service.js';
 import { WindowSize } from './../models/windowSize.js';
+import { Inspiration } from './../models/inspiration.js';
+import { Activity } from './../models/activity.js';
 
 
 
@@ -21,7 +23,7 @@ import { WindowSize } from './../models/windowSize.js';
   declarations: [
     AppComponent,
   ],
-  providers: [CommonService, WindowSize],
+  providers: [CommonService, WindowSize, Inspiration, Activity],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
