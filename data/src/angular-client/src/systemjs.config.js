@@ -50,6 +50,8 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
       'mydatepicker': './../node_modules/mydatepicker/bundles/mydatepicker.umd.js',
+      'angular2-highcharts': './node_modules/angular2-highcharts',
+      'highcharts': './../node_modules/highcharts',
 
       // other libraries
       'rxjs':                      'npm:rxjs@5.0.1',
@@ -72,6 +74,14 @@
       rxjs: {
         defaultExtension: 'js'
       },
+      highcharts: {
+    	    main: './highcharts.js',
+    	    defaultExtension: 'js'
+    	  },
+      'angular2-highcharts': {
+    		    main: './index.js',
+    		    defaultExtension: 'js'
+    		  }
     }
   });
 

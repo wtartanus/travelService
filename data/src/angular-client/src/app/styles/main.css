@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+body {
+  overflow: hiden;
+}
+
 .clearfix:after {
   content: "";
   display: table;
@@ -15,7 +19,7 @@ a {
 }
 
 ul {
-   list-style: none; 
+   list-style: none;
 }
 
 .menu {
@@ -23,8 +27,9 @@ ul {
 }
 
 .navigation-element,
-.bottom-menu {
-    font-size: xx-large; 
+.bottom-menu,
+#logo-heading-small {
+    font-size: xx-large;
 }
 
 .navigation-element {
@@ -108,7 +113,7 @@ search-button-small,
 .splash-container-small,
 .splash-container-medium,
 .splash-container-full {
-    background-size: cover; 
+    background-size: cover;
 }
 
 .splash-container-small {
@@ -149,7 +154,6 @@ search-button-small,
     display: flex;
 }
 
-.bottom-menu,
 .search-button-small,
 .splash-par-medium,
 .search-button-medium,
@@ -165,6 +169,11 @@ search-button-small,
     bottom: 0;
     justify-content: space-around;
     padding-top: 2%;
+    cursor: pointer;
+}
+
+.bottom-menu a {
+	color: white;
 }
 
 .form-container-small,
@@ -210,45 +219,45 @@ search-button-small,
         background-color: rgba(139, 69, 19, .4);
         justify-content: space-between;
     }
-    
+
     .menu,
     #logo-nav-medium {
         font-size: 1.5em;
     }
-    
+
     #log-nav-medium,
     #nav-full {
         flex-grow: 1;
     }
-    
+
     #logo-nav-medium {
         color: blue;
         margin-left: 25px;
     }
-    
+
     .nav-list-medium {
         flex-grow: 4;
     }
-    
+
     .nav-list-item-medium {
         margin-right: 20px;
     }
-    
+
     .splash-container-medium,
     .splash-container-full {
         background-repeat: no-repeat;
     }
-    
+
     .splash-container-medium {
       background-image: url("./../../../images/sky.jpg");
       height: 700px;
-    }   
-    
+    }
+
     .splash-box-medium,
     .search-button-medium {
-        width: 50%; 
+        width: 50%;
     }
-    
+
     .splash-box-medium {
         background-color: rgba(255,0,0,.2);
         padding: 3em;
@@ -256,22 +265,22 @@ search-button-small,
         top: 28%;
         left: 5%;
     }
-    
+
     .splash-par-medium {
         line-height: 1.3em;
         font-weight: 600;
     }
-    
+
     .form-container-medium {
         padding: 3%;
     }
-    
+
     .form-medium {
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .input-label-medium,
     .input-label-full {
         font-size: larger;
@@ -284,13 +293,13 @@ search-button-small,
     height: 10%;
     background-color: rgba(139, 69, 19, .5);
   }
-  
+
   #logo-nav-full,
   .input-label-full,
   .input-full {
-     margin-left: 10px; 
+     margin-left: 10px;
   }
-  
+
   #logo-nav-full {
      letter-spacing: 2px;
      padding-top: 1%;
@@ -309,60 +318,60 @@ search-button-small,
 
   .splash-container-full {
       background-image: url("./../../../images/35.jpg");
-  }  
-  
+  }
+
   .form-new,
   .modal-header {
       height: 30%;
   }
-    
+
     .form-new {
         width: 75%;
         position: absolute;
         bottom: 20%;
         left: 14%;
     }
-    
+
     .close-modal,
     .search-button-full {
         cursor: pointer;
     }
-    
+
     .close-modal {
         font-size: x-large;
     }
-    
+
    /* .modal-header h1 {
         margin: 0;
     } */
-    
+
     .modal-header,
     .input-label-full {
        text-shadow: 1px 1px 1px black;
     }
-    
+
     .modal-body {
         height: 50%;
     }
-    
+
     .form-table {
         height: 85%;
     }
-    
+
     .form-table-td {
         width: 24%;
         margin-left: 3%;
     }
-    
+
     .input-full {
         width: 90%;
         height: 40px;
     }
-    
+
     .modal-footer {
         height: 20%;
     }
-    
+
     .search-button-full {
         background-color: blue;
         height: 35px;
@@ -373,17 +382,15 @@ search-button-small,
 }
 
 @media screen and (min-width: 1700px) {
-    
+
     .menu,
     #logo-nav-full {
-       font-size: 3em;  
+       font-size: 3em;
     }
-    
+
     #logo-nav-full {
        letter-spacing: 4px;
     }
 }
 
 /*---------------------------*/
-
-

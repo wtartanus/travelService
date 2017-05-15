@@ -3,6 +3,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule }       from '@angular/http';
 import { MyDatePickerModule } from 'mydatepicker';
+import { ChartModule } from 'angular2-highcharts';
 
 import { AppComponent } from './../components/app.component.js';
 
@@ -20,7 +21,8 @@ import { Weather } from './../models/weather.js';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    ChartModule.forRoot(require('highcharts'), require('highcharts/highcharts-3d'), require('highcharts/modules/exporting'))
   ],
   declarations: [
     AppComponent,
