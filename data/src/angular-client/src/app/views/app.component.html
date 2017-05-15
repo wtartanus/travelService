@@ -220,4 +220,51 @@
       </div>
     </div>
   </div>
+  <section *ngIf="selectedInspiration" id="inspirations-container-full">
+
+    <div class="inspirations-full-nav-container">
+      <nav class="inspirations-full-nav">
+        <ul class="inpsirations-full-ul">
+          <li class="inspiration-full-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="inspirations-full-gallery">
+       <img class="inspiration-full-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
+    </section>
+
+
+
+    <section class="inspirations-full-activities">
+      <div class="inspiration-full-activity-container">
+        <h3 class="inspiration-activity-heading-full">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
+        <p class="inspiration-activity-address-full">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
+
+        <img class="inspiration-activities-photo-full clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
+
+        <p class="inspiration-activities-description-full clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
+
+        <div class="arrows-container-full">
+          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
+          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="inspirations-full-weather">
+       <chart [options]="selectedInspiration.chartOptions"></chart>
+    </section>
+
+    <section class="inpsirations-full-description">
+      {{selectedInspiration.city.description}}
+    </section>
+
+    <section class="inspirations-full-history">
+      {{selectedInspiration.city.history}}
+    </section>
+
+
+
+  </section>
 </div>

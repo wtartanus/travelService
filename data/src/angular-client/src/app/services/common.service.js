@@ -49,8 +49,8 @@ var CommonService = (function () {
         else if (this.width > 1000 && this.width < 1500) {
             width = this.width - 400;
         }
-        else {
-            width = 300;
+        else if (this.width > 1500) {
+            width = this.width / 2;
         }
         return width;
     };
