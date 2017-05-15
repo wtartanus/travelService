@@ -5,11 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var mydatepicker_1 = require("mydatepicker");
+var angular2_highcharts_1 = require("angular2-highcharts");
 var app_component_js_1 = require("./../components/app.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var windowSize_js_1 = require("./../models/windowSize.js");
@@ -29,7 +31,8 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            mydatepicker_1.MyDatePickerModule
+            mydatepicker_1.MyDatePickerModule,
+            angular2_highcharts_1.ChartModule.forRoot(require('highcharts'), require('highcharts/highcharts-3d'), require('highcharts/modules/exporting'))
         ],
         declarations: [
             app_component_js_1.AppComponent,

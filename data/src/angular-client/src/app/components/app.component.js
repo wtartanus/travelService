@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var common_service_js_1 = require("./../services/common.service.js");
@@ -59,11 +60,14 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.getInspirations = function () {
         var _this = this;
-        this.commonService.getInspirations().then(function (inspirations) { return _this.inspirations = inspirations; });
+        this.commonService.getInspirations().then(function (inspirations) { return _this.inspirations = _this.commonService.createInspirationsModel(inspirations); }).then(function () {
+            this.selectedInspiration = this.inspirations[0];
+        }.bind(this));
+        this.selectedSideNav = "displayDescription";
     };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
-        console.info("Window size", this.windowSize);
+        console.debug("Window size", this.windowSize);
         this.getInspirations();
         if (this.windowSize.getWidth() >= 1200) {
             this.height = '38px';
@@ -79,8 +83,46 @@ var AppComponent = (function () {
         this.returnDateValue = {
             date: event.date
         };
-        console.info("returnDateValue: ", this.returnDateValue);
-        console.log("lll", this.inspirations);
+        console.debug("returnDateValue: ", this.returnDateValue);
+    };
+    AppComponent.prototype.searchForInspiration = function (city) {
+        this.destination = city;
+    };
+    AppComponent.prototype.changeItem = function (moveRight, item, inspirationIndex) {
+        var inspiration = inspirationIndex ? this.inspirations[inspirationIndex] : this.selectedInspiration;
+        var value = item === "photoPosition" ? "photos" : "activities";
+        if (moveRight) {
+            var nowPosition = inspiration[item];
+            nowPosition += 1;
+            if (nowPosition > (inspiration[value].length - 1)) {
+                nowPosition = 0;
+            }
+            inspiration[item] = nowPosition;
+        }
+        else {
+            var nowPosition = inspiration[item];
+            nowPosition -= 1;
+            if (nowPosition < 0) {
+                nowPosition = (inspiration[value].length - 1);
+            }
+            inspiration[item] = nowPosition;
+        }
+    };
+    AppComponent.prototype.changeDisplay = function (item, inspirationIndex) {
+        var inspiration = inspirationIndex ? this.inspirations[inspirationIndex] : this.selectedInspiration;
+        this.selectedSideNav = item;
+        var keys = Object.keys(inspiration.menu);
+        for (var i = 0; i < keys.length; i++) {
+            if (inspiration.menu.hasOwnProperty(keys[i])) {
+                if (keys[i] === item) {
+                    inspiration.menu[keys[i]] = true;
+                }
+                else {
+                    inspiration.menu[keys[i]] = false;
+                }
+            }
+        }
+        console.log(this.selectedInspiration.menu, inspiration);
     };
     return AppComponent;
 }());
