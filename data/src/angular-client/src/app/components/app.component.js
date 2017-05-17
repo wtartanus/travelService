@@ -23,6 +23,7 @@ var AppComponent = (function () {
         this.departOptions = {};
         this.width = '100%';
         this.height = '50px';
+        this.showPhot = false;
         this.departDateValue = {
             date: {
                 year: this.today.getFullYear(),
@@ -122,7 +123,6 @@ var AppComponent = (function () {
                 }
             }
         }
-        console.log(this.selectedInspiration.menu, inspiration);
     };
     return AppComponent;
 }());

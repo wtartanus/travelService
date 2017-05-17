@@ -34,7 +34,7 @@ var Inspiration = (function () {
                     enabled: true,
                     alpha: 15,
                     beta: 15,
-                    depth: 50
+                    depth: 90
                 }
             },
             yAxis: {

@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   public destination: String;
   public selectedInspiration: Inspiration;
   public selectedSideNav: string;
+  public showPhot = false;
 
   constructor(private commonService: CommonService) { };
 
@@ -102,7 +103,7 @@ export class AppComponent implements OnInit {
     this.destination = city;
   }
 
-  changeItem(moveRight: boolean, item: string, inspirationIndex: number ): void {
+  changeItem(moveRight: boolean, item: string, inspirationIndex: number): void {
     let inspiration = inspirationIndex ? this.inspirations[inspirationIndex] : this.selectedInspiration;
     let value = item === "photoPosition" ? "photos" : "activities";
     if (moveRight) {
@@ -127,18 +128,15 @@ export class AppComponent implements OnInit {
     this.selectedSideNav = item;
     let keys = Object.keys(inspiration.menu);
 
-      for (var i = 0; i < keys.length; i++) {
-        if (inspiration.menu.hasOwnProperty(keys[i])) {
-          if (keys[i] === item) {
-            inspiration.menu[keys[i]] = true;
-          } else {
-            inspiration.menu[keys[i]] = false;
-          }
-
+    for (var i = 0; i < keys.length; i++) {
+      if (inspiration.menu.hasOwnProperty(keys[i])) {
+        if (keys[i] === item) {
+          inspiration.menu[keys[i]] = true;
+        } else {
+          inspiration.menu[keys[i]] = false;
         }
       }
-      console.log(this.selectedInspiration.menu, inspiration);
-
+    }
   }
 
 }

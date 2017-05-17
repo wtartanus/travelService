@@ -112,52 +112,52 @@
       <!-- <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button> -->
     </form>
   </div>
-  <section id="inspirations-container-medium">
+  <section id="inspirations-container">
 
-    <div class="inspirations-medium-side-nav-container">
-      <nav class="inspirations-medium-side-nav">
-        <ul class="inspirations-medium-side-nav-ul">
-          <li class="inspirations-medium-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
-          <li class="inspirations-medium-side-nav-li" (click)="changeDisplay('displayHistory')" [ngClass]="{'selected': selectedSideNav === 'displayHistory'}">History</li><br>
-          <li class="inspirations-medium-side-nav-li" (click)="changeDisplay('displayActivities')" [ngClass]="{'selected': selectedSideNav === 'displayActivities'}">Activities</li><br>
-          <li class="inspirations-medium-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
+    <div class="inspirations-side-nav-container">
+      <nav class="inspirations-side-nav">
+        <ul class="inspirations-side-nav-ul">
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayHistory')" [ngClass]="{'selected': selectedSideNav === 'displayHistory'}">History</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayActivities')" [ngClass]="{'selected': selectedSideNav === 'displayActivities'}">Activities</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
         </ul>
       </nav>
     </div>
 
-    <div class="inpsirations-medium-top-nav-container">
-      <nav class="inspirations-medium-top-nav">
-        <ul class="inpsirations-medium-top-ul">
-          <li class="inspiration-medium-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+    <div class="inpsirations-top-nav-container">
+      <nav class="inspirations-top-nav">
+        <ul class="inpsirations-top-ul">
+          <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
         </ul>
       </nav>
     </div>
-    <section *ngIf="selectedInspiration" class="inspiration-medium-container">
-      <article class="inspiration-medium-gallery">
-        <img class="inspiration-medium-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
+    <section *ngIf="selectedInspiration" class="inspiration-container">
+      <article class="inspiration-gallery">
+        <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
       </article>
-      <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-medium-description">
+      <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-description">
         <p>{{selectedInspiration.city.description}}</p>
       </article>
-      <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-medium-history">
+      <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-history">
         <p>{{selectedInspiration.city.history}}</p>
       </article>
-      <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-medium-activities">
-        <div class="inspiration-medium-activity-container">
-          <h3 class="inspiration-activities-heading-medium">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
-          <p class="inspiration-activities-address-medium">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
+      <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
+        <div class="inspiration-activity-container">
+          <h3 class="inspiration-activities-heading">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
+          <p class="inspiration-activities-address">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
 
-          <img class="inspiration-activities-photo-medium clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
+          <img class="inspiration-activities-photo clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
 
-          <p class="inspiration-activities-description-medium clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
+          <p class="inspiration-activities-description clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
 
-          <div class="arrows-container-medium">
+          <div class="arrows-container">
             <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
             <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
           </div>
         </div>
       </article>
-      <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-medium-weather">
+      <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-weather">
         <chart [options]="selectedInspiration.chartOptions"></chart>
       </article>
     </section>
@@ -220,51 +220,61 @@
       </div>
     </div>
   </div>
-  <section *ngIf="selectedInspiration" id="inspirations-container-full">
+  <section id="inspirations-container">
 
-    <div class="inspirations-full-nav-container">
-      <nav class="inspirations-full-nav">
-        <ul class="inpsirations-full-ul">
-          <li class="inspiration-full-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+    <div class="inspirations-side-nav-container">
+      <nav class="inspirations-side-nav">
+        <ul class="inspirations-side-nav-ul">
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayHistory')" [ngClass]="{'selected': selectedSideNav === 'displayHistory'}">History</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayActivities')" [ngClass]="{'selected': selectedSideNav === 'displayActivities'}">Activities</li><br>
+          <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
         </ul>
       </nav>
     </div>
 
-    <section class="inspirations-full-gallery">
-       <img class="inspiration-full-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
-    </section>
+    <div class="inpsirations-top-nav-container">
+      <nav class="inspirations-top-nav">
+        <ul class="inpsirations-top-ul">
+          <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration; changeDisplay('displayDescription')" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
+        </ul>
+      </nav>
+    </div>
+    <section *ngIf="selectedInspiration" class="inspiration-container">
+
+      <article class="inspiration-gallery">
+        <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" (mouseover)="showPhoto = true; photo=image.link" (mouseleave)="showPhoto=false;photo=''"  />
+      </article>
+      <img *ngIf="showPhoto" class="big-photo" src="{{photo}}" alt="">
 
 
 
-    <section class="inspirations-full-activities">
-      <div class="inspiration-full-activity-container">
-        <h3 class="inspiration-activity-heading-full">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
-        <p class="inspiration-activity-address-full">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
+      <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-description">
+        <span class="full-icon"><i aria-hidden="true" class="fa fa-file-text-o"></i></span>
+        <p>{{selectedInspiration.city.description}}</p>
+      </article>
+      <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-history">
+       <span class="full-icon"><i aria-hidden="true" class="fa fa-university"></i></span>
+        <p>{{selectedInspiration.city.history}}</p>
+      </article>
+      <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
+        <div class="inspiration-activity-container">
+          <h3 class="inspiration-activities-heading">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
+          <p class="inspiration-activities-address">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
 
-        <img class="inspiration-activities-photo-full clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
+          <img class="inspiration-activities-photo clearfix" src="{{selectedInspiration.activities[selectedInspiration.activityPosition].imgLink}}" />
 
-        <p class="inspiration-activities-description-full clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
+          <p class="inspiration-activities-description clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
 
-        <div class="arrows-container-full">
-          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
-          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
+          <div class="arrows-container">
+            <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
+            <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
+          </div>
         </div>
-      </div>
+      </article>
+      <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-weather">
+        <chart [options]="selectedInspiration.chartOptions"></chart>
+      </article>
     </section>
-
-    <section class="inspirations-full-weather">
-       <chart [options]="selectedInspiration.chartOptions"></chart>
-    </section>
-
-    <section class="inpsirations-full-description">
-      {{selectedInspiration.city.description}}
-    </section>
-
-    <section class="inspirations-full-history">
-      {{selectedInspiration.city.history}}
-    </section>
-
-
-
   </section>
 </div>

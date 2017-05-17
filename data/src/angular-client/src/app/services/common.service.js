@@ -50,7 +50,7 @@ var CommonService = (function () {
             width = this.width - 400;
         }
         else if (this.width > 1500) {
-            width = this.width / 2;
+            width = this.width - 300;
         }
         return width;
     };

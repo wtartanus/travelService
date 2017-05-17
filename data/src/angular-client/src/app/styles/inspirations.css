@@ -90,67 +90,67 @@
 /*Medium Size*/
 
 @media screen and (min-width: 800px) {
-  #inspirations-container-medium {
+  #inspirations-container {
     display: grid;
     grid-template-columns: [first] 13% [line2] 85%;
     grid-template-rows: [row1-start] 100px [row1-end] 650px;
   }
-  .inspirations-medium-side-nav-container {
+  .inspirations-side-nav-container {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: span 2;
   }
-  .inpsirations-medium-top-nav-container {
+  .inpsirations-top-nav-container {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 1;
     border-bottom: 1px solid black;
   }
-  .inspirations-medium-top-nav {}
-  .inpsirations-medium-top-ul {
+  .inspirations-top-nav {}
+  .inpsirations-top-ul {
     display: flex;
     justify-content: space-around;
     height: 100%;
   }
-  .inspiration-medium-top-li {
+  .inspiration-top-li {
     padding: 4%;
     font-family: 'Josefin Slab', serif;
     color: chocolate;
     font-size: x-large;
-		cursor: pointer;
+    cursor: pointer;
   }
-  .inspiration-medium-container {
+  .inspiration-container {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 2;
   }
-  .inspiration-medium-gallery {
+  .inspiration-gallery {
     display: flex;
     width: 100%;
     overflow: hidden;
     overflow-x: scroll;
   }
-  .inspiration-medium-photo {
+  .inspiration-photo {
     width: 33%;
     height: 224px;
     margin: 1%;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
     border-radius: 5px 5px;
   }
-  .inspirations-medium-side-nav-container {
+  .inspirations-side-nav-container {
     border-right: 1px solid black;
   }
-  .inspirations-medium-side-nav {
+  .inspirations-side-nav {
     height: 100%;
     padding-top: 85px;
   }
-  .inspirations-medium-side-nav-ul {
+  .inspirations-side-nav-ul {
     height: 100%;
   }
-  .inspirations-medium-side-nav-li {
+  .inspirations-side-nav-li {
     font-family: 'Josefin Slab', serif;
     white-space: nowrap;
     -webkit-transform: translate(1.1em, 0) rotate(90deg);
@@ -168,56 +168,46 @@
     color: chocolate;
     font-size: 1.4em;
     height: 20%;
-		cursor: pointer;
+    cursor: pointer;
   }
-
-	.inspiration-medium-description {
-		width: 90%;
-		text-align: left;
-		margin: 10% auto;
-		line-height: 1.3em;
-		font-size: 1.2em;
-		font-family: sans-serif;
-	}
-
-	.inspiration-medium-history {
-		width: 90%;
-		text-align: left;
-		margin: 10% auto;
-		line-height: 1.3em;
-		font-size: 1.2em;
-		font-family: sans-serif;
-	}
-
-	.inspiration-medium-activities {
-		width: 98%;
-	  margin: 10px auto;
-	  text-align: left;
-		padding: 1%;
-	}
-
-	.inspiration-activities-photo-medium {
-	  width: 56%;
-	  float: left;
-	  margin: 10px 10px 5px 1px;
-	}
-
-	.inspiration-activities-description-medium {
-	  margin-top: 10px;
-	}
-
-	.arrows-container-medium {
-	  color: darkorange;
-	  font-size: 4em;
-	  cursor: pointer;
-	  margin-top: 5px;
-	  text-align: center;
-	}
-
-	.inspiration-medium-weather {
-
-	}
-
+  .inspiration-description {
+    width: 90%;
+    text-align: left;
+    margin: 10% auto;
+    line-height: 1.3em;
+    font-size: 1.2em;
+    font-family: sans-serif;
+  }
+  .inspiration-history {
+    width: 90%;
+    text-align: left;
+    margin: 10% auto;
+    line-height: 1.3em;
+    font-size: 1.2em;
+    font-family: sans-serif;
+  }
+  .inspiration-activities {
+    width: 98%;
+    margin: 10px auto;
+    text-align: left;
+    padding: 1%;
+  }
+  .inspiration-activities-photo {
+    width: 56%;
+    float: left;
+    margin: 10px 10px 5px 1px;
+  }
+  .inspiration-activities-description {
+    margin-top: 10px;
+  }
+  .arrows-container {
+    color: darkorange;
+    font-size: 4em;
+    cursor: pointer;
+    margin-top: 5px;
+    text-align: center;
+  }
+  .inspiration-weather {}
   .selected {
     color: white !important;
     text-shadow: 0px -1px 3px black;
@@ -225,89 +215,145 @@
 }
 
 @media screen and (min-width: 1500px) {
-  .inspirations-container-full {
-    width: 99%;
-    margin: 0 auto;
-    padding: 5px;
+  #inspirations-container {
     display: grid;
-    grid-template-columns:  50%  50%%;
-    grid-template-rows: 90px 270px ;
+    grid-template-columns: [first] 6% [line2] 94%;
+    grid-template-rows: [row1-start] 100px [row1-end] 750px;
   }
-
-  .inspirations-full-nav-container {
+  .inspirations-side-nav-container {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+  }
+  .inpsirations-top-nav-container {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
     border-bottom: 1px solid black;
-    padding: 30px 0;
   }
-
-  .inspirations-full-nav {
-
-  }
-
-  .inpsirations-full-ul {
+  .inspirations-top-nav {}
+  .inpsirations-top-ul {
     display: flex;
     justify-content: space-around;
+    height: 100%;
   }
-
-  .inspiration-full-li {
+  .inspiration-top-li {
+    padding: 2%;
+    font-family: 'Josefin Slab', serif;
     color: chocolate;
-    font-size: 1.4em;
-    height: 20%;
-		cursor: pointer;
+    font-size: x-large;
+    cursor: pointer;
   }
-
-  .inspirations-full-gallery {
+  .inspiration-container {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+  .inspiration-gallery {
     display: flex;
     width: 100%;
-    height: 270px;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: hidden;
+    justify-content: space-around;
   }
-
-  .inspiration-full-photo {
-    width: 20%;
-    height: 224px;
-    margin: 1%;
+  .inspiration-photo {
+    width: 14%;
+    height: 206px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
     border-radius: 5px 5px;
   }
-
-  .inspirations-full-description {
-
+  .inspirations-side-nav-container {
+    border-right: 1px solid black;
+  }
+  .inspirations-side-nav {
+    height: 100%;
+    padding-top: 85px;
+  }
+  .inspirations-side-nav-ul {
+    height: 100%;
+  }
+  .inspirations-side-nav-li {
+    font-family: 'Josefin Slab', serif;
+    white-space: nowrap;
+    -webkit-transform: translate(1.1em, 0) rotate(90deg);
+    -moz-transform: translate(1.1em, 0) rotate(90deg);
+    -o-transform: translate(1.1em, 0) rotate(90deg);
+    transform: translate(1.1em, 0) rotate(90deg);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -ms-transform: none;
+    -ms-transform-origin: none;
+    -ms-writing-mode: tb-rl;
+    *writing-mode: tb-rl;
+    color: chocolate;
+    font-size: 1.4em;
+    height: 20%;
+    cursor: pointer;
+  }
+  .inspiration-description {
+    width: 50%;
+    text-align: left;
+    line-height: 1.4em;
+    font-size: 1.3em;
+    font-family: sans-serif;
+    margin: 4% auto;
+  }
+  .inspiration-history {
+    width: 50%;
+    text-align: left;
+    line-height: 1.4em;
+    font-size: 1.3em;
+    font-family: sans-serif;
+    margin: 4% auto;
+  }
+  .full-icon {
+    color: chocolate;
+    font-size: 2em;
+    position: relative;
+    top: -30px;
+    left: 48%;
+  }
+  .inspiration-activities {
+    width: 70%;
+    margin: 10px auto;
+    text-align: left;
+    padding: 1%;
+  }
+  .inspiration-activities-photo {
+    width: 510px;
+    height: 340px;
+    float: left;
+    margin: 10px 10px 5px 1px;
+  }
+  .inspiration-activities-description {
+    margin-top: 10px;
+    width: 84%;
+  }
+  .arrows-container {
+    color: darkorange;
+    font-size: 4em;
+    cursor: pointer;
+    margin-top: 5px;
+    text-align: center;
+  }
+  .inspiration-weather {}
+  .selected {
+    color: white !important;
+    text-shadow: 0px -1px 3px black;
+  }
+  .big-photo {
+    position: absolute;
+    left: 28%;
+    width: 50%;
+    height: 50%;
+    z-index: 1000;
+    border-radius: 10px 10px;
+    box-shadow: -1px 0px 5px black;
+    opacity: .9;
   }
 
-  .inspirations-full-history {
-
-  }
-
-  .inspirations-full-activities {
-     width: 49%;
-  }
-
-  .inspiration-full-activity-container {
-
-  }
-
-  .inspiration-activity-heading-full {
-
-  }
-
-  .inspiration-activity-address-full {
-
-  }
-
-  .inspiration-activities-photo-full {
-
-  }
-
-  .inspiration-activities-description-full {
-
-  }
-
-  .arrows-container-full {
-
-  }
-
-  .inspirations-full-weather {
-     display: inline;
-  }
 }
