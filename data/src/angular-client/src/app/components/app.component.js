@@ -9,9 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+require("rxjs/add/operator/toPromise");
 var common_service_js_1 = require("./../services/common.service.js");
 var AppComponent = (function () {
-    function AppComponent(commonService, http) {
+    function AppComponent(commonService) {
         this.commonService = commonService;
         this.showNav = false;
         this.showModal = false;
@@ -35,8 +36,8 @@ var AppComponent = (function () {
                 day: this.today.getDate()
             }
         };
-        this.http = http;
     }
+    ;
     AppComponent.prototype.setOptions = function (isReturn) {
         var date = isReturn ? this.returnDate : this.today;
         return {
@@ -56,10 +57,14 @@ var AppComponent = (function () {
             selectionTxtFontSize: '1.5em'
         };
     };
-    ;
+    AppComponent.prototype.getInspirations = function () {
+        var _this = this;
+        this.commonService.getInspirations().then(function (inspirations) { return _this.inspirations = inspirations; });
+    };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         console.info("Window size", this.windowSize);
+        this.getInspirations();
         if (this.windowSize.getWidth() >= 1200) {
             this.height = '38px';
             this.width = '90%';
@@ -75,6 +80,7 @@ var AppComponent = (function () {
             date: event.date
         };
         console.info("returnDateValue: ", this.returnDateValue);
+        console.log("lll", this.inspirations);
     };
     return AppComponent;
 }());
@@ -84,7 +90,7 @@ AppComponent = __decorate([
         templateUrl: 'src/app/views/app.component.html',
         providers: [common_service_js_1.CommonService]
     }),
-    __metadata("design:paramtypes", [common_service_js_1.CommonService, Object])
+    __metadata("design:paramtypes", [common_service_js_1.CommonService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

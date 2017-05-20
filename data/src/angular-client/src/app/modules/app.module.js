@@ -15,6 +15,9 @@ var common_service_js_1 = require("./../services/common.service.js");
 var windowSize_js_1 = require("./../models/windowSize.js");
 var inspiration_js_1 = require("./../models/inspiration.js");
 var activity_js_1 = require("./../models/activity.js");
+var city_js_1 = require("./../models/city.js");
+var photo_js_1 = require("./../models/photo.js");
+var weather_js_1 = require("./../models/weather.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +34,7 @@ AppModule = __decorate([
         declarations: [
             app_component_js_1.AppComponent,
         ],
-        providers: [common_service_js_1.CommonService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity],
+        providers: [common_service_js_1.CommonService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);

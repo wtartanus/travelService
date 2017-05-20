@@ -11,8 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var windowSize_js_1 = require("./../models/windowSize.js");
 var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
+require("rxjs/add/operator/toPromise");
 var CommonService = (function () {
     function CommonService(http) {
         this.windowSize = new windowSize_js_1.WindowSize(window.innerWidth, window.innerHeight);
@@ -21,9 +20,18 @@ var CommonService = (function () {
     CommonService.prototype.getWindowSize = function () {
         return this.windowSize;
     };
-    CommonService.prototype.getRequest = function (url) {
-        return this.http.get(url)
-            .map(function (res) { return res.json(); });
+    CommonService.prototype.getInspirations = function () {
+        return this.http.get("http://localhost:8080/travel-guide/data/inspirations")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    CommonService.prototype.handleError = function (error) {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
+    };
+    CommonService.prototype.logger = function (item) {
+        console.log("sfsd", item);
     };
     return CommonService;
 }());

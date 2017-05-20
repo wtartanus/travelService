@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import { WindowSize } from './../models/windowSize.js';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
+import { Inspiration } from './../models/inspiration.js';
 
 @Injectable()
 export class CommonService {
@@ -17,8 +16,19 @@ export class CommonService {
         return this.windowSize;
     }
   
-    getRequest(url: string): any {
-       return this.http.get(url)
-         .map(res => res.json());
+    getInspirations(): Promise<Inspiration[]> {
+       return this.http.get("http://localhost:8080/travel-guide/data/inspirations")
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+    }
+  
+     private handleError(error: any): Promise<any> {
+      console.error('An error occured', error);
+      return Promise.reject(error.message || error);
+     }
+  
+    private logger(item: any)  {
+       console.log("sfsd",item);
     }
 }
