@@ -96,7 +96,6 @@ export class AppComponent implements OnInit {
     this.returnDateValue = {
       date: event.date
     };
-    console.debug("returnDateValue: ", this.returnDateValue);
   }
 
   searchForInspiration(city: string): void {
@@ -139,4 +138,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+ search() {
+   this.commonService.getCityDescription(this.destination).then( result => console.log("@@@", result);
+ }
 }

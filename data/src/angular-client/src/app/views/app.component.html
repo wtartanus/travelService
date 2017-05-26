@@ -201,7 +201,7 @@
           </tr>
           <tr>
             <td class="form-table-td">
-              <input class="input-full" type="text" required>
+              <input class="input-full" type="text" [(ngModel)]="destination" required>
             </td>
             <td class="form-table-td">
               <input class="input-full" type="text" />
@@ -216,7 +216,7 @@
         </table>
       </div>
       <div class="modal-footer clearfix">
-        <button type="submit" class="search-button-full">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+        <button type="submit" class="search-button-full" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>

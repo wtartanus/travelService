@@ -29,6 +29,15 @@ export class CommonService {
                .catch(this.handleError);
     };
 
+    getCityDescription(city: String): Promise<any> {
+      //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
+      let url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Barcelona";
+      return this.http.get(url)
+             .toPromise()
+             .then(response => response.json())
+             .catch(this.handleError);
+    };
+
     private handleError(error: any): Promise<any> {
       console.error('An error occured', error);
       return Promise.reject(error.message || error);

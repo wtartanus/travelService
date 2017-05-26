@@ -36,6 +36,15 @@ var CommonService = (function () {
             .catch(this.handleError);
     };
     ;
+    CommonService.prototype.getCityDescription = function (city) {
+        //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
+        var url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Barcelona";
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    ;
     CommonService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);

@@ -84,7 +84,6 @@ var AppComponent = (function () {
         this.returnDateValue = {
             date: event.date
         };
-        console.debug("returnDateValue: ", this.returnDateValue);
     };
     AppComponent.prototype.searchForInspiration = function (city) {
         this.destination = city;
@@ -123,6 +122,9 @@ var AppComponent = (function () {
                 }
             }
         }
+    };
+    AppComponent.prototype.search = function () {
+        this.commonService.getCityDescription(this.destination).then(function (result) { return console.log("@@@", result); });
     };
     return AppComponent;
 }());
