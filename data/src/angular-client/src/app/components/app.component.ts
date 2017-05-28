@@ -138,7 +138,14 @@ export class AppComponent implements OnInit {
     }
   }
 
+  getText(text: any) {
+    console.log(text);
+    let key = Object.keys(text.query.pages)[0];
+
+    console.log("text: ", text.query.pages[key].extract.replace(/(<([^>]+)>)/ig,""));
+  }
+
  search() {
-   this.commonService.getCityDescription(this.destination).then( result => console.log("@@@", result);
+   this.commonService.getCityDescription(this.destination).then( result => this.getText(result));
  }
 }

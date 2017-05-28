@@ -38,7 +38,19 @@ var CommonService = (function () {
     ;
     CommonService.prototype.getCityDescription = function (city) {
         //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
-        var url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Barcelona";
+        //city = city.indexOf(" ") > -1 ? city.split(" ").join("%20") : city;
+        if (city.indexOf(" ") > -1) {
+            var afterSplit = city.split(" ");
+            for (var i = 0; i < afterSplit.length; i++) {
+                afterSplit[i] = afterSplit[i].charAt(0).toUpperCase() + afterSplit[i].slice(1);
+            }
+            city = afterSplit.join("%20");
+        }
+        else {
+            city[0].toUpperCase();
+        }
+        console.log("city", city);
+        var url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=" + city;
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json(); })

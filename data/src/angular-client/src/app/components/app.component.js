@@ -123,8 +123,14 @@ var AppComponent = (function () {
             }
         }
     };
+    AppComponent.prototype.getText = function (text) {
+        console.log(text);
+        var key = Object.keys(text.query.pages)[0];
+        console.log("text: ", text.query.pages[key].extract.replace(/(<([^>]+)>)/ig, ""));
+    };
     AppComponent.prototype.search = function () {
-        this.commonService.getCityDescription(this.destination).then(function (result) { return console.log("@@@", result); });
+        var _this = this;
+        this.commonService.getCityDescription(this.destination).then(function (result) { return _this.getText(result); });
     };
     return AppComponent;
 }());
