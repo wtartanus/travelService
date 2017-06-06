@@ -1,4 +1,4 @@
-<div *ngIf="windowSize.width < 800" id="nav-container-small">
+<section *ngIf="windowSize.width < 800" id="nav-container-small">
   <div class="menu-heading-small" [style.border-bottom]="showNav ? 'none' : '1.5px solid black' " (click)="showNav = !showNav">
     <span [style.cursor]="'pointer'" [style.margin-left]="'2%'"><i class="fa fa-bars fa-3x" aria-hidden="true"></i> </span>
     <span id="logo-heading-small">Travel Guide</span>
@@ -10,22 +10,22 @@
       <li><a class="navigation-element nav-item-small" href="#">Sign Up / Login In</a></li>
     </ul>
   </nav>
-  <div class="splash-container-small">
+  <section class="splash-container-small">
 
-  </div>
-  <div class="bottom-menu">
+  </section>
+  <nav class="bottom-menu">
     <span><a href="#form-small"><i class="fa fa-search" aria-hidden="true"></i></a></span>
     <span><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i></a></span>
     <span><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i></a></span>
     <span><a href="#inspirations-container-small"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a></span>
-  </div>
-  <div class="splash-box-small">
+  </nav>
+  <section class="splash-box-small">
     <p class="splash-par-small">
       Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, velit simul malorum an vel. Te putant detracto mei. Nonumy dictas possim ne nec, inani soleat no est, est at zril affert.
     </p>
-  </div>
-  <div id="form-small" class="form-container-small">
-    <form>
+  </section>
+
+    <form id="form-small" class="form-container-small">
       <p class="input-label-small"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
       <input class="input-small" type="text" [(ngModel)]="destination" name="destination" required>
       <p class="input-label-small"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
@@ -36,18 +36,18 @@
       <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
       <button type="submit" class="search-button-small">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
     </form>
-  </div>
-  <div id="inspirations-container-small">
-    <div *ngFor="let inspiration of inspirations; let i = index" class="inspiration-container-small">
+
+  <section id="inspirations-container-small">
+    <section *ngFor="let inspiration of inspirations; let i = index" class="inspiration-container-small">
       <h2 class="isnpiration-name-small">{{inspiration.city.name}}</h2>
       <img *ngIf="!inspiration.menu.displayActivities" class="inspiration-photo-small" src="{{inspiration.photos[inspiration.photoPosition].link}}" />
-      <div *ngIf="!inspiration.menu.displayActivities" class="arrows-container-small">
+      <nav *ngIf="!inspiration.menu.displayActivities" class="arrows-container-small">
         <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'photoPosition', i)"></i>
         <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'photoPosition', i)"></i>
-      </div>
+      </nav>
       <p *ngIf="inspiration.menu.displayDescription" class="inspiration-description-small">{{inspiration.city.description}}</p>
       <p *ngIf="inspiration.menu.displayHistory" class="inspiration-history-small">{{inspiration.city.history}}</p>
-      <div *ngIf="inspiration.menu.displayActivities" class="inspiration-activities-small">
+      <section *ngIf="inspiration.menu.displayActivities" class="inspiration-activities-small">
 
         <h3 class="inspiration-activities-heading-small">{{inspiration.activities[inspiration.activityPosition].name}}</h3>
         <p class="inspiration-activities-address-small">{{inspiration.activities[inspiration.activityPosition].address}}</p>
@@ -56,29 +56,29 @@
 
         <p class="inspiration-activities-description-small clearfix">{{inspiration.activities[inspiration.activityPosition].desc}}</p>
 
-        <div class="arrows-container-small">
+        <nav class="arrows-container-small">
           <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, i, 'activityPosition')"></i>
           <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, i, 'activityPosition')"></i>
-        </div>
+        </nav>
 
-      </div>
-      <div *ngIf="inspiration.menu.displayWeather">
+      </section>
+      <section *ngIf="inspiration.menu.displayWeather">
         <chart [options]="inspiration.chartOptions"></chart>
-      </div>
-      <div class="inspiration-menu-small">
+      </section>
+      <nav class="inspiration-menu-small">
         <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayDescription', i)"><i class="fa fa-file-text-o" aria-hidden="true"></i><p>Description</p></span>
         <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayHistory', i)"><i class="fa fa-university" aria-hidden="true"></i><p>History</p></span>
         <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayActivities', i)"><i class="fa fa-bicycle" aria-hidden="true"></i><p>Activivties</p></span>
         <span class="inspiration-menu-element-small" [style.flex-grow]="'1'" (click)="changeDisplay('displayWeather', i)"><i class="fa fa-thermometer-full" aria-hidden="true"></i><p>Weather</p></span>
-      </div>
+      </nav>
       <button class="inspiration-button-small inspiration-search-small" (click)="searchForInspiration(inspiration.city.name)"><a href="#form-small">Search For: {{inspiration.city.name}} <i class="fa fa-search" aria-hidden="true"></i></a></button>
       <!-- <button class="inspiration-button-small inspiration-toggle" ><i class="fa fa-envelope-o" aria-hidden="true"></i> Expand</button> -->
-    </div>
-  </div>
-</div>
+    </section>
+  </section>
+</section>
 
-<div *ngIf="windowSize.width >= 800 && windowSize.width < 1500">
-  <div id="nav-container-medium">
+<section *ngIf="windowSize.width >= 800 && windowSize.width < 1500">
+  <header id="nav-container-medium">
     <span id="logo-nav-medium">Travel Guide</span>
     <nav class="menu" id="nav-medium">
       <ul class="nav-list-medium">
@@ -87,34 +87,34 @@
         <li class="nav-list-item-medium"><a class="navigation-element" href="#">Sign Up / Login In</a></li>
       </ul>
     </nav>
-  </div>
-  <div class="splash-container-medium">
-    <div class="splash-box-medium">
+  </header>
+  <section class="splash-container-medium">
+    <section class="splash-box-medium">
       <p class="splash-par-medium">
         Lorem ipsum dolor sit amet, tale vocent est ei, at vim dicunt electram. Id affert mentitum vel, velit simul malorum an vel. Te putant detracto mei. Nonumy dictas possim ne nec, inani soleat no est, est at zril affert.
       </p>
-    </div>
-  </div>
-  <div class="form-container-medium">
+    </section>
+  </section>
+  <section class="form-container-medium">
     <form class="form-medium">
-      <div class="form-medium" [style.width]="'50%'">
+      <section class="form-medium" [style.width]="'50%'">
         <p class="input-label-medium"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
         <input class="input-medium" type="text" required>
         <p class="input-label-medium"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
         <input class="input-medium" type="text" />
-      </div>
-      <div class="form-medium" [style.width]="'50%'">
+      </section>
+      <section class="form-medium" [style.width]="'50%'">
         <p class="input-label-medium"><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
         <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
         <p class="input-label-medium"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
         <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
-      </div>
+      </section>
       <!-- <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button> -->
     </form>
-  </div>
+  </section>
   <section id="inspirations-container">
 
-    <div class="inspirations-side-nav-container">
+    <section class="inspirations-side-nav-container">
       <nav class="inspirations-side-nav">
         <ul class="inspirations-side-nav-ul">
           <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
@@ -123,15 +123,15 @@
           <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
         </ul>
       </nav>
-    </div>
+    </section>
 
-    <div class="inpsirations-top-nav-container">
+    <section class="inpsirations-top-nav-container">
       <nav class="inspirations-top-nav">
         <ul class="inpsirations-top-ul">
           <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
         </ul>
       </nav>
-    </div>
+    </section>
     <section *ngIf="selectedInspiration" class="inspiration-container">
       <article class="inspiration-gallery">
         <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
@@ -143,7 +143,7 @@
         <p>{{selectedInspiration.city.history}}</p>
       </article>
       <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
-        <div class="inspiration-activity-container">
+        <section class="inspiration-activity-container">
           <h3 class="inspiration-activities-heading">{{selectedInspiration.activities[selectedInspiration.activityPosition].name}}</h3>
           <p class="inspiration-activities-address">{{selectedInspiration.activities[selectedInspiration.activityPosition].address}}</p>
 
@@ -151,23 +151,23 @@
 
           <p class="inspiration-activities-description clearfix">{{selectedInspiration.activities[selectedInspiration.activityPosition].desc}}</p>
 
-          <div class="arrows-container">
+          <nav class="arrows-container">
             <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition')"></i>
             <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition')"></i>
-          </div>
-        </div>
+          </nav>
+        </section>
       </article>
       <article *ngIf="selectedInspiration.menu.displayWeather" class="inspiration-weather">
         <chart [options]="selectedInspiration.chartOptions"></chart>
       </article>
     </section>
   </section>
-</div>
+</section>
 
-<div *ngIf="windowSize.width >= 1500">
+<section *ngIf="windowSize.width >= 1500">
 
-  <div class="splash-container-full" [style.height]=" windowSize.height + 'px'">
-    <div id="nav-container-full">
+  <section class="splash-container-full" [style.height]=" windowSize.height + 'px'">
+    <section id="nav-container-full">
       <nav class="menu" id="nav-full">
         <ul class="nav-list-full">
           <li class="nav-list-item-full"><a class="navigation-element" href="#">About</a></li>
@@ -177,13 +177,13 @@
         </ul>
       </nav>
       <span id="logo-nav-full">Travel Guide</span>
-    </div>
-    <div *ngIf="showModal" class="form-new">
-      <div class="modal-header">
+    </section>
+    <section *ngIf="showModal" class="form-new">
+      <header class="modal-header">
         <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
         <h1>Search</h1>
-      </div>
-      <div class="modal-body">
+      </header>
+      <section class="modal-body">
         <table class="form-table">
           <tr>
             <td class="form-table-td">
@@ -214,15 +214,15 @@
             </td>
           </tr>
         </table>
-      </div>
+      </section>
       <div class="modal-footer clearfix">
         <button type="submit" class="search-button-full" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
       </div>
-    </div>
-  </div>
+    </section>
+  </section>
   <section id="inspirations-container">
 
-    <div class="inspirations-side-nav-container">
+    <section class="inspirations-side-nav-container">
       <nav class="inspirations-side-nav">
         <ul class="inspirations-side-nav-ul">
           <li class="inspirations-side-nav-li" (click)="changeDisplay('displayDescription')" [ngClass]="{'selected': selectedSideNav === 'displayDescription'}">Description</li><br>
@@ -231,15 +231,15 @@
           <li class="inspirations-side-nav-li" (click)="changeDisplay('displayWeather')" [ngClass]="{'selected': selectedSideNav === 'displayWeather'}">Weather</li>
         </ul>
       </nav>
-    </div>
+    </section>
 
-    <div class="inpsirations-top-nav-container">
+    <section class="inpsirations-top-nav-container">
       <nav class="inspirations-top-nav">
         <ul class="inpsirations-top-ul">
           <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration; changeDisplay('displayDescription')" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
         </ul>
       </nav>
-    </div>
+    </section>
     <section *ngIf="selectedInspiration" class="inspiration-container">
 
       <article class="inspiration-gallery">
@@ -277,4 +277,4 @@
       </article>
     </section>
   </section>
-</div>
+</section>
