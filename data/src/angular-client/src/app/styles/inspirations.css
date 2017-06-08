@@ -57,8 +57,15 @@
   margin-top: 5px;
 }
 
-.inspiration-description-small {
+.inspiration-description-small,
+.inspiration-activities-small,
+.inspiration-description,
+.inspiration-history,
+.inspiration-activities {
   text-align: left;
+}
+
+.inspiration-description-small {
   margin: auto;
 }
 
@@ -67,27 +74,34 @@
   overflow-y: scroll;
 }
 
-.inspiration-activities-small {
+.inspiration-activities-small,
+.inspiration-activities {
   margin: 10px auto;
-  text-align: left;
 }
 
 .inspiration-activities-heading-small {}
 
 .inspiration-activities-address-small {}
 
-.inspiration-activities-photo-small {
-  width: 56%;
+.inspiration-activities-photo-small,
+.inspiration-activities-photo {
   float: left;
+  width: 56%;
   margin: 10px 10px 5px 1px;
 }
 
-.inspiration-activities-description-small {
+.inspiration-activities-description-small,
+.inspiration-activities-description {
   margin-top: 10px;
 }
 
-.inspiration-menu-small {
+.inspiration-menu-small,
+.inspiraions-top-ul,
+.inspiration-gallery {
   display: flex;
+}
+
+.inspiration-menu-small {
   justify-content: space-between;
   border: 2px solid;
   margin: 16px auto;
@@ -140,7 +154,6 @@
   }
   .inspirations-top-nav {}
   .inpsirations-top-ul {
-    display: flex;
     justify-content: space-around;
     height: 100%;
   }
@@ -156,7 +169,6 @@
     grid-row-end: 2;
   }
   .inspiration-gallery {
-    display: flex;
     width: 100%;
     overflow: hidden;
     overflow-x: scroll;
@@ -197,31 +209,22 @@
     height: 20%;
   }
   .inspiration-description {
-    text-align: left;
     margin: 10% auto;
     line-height: 1.3em;
     font-size: 1.2em;
     font-family: sans-serif;
   }
   .inspiration-history {
-    text-align: left;
     margin: 10% auto;
     line-height: 1.3em;
     font-size: 1.2em;
     font-family: sans-serif;
   }
   .inspiration-activities {
-    margin: 10px auto;
-    text-align: left;
     padding: 1%;
   }
   .inspiration-activities-photo {
-    width: 56%;
     float: left;
-    margin: 10px 10px 5px 1px;
-  }
-  .inspiration-activities-description {
-    margin-top: 10px;
   }
 
   .inspiration-weather {}
@@ -254,7 +257,6 @@
     border-bottom: 1px solid black;
   }
   .inpsirations-top-ul {
-    display: flex;
     justify-content: space-around;
     height: 100%;
   }
@@ -270,7 +272,6 @@
     grid-row-end: 2;
   }
   .inspiration-gallery {
-    display: flex;
     width: 100%;
     overflow: hidden;
     justify-content: space-around;
@@ -311,7 +312,6 @@
   }
   .inspiration-description {
     width: 50%;
-    text-align: left;
     line-height: 1.4em;
     font-size: 1.3em;
     font-family: sans-serif;
@@ -319,7 +319,6 @@
   }
   .inspiration-history {
     width: 50%;
-    text-align: left;
     line-height: 1.4em;
     font-size: 1.3em;
     font-family: sans-serif;
@@ -334,18 +333,14 @@
   }
   .inspiration-activities {
     width: 70%;
-    margin: 10px auto;
-    text-align: left;
     padding: 1%;
   }
   .inspiration-activities-photo {
     width: 510px;
     height: 340px;
     float: left;
-    margin: 10px 10px 5px 1px;
   }
   .inspiration-activities-description {
-    margin-top: 10px;
     width: 84%;
   }
 
