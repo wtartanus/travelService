@@ -127,7 +127,7 @@
 
     <section class="inpsirations-top-nav-container">
       <nav class="inspirations-top-nav">
-        <ul class="inpsirations-top-ul">
+        <ul class="inspirations-top-ul">
           <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
         </ul>
       </nav>
@@ -235,7 +235,7 @@
 
     <section class="inpsirations-top-nav-container">
       <nav class="inspirations-top-nav">
-        <ul class="inpsirations-top-ul">
+        <ul class="inspirations-top-ul">
           <li class="inspiration-top-li" *ngFor="let inspiration of inspirations" (click)="selectedInspiration = inspiration; changeDisplay('displayDescription')" [ngClass]="{'selected': selectedInspiration.city.name === inspiration.city.name}">{{inspiration.city.name}}</li>
         </ul>
       </nav>
