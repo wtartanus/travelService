@@ -40,7 +40,9 @@
   <section id="inspirations-container-small">
     <section *ngFor="let inspiration of inspirations; let i = index" class="inspiration-container-small">
       <h2 class="isnpiration-name-small">{{inspiration.city.name}}</h2>
-      <img *ngIf="!inspiration.menu.displayActivities" class="inspiration-photo-small" src="{{inspiration.photos[inspiration.photoPosition].link}}" />
+      <div *ngIf="!inspiration.menu.displayActivities" class="inspiration-photo-container-small">
+        <img  class="inspiration-photo-small" src="{{inspiration.photos[inspiration.photoPosition].link}}" />
+      </div>
       <nav *ngIf="!inspiration.menu.displayActivities" class="arrows-container-small">
         <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'photoPosition', i)"></i>
         <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'photoPosition', i)"></i>
@@ -57,8 +59,8 @@
         <p class="inspiration-activities-description-small clearfix">{{inspiration.activities[inspiration.activityPosition].desc}}</p>
 
         <nav class="arrows-container-small">
-          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, i, 'activityPosition')"></i>
-          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, i, 'activityPosition')"></i>
+          <i class="fa fa-arrow-circle-left" aria-hidden="true" (click)="changeItem(false, 'activityPosition', i)"></i>
+          <i class="fa fa-arrow-circle-right" aria-hidden="true" (click)="changeItem(true, 'activityPosition', i)"></i>
         </nav>
 
       </section>

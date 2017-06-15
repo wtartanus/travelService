@@ -25,7 +25,12 @@
   color: brown;
 }
 
-.inspiration-photo-small,
+.inspiration-photo-small {
+  width: 100%;
+  height: 95%;
+}
+
+.inspiration-photo-container-small,
 .inspiration-description-small,
 .inspiration-description,
 .inspiration-history {
@@ -52,6 +57,10 @@
   cursor: pointer;
 }
 
+.inspiration-photo-container-small {
+  height: 370px;
+}
+
 .arrows-container-small,
 .arrows-container {
   margin-top: 5px;
@@ -65,7 +74,8 @@
   text-align: left;
 }
 
-.inspiration-description-small {
+.inspiration-description-small,
+.inspiration-photo-container-small {
   margin: auto;
 }
 
