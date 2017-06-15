@@ -1,3 +1,4 @@
+
 <section *ngIf="windowSize.width < 800" id="nav-container-small">
   <div class="menu-heading-small" [style.border-bottom]="showNav ? 'none' : '1.5px solid black' " (click)="showNav = !showNav">
     <span [style.cursor]="'pointer'" [style.margin-left]="'2%'"><i class="fa fa-bars fa-3x" aria-hidden="true"></i> </span>
@@ -111,7 +112,7 @@
         <p class="input-label-medium"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
         <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
       </section>
-      <!-- <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button> -->
+      <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
     </form>
   </section>
   <section id="inspirations-container">
@@ -176,52 +177,11 @@
         <ul class="nav-list-full">
           <li class="nav-list-item-full"><a class="navigation-element" href="#">About</a></li>
           <li class="nav-list-item-full"><a class="navigation-element" href="#">Inspirations</a></li>
-          <li class="nav-list-item-full" (click)="showModal = !showModal"><a class="navigation-element" href="#">Search</a></li>
+          <li class="nav-list-item-full navigation-element search" (click)="showModal = !showModal">Search</li>
           <li class="nav-list-item-full"><a class="navigation-element" href="#">Sign Up / Login In</a></li>
         </ul>
       </nav>
       <span id="logo-nav-full">Travel Guide</span>
-    </section>
-    <section *ngIf="showModal" class="form-new">
-      <header class="modal-header">
-        <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
-        <h1>Search</h1>
-      </header>
-      <section class="modal-body">
-        <table class="form-table">
-          <tr>
-            <td class="form-table-td">
-              <p class="input-label-full"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
-            </td>
-            <td class="form-table-td">
-              <p class="input-label-full"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
-            </td>
-            <td class="form-table-td">
-              <p class="input-label-full"><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
-            </td>
-            <td class="form-table-td">
-              <p class="input-label-full"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
-            </td>
-          </tr>
-          <tr>
-            <td class="form-table-td">
-              <input class="input-full" type="text" [(ngModel)]="destination" required>
-            </td>
-            <td class="form-table-td">
-              <input class="input-full" type="text" />
-            </td>
-            <td class="form-table-td">
-              <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
-            </td>
-            <td class="form-table-td">
-              <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
-            </td>
-          </tr>
-        </table>
-      </section>
-      <div class="modal-footer clearfix">
-        <button type="submit" class="search-button-full" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
-      </div>
     </section>
   </section>
   <section id="inspirations-container">
@@ -281,4 +241,45 @@
       </article>
     </section>
   </section>
+</section>
+<section  class="form-new" [ngStyle]="{'opacity': showModal ? '1' : '0'}">
+  <header class="modal-header">
+    <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
+    <h1>Search</h1>
+  </header>
+  <section class="modal-body">
+    <table class="form-table">
+      <tr>
+        <td class="form-table-td">
+          <p class="input-label-full"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
+        </td>
+        <td class="form-table-td">
+          <p class="input-label-full"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
+        </td>
+        <td class="form-table-td">
+          <p class="input-label-full"><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
+        </td>
+        <td class="form-table-td">
+          <p class="input-label-full"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="form-table-td">
+          <input class="input-full" type="text" [(ngModel)]="destination" required>
+        </td>
+        <td class="form-table-td">
+          <input class="input-full" type="text" />
+        </td>
+        <td class="form-table-td">
+          <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+        </td>
+        <td class="form-table-td">
+          <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+        </td>
+      </tr>
+    </table>
+  </section>
+  <div class="modal-footer clearfix">
+    <button type="submit" class="search-button-full" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+  </div>
 </section>

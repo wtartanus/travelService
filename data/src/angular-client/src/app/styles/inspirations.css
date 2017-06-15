@@ -107,6 +107,10 @@
   display: flex;
 }
 
+.inspirations-top-ul {
+  justify-content: space-around;
+}
+
 .inspiration-gallery,
 .inspiration-menu-small {
   justify-content: space-between;
@@ -155,6 +159,7 @@
   .inspirations-side-nav-container,
   .inspirations-top-nav{
     grid-row-start: 1;
+    border-bottom: 1px solid;
   }
   .inspirations-side-nav-container {
     grid-row-end: span 2;

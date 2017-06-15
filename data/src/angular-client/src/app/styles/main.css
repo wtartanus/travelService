@@ -77,7 +77,7 @@ ul {
 #nav-small,
 .bottom-menu,
 .input-small,
-search-button-small,
+.search-button-small,
 .input-medium,
 #nav-container-full,
 .modal-body table {
@@ -199,12 +199,18 @@ search-button-small,
     margin-right: 5px;
 }
 
+.search-button-small {
+  margin-left: 29%;
+  width: 206px;
+  height: 52px;
+}
+
 .search-button-small,
 .search-button-medium {
-    margin-top: 5%;
-    background-color: dodgerblue;
-    font-size: 1.2em;
-    letter-spacing: .2em;
+  margin-top: 5%;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
 }
 
 #nav-container-medium,
@@ -231,7 +237,7 @@ search-button-small,
     }
 
     #logo-nav-medium {
-        color: blue;
+        color: brown;
         margin-left: 25px;
     }
 
@@ -325,9 +331,14 @@ search-button-small,
       height: 30%;
   }
 
+  .search {
+    position: relative;
+    bottom: -13px;
+    cursor: pointer;
+  }
     .form-new {
         width: 75%;
-        position: absolute;
+        position: fixed !important;
         bottom: 20%;
         left: 14%;
     }
