@@ -183,6 +183,12 @@
   .full-icon {
     color: chocolate;
   }
+  .full-icon {
+    font-size: 2em;
+    position: relative;
+    top: -30px;
+    left: 48%;
+  }
   .inspiration-top-li {
     font-size: x-large;
   }
@@ -268,12 +274,7 @@
     font-family: sans-serif;
     margin: 4% auto;
   }
-  .full-icon {
-    font-size: 2em;
-    position: relative;
-    top: -30px;
-    left: 48%;
-  }
+
   .inspiration-activities {
     width: 70%;
   }

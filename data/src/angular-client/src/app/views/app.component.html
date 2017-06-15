@@ -139,9 +139,11 @@
         <img class="inspiration-photo" *ngFor="let image of selectedInspiration.photos; let i = index" src="{{image.link}}" />
       </article>
       <article *ngIf="selectedInspiration.menu.displayDescription" class="inspiration-description">
+        <span class="full-icon"><i aria-hidden="true" class="fa fa-file-text-o"></i></span>
         <p>{{selectedInspiration.city.description}}</p>
       </article>
       <article *ngIf="selectedInspiration.menu.displayHistory" class="inspiration-history">
+        <span class="full-icon"><i aria-hidden="true" class="fa fa-university"></i></span>
         <p>{{selectedInspiration.city.history}}</p>
       </article>
       <article *ngIf="selectedInspiration.menu.displayActivities" class="inspiration-activities">
