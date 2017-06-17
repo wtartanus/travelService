@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import {CommonService} from './../services/common.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
+declare var google: any;
 
 @Component({
   selector: 'my-app',
@@ -78,6 +79,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.windowSize = this.commonService.getWindowSize();
     console.debug("Window size", this.windowSize);
+    let input = document.getElementById('locationTextField');
+    let autocomplete = new google.maps.places.Autocomplete(input);
     this.getInspirations();
     if (this.windowSize.getWidth() >= 1200) {
       this.height = '38px';
@@ -146,6 +149,8 @@ export class AppComponent implements OnInit {
   }
 
  search() {
+   let input = document.getElementById('locationTextField');
+   this.destination = input["value"];
    this.commonService.getCityDescription(this.destination).then( result => this.getText(result));
  }
 }

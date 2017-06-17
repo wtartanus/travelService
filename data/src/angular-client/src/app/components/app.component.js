@@ -69,6 +69,8 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         console.debug("Window size", this.windowSize);
+        var input = document.getElementById('locationTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
         this.getInspirations();
         if (this.windowSize.getWidth() >= 1200) {
             this.height = '38px';
@@ -130,6 +132,8 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.search = function () {
         var _this = this;
+        var input = document.getElementById('locationTextField');
+        this.destination = input["value"];
         this.commonService.getCityDescription(this.destination).then(function (result) { return _this.getText(result); });
     };
     return AppComponent;

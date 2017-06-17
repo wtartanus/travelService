@@ -32,7 +32,7 @@ export class CommonService {
     getCityDescription(city: String): Promise<any> {
       //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
       //city = city.indexOf(" ") > -1 ? city.split(" ").join("%20") : city;
-
+      city = city.split(",")[0];
       if(city.indexOf(" ") > -1) {
          let afterSplit = city.split(" ");
          for (var i = 0; i < afterSplit.length; i++) {
