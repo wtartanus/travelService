@@ -54,7 +54,7 @@ export class CommonService {
              .catch(this.handleError);
     };
 
-    private handleError(error: any): Promise<any> {
+    public handleError(error: any): Promise<any> {
       console.error('An error occured', error);
       return Promise.reject(error.message || error);
     };

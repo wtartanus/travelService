@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {CommonService} from './../services/common.service.js';
+import {SearchService} from './../services/search.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
 declare var google: any;
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
   public selectedSideNav: string;
   public showPhot = false;
 
-  constructor(private commonService: CommonService) { };
+  constructor(private commonService: CommonService, private searchService: SearchService) { };
 
   setOptions(isReturn: boolean) {
     let date = isReturn ? this.returnDate : this.today;
@@ -78,7 +79,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowSize = this.commonService.getWindowSize();
-    console.debug("Window size", this.windowSize);
     let input = document.getElementById('locationTextField');
     let autocomplete = new google.maps.places.Autocomplete(input);
     this.getInspirations();
@@ -151,6 +151,6 @@ export class AppComponent implements OnInit {
  search() {
    let input = document.getElementById('locationTextField');
    this.destination = input["value"];
-   this.commonService.getCityDescription(this.destination).then( result => this.getText(result));
+   this.searchService.getCityDescription(this.destination).then( result => this.getText(result));
  }
 }
