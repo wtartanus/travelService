@@ -126,16 +126,10 @@ var AppComponent = (function () {
             }
         }
     };
-    AppComponent.prototype.getText = function (text) {
-        console.log(text);
-        var key = Object.keys(text.query.pages)[0];
-        console.log("text: ", text.query.pages[key].extract.replace(/(<([^>]+)>)/ig, ""));
-    };
     AppComponent.prototype.search = function () {
-        var _this = this;
         var input = document.getElementById('locationTextField');
         this.destination = input["value"];
-        this.searchService.getCityDescription(this.destination).then(function (result) { return _this.getText(result); });
+        this.searchService.processSearch(this.destination);
     };
     return AppComponent;
 }());

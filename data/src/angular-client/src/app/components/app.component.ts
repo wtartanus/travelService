@@ -141,16 +141,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  getText(text: any) {
-    console.log(text);
-    let key = Object.keys(text.query.pages)[0];
-
-    console.log("text: ", text.query.pages[key].extract.replace(/(<([^>]+)>)/ig,""));
-  }
-
  search() {
    let input = document.getElementById('locationTextField');
    this.destination = input["value"];
-   this.searchService.getCityDescription(this.destination).then( result => this.getText(result));
+   this.searchService.processSearch(this.destination);
  }
 }
