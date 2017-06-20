@@ -9,6 +9,7 @@ import { AppComponent } from './../components/app.component.js';
 
 import { CommonService } from './../services/common.service.js';
 import { SearchService } from './../services/search.service.js';
+import {SearchResultService } from './../services/searchResult.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
 import { Activity } from './../models/activity.js';
@@ -28,7 +29,7 @@ import { Weather } from './../models/weather.js';
   declarations: [
     AppComponent,
   ],
-  providers: [CommonService, SearchService, WindowSize, Inspiration, Activity, City, Photo, Weather],
+  providers: [CommonService, SearchService, SearchResultService, WindowSize, Inspiration, Activity, City, Photo, Weather],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
