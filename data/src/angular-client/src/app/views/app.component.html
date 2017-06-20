@@ -29,13 +29,14 @@
     <form id="form-small" class="form-container-small">
       <p class="input-label-small"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
       <input class="input-small" type="text" [(ngModel)]="destination" name="destination" required>
+      <span *ngIf="!searchService.destinationCorrect" class="invalid-small">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
       <p class="input-label-small"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
       <input class="input-small" type="text" />
       <p class="input-label-small"><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
       <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
       <p class="input-label-small"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
       <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
-      <button type="submit" class="search-button-small">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+      <button type="submit" class="search-button-small" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
     </form>
 
   <section id="inspirations-container-small">
@@ -102,7 +103,8 @@
     <form class="form-medium">
       <section class="form-medium" [style.width]="'50%'">
         <p class="input-label-medium"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
-        <input class="input-medium" type="text" required>
+        <input class="input-medium" type="text" required />
+        <span *ngIf="!searchService.destinationCorrect"  class="invalid-small">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
         <p class="input-label-medium"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
         <input class="input-medium" type="text" />
       </section>
@@ -112,7 +114,7 @@
         <p class="input-label-medium"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
         <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
       </section>
-      <button type="submit" class="search-button-medium">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
+      <button type="submit" class="search-button-medium" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
     </form>
   </section>
   <section id="inspirations-container">
@@ -248,6 +250,7 @@
     <h1>Search</h1>
   </header>
   <section class="modal-body">
+      <span class="invalid-small" *ngIf="!searchService.destinationCorrect">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
     <table class="form-table">
       <tr>
         <td class="form-table-td">
@@ -277,7 +280,6 @@
           <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
         </td>
       </tr>
-      <tr *ngIf="!searchService.destinationCorrect"><td>!!!!!!!!!!!!!1</td></tr>
     </table>
   </section>
   <div class="modal-footer clearfix">

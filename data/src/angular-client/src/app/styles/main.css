@@ -218,6 +218,18 @@ ul {
     padding-bottom: 1em;
 }
 
+.invalid-small {
+  color: red;
+  position: relative;
+  top: -3em;
+  left: 68%;
+  font-size: small;
+}
+
+.invalid-small i {
+  font-size: xx-large;
+}
+
 /*Medium Size*/
 @media screen and (min-width: 800px) {
     #nav-container-medium {
@@ -257,6 +269,10 @@ ul {
     .splash-container-medium {
       background-image: url("./../../../images/sky.jpg");
       height: 700px;
+    }
+
+    .invalid-small {
+      left: 44%;
     }
 
     .splash-box-medium,
@@ -315,6 +331,11 @@ ul {
 .nav-list-item-full {
     margin-left: 50px;
     padding-top: 17px;
+}
+
+.invalid-small {
+  left: 14%;
+  top: 80px;
 }
 
 .navigation-element:hover {
