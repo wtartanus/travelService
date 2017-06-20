@@ -5,3 +5,6 @@
 /angular-client/node_modules
 /angular-client/images
 *.jpg
+/data/src/angular-client/images
+/data/src/angular-client/cities.js
+/data/src/angular-client/node_modules

@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var common_service_js_1 = require("./../services/common.service.js");
+var search_service_js_1 = require("./../services/search.service.js");
 var AppComponent = (function () {
-    function AppComponent(commonService) {
+    function AppComponent(commonService, searchService) {
         this.commonService = commonService;
+        this.searchService = searchService;
         this.showNav = false;
         this.showModal = false;
         this.today = new Date();
@@ -68,7 +70,6 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
-        console.debug("Window size", this.windowSize);
         var input = document.getElementById('locationTextField');
         var autocomplete = new google.maps.places.Autocomplete(input);
         this.getInspirations();
@@ -125,16 +126,10 @@ var AppComponent = (function () {
             }
         }
     };
-    AppComponent.prototype.getText = function (text) {
-        console.log(text);
-        var key = Object.keys(text.query.pages)[0];
-        console.log("text: ", text.query.pages[key].extract.replace(/(<([^>]+)>)/ig, ""));
-    };
     AppComponent.prototype.search = function () {
-        var _this = this;
         var input = document.getElementById('locationTextField');
         this.destination = input["value"];
-        this.commonService.getCityDescription(this.destination).then(function (result) { return _this.getText(result); });
+        this.searchService.processSearch(this.destination);
     };
     return AppComponent;
 }());
@@ -144,7 +139,7 @@ AppComponent = __decorate([
         templateUrl: 'src/app/views/app.component.html',
         providers: [common_service_js_1.CommonService]
     }),
-    __metadata("design:paramtypes", [common_service_js_1.CommonService])
+    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

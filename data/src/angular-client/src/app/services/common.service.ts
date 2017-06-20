@@ -22,39 +22,18 @@ export class CommonService {
         return this.windowSize;
     };
 
-    getInspirations(): Promise<Inspiration[]> {
-       return this.http.get("http://localhost:8080/travel-guide/data/inspirations")
-               .toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
-    };
-
-    getCityDescription(city: String): Promise<any> {
-      //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
-      //city = city.indexOf(" ") > -1 ? city.split(" ").join("%20") : city;
-      city = city.split(",")[0];
-      if(city.indexOf(" ") > -1) {
-         let afterSplit = city.split(" ");
-         for (var i = 0; i < afterSplit.length; i++) {
-
-            afterSplit[i] = afterSplit[i].charAt(0).toUpperCase() + afterSplit[i].slice(1);
-
-         }
-
-         city = afterSplit.join("%20");
-      } else {
-        city[0].toUpperCase();
-      }
-
-      console.log("city", city);
-      let url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=" + city;
+    apiGet(url: string): Promise<any> {
       return this.http.get(url)
-             .toPromise()
-             .then(response => response.json())
-             .catch(this.handleError);
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
+    }
+
+    getInspirations(): Promise<Inspiration[]> {
+        return this.apiGet("http://localhost:8080/travel-guide/data/inspirations");
     };
 
-    private handleError(error: any): Promise<any> {
+    public handleError(error: any): Promise<any> {
       console.error('An error occured', error);
       return Promise.reject(error.message || error);
     };

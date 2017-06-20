@@ -277,6 +277,7 @@
           <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
         </td>
       </tr>
+      <tr *ngIf="!searchService.destinationCorrect"><td>!!!!!!!!!!!!!1</td></tr>
     </table>
   </section>
   <div class="modal-footer clearfix">

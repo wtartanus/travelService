@@ -29,33 +29,14 @@ var CommonService = (function () {
         return this.windowSize;
     };
     ;
-    CommonService.prototype.getInspirations = function () {
-        return this.http.get("http://localhost:8080/travel-guide/data/inspirations")
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch(this.handleError);
-    };
-    ;
-    CommonService.prototype.getCityDescription = function (city) {
-        //http://de.wikipedia.org/w/api.php?action=query&prop=revisions&titles=M%C3%BCnchen&rvprop=content&format=xml
-        //city = city.indexOf(" ") > -1 ? city.split(" ").join("%20") : city;
-        city = city.split(",")[0];
-        if (city.indexOf(" ") > -1) {
-            var afterSplit = city.split(" ");
-            for (var i = 0; i < afterSplit.length; i++) {
-                afterSplit[i] = afterSplit[i].charAt(0).toUpperCase() + afterSplit[i].slice(1);
-            }
-            city = afterSplit.join("%20");
-        }
-        else {
-            city[0].toUpperCase();
-        }
-        console.log("city", city);
-        var url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=" + city;
+    CommonService.prototype.apiGet = function (url) {
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
+    };
+    CommonService.prototype.getInspirations = function () {
+        return this.apiGet("http://localhost:8080/travel-guide/data/inspirations");
     };
     ;
     CommonService.prototype.handleError = function (error) {

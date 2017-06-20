@@ -8,6 +8,7 @@ import { ChartModule } from 'angular2-highcharts';
 import { AppComponent } from './../components/app.component.js';
 
 import { CommonService } from './../services/common.service.js';
+import { SearchService } from './../services/search.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
 import { Activity } from './../models/activity.js';
@@ -27,7 +28,7 @@ import { Weather } from './../models/weather.js';
   declarations: [
     AppComponent,
   ],
-  providers: [CommonService, WindowSize, Inspiration, Activity, City, Photo, Weather],
+  providers: [CommonService, SearchService, WindowSize, Inspiration, Activity, City, Photo, Weather],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
