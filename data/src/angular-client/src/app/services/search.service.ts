@@ -74,10 +74,7 @@ export class SearchService {
     }
 
     let url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Poland&prop=city" ;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.commonService.handleError);
+    this.commonService.apiGet(url);
   };
 
   processSearch(city: String) {

@@ -69,10 +69,7 @@ var SearchService = (function () {
             city[0].toUpperCase();
         }
         var url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Poland&prop=city";
-        return this.http.get(url)
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch(this.commonService.handleError);
+        this.commonService.apiGet(url);
     };
     ;
     SearchService.prototype.processSearch = function (city) {
