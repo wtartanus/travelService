@@ -185,6 +185,14 @@
       </nav>
       <span id="logo-nav-full">Travel Guide</span>
     </section>
+    <section  class="form-new">
+          <span class="invalid-small" *ngIf="!searchService.destinationCorrect">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
+              <input class="input-full" id="locationTextField" autocomplete="on" type="text" [(ngModel)]="destination" required /><span><i class="fa fa-map-marker input-icon fa-2x" aria-hidden="true"></i></span>
+              <input class="input-full" type="text" /><span><i class="fa fa-home input-icon fa-2x" aria-hidden="true"></i></span>
+              <my-date-picker class="datepicker" name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
+              <my-date-picker class="datepicker" name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+              <button type="submit" class="search-button-full" (click)="search()"><i class="fa fa-search" [style.font-size]="'x-large'" aria-hidden="true"></i></button>
+    </section>
   </section>
   <section id="inspirations-container">
 
@@ -243,46 +251,4 @@
       </article>
     </section>
   </section>
-</section>
-<section  class="form-new" [ngStyle]="{'opacity': showModal ? '1' : '0'}">
-  <header class="modal-header">
-    <i class="fa fa-times close-modal" aria-hidden="true" (click)="showModal = !showModal" title='Close'></i>
-    <h1>Search</h1>
-  </header>
-  <section class="modal-body">
-      <span class="invalid-small" *ngIf="!searchService.destinationCorrect">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
-    <table class="form-table">
-      <tr>
-        <td class="form-table-td">
-          <p class="input-label-full"><span><i class="fa fa-globe form-icon" aria-hidden="true"></i></span>Destination: </p>
-        </td>
-        <td class="form-table-td">
-          <p class="input-label-full"><span><i class="fa fa-home form-icon" aria-hidden="true"></i></span>From: </p>
-        </td>
-        <td class="form-table-td">
-          <p class="input-label-full"><span><i class="fa fa-arrow-right form-icon" aria-hidden="true"></i></span>Depart: </p>
-        </td>
-        <td class="form-table-td">
-          <p class="input-label-full"><span><i class="fa fa-arrow-left form-icon"  aria-hidden="true"></i></span>Return: </p>
-        </td>
-      </tr>
-      <tr>
-        <td class="form-table-td">
-          <input class="input-full" id="locationTextField" autocomplete="on" type="text" [(ngModel)]="destination" required>
-        </td>
-        <td class="form-table-td">
-          <input class="input-full" type="text" />
-        </td>
-        <td class="form-table-td">
-          <my-date-picker name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
-        </td>
-        <td class="form-table-td">
-          <my-date-picker name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
-        </td>
-      </tr>
-    </table>
-  </section>
-  <div class="modal-footer clearfix">
-    <button type="submit" class="search-button-full" (click)="search()">Search <i class="fa fa-search" [style.margin-left]="'5px'" aria-hidden="true"></i></button>
-  </div>
 </section>
