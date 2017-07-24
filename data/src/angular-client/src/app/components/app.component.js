@@ -74,8 +74,8 @@ var AppComponent = (function () {
         var autocomplete = new google.maps.places.Autocomplete(input);
         this.getInspirations();
         if (this.windowSize.getWidth() >= 1200) {
-            this.height = '38px';
-            this.width = '90%';
+            this.height = '56.79px';
+            this.width = '100%';
         }
         this.departOptions = this.setOptions(false);
         this.returnOptions = this.setOptions(true);

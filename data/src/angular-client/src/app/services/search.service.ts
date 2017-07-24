@@ -49,7 +49,7 @@ export class SearchService {
 
   }
 
-  getCityDescription(city: String): Promise<any> {
+  mapCityName(city: String): String {
     city = city.split(",")[0];
     let found = false;
     for (var i = 0; i < Cities.length; i++) {
@@ -61,7 +61,7 @@ export class SearchService {
     }
     this.destinationCorrect = found;
     if(!this.destinationCorrect) {
-      return;
+      return undefined;
     }
     if (city.indexOf(" ") > -1) {
       let afterSplit = city.split(" ");
@@ -72,12 +72,38 @@ export class SearchService {
     } else {
       city[0].toUpperCase();
     }
+    return city;
+  }
 
-    let url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Poland&prop=city" ;
-    this.commonService.apiGet(url);
+  getCityDescription(city: String): Promise<any> {
+    city = this.mapCityName(city);
+    if(city) {
+      let url = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Poland&prop=city" ;
+      return this.commonService.apiGet(url);
+    } else {
+      //do something if city isn't correct, for sure block another searches
+    }
+
   };
 
+  getImages(city: String): Promise<any> {
+    city = this.mapCityName(city);
+    if(city) {
+      let url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDcewjcNWr02P6fuioswBb5sya93AasbWc&cx=010284551349995783765:wkbvm2xpi5m&searchType=image&q=" + city;
+      return this.commonService.apiGet(url);
+    }
+  }
+
+  getSomething() {
+    //google places
+    let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyCicS4jktn-E7MhqLiM2vDND_YsQ1VMdUo"
+    return this.commonService.apiGet(url);
+  }
+
+
   processSearch(city: String) {
-    this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
+    this.getSomething().then(result => console.log("@@@@@",result));
+    //this.getImages(city).then(result => console.log(result));
+    //this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
   }
 }
