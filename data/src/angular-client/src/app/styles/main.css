@@ -31,8 +31,7 @@ ul {
 }
 
 .navigation-element {
-  color: chocolate;
-  text-shadow: 1px 1px 1px brown;
+  color: white;
 }
 
 .menu-heading-small, #nav-small {
@@ -40,18 +39,31 @@ ul {
 }
 
 .menu-heading-small {
-  padding-bottom: 5px;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, .3);
 }
 
 #logo-heading-small, #logo-nav-medium, #logo-nav-full {
   font-family: 'Cinzel', serif;
 }
 
-#logo-heading-small, #logo-nav-medium, #logo-nav-full {
-  color: brown;
+#logo-heading-small {
+  color: white;
+  letter-spacing: -7px;
+  margin-left: 2%;
+}
+#logo-nav-medium {
+  color: white;
 }
 
-#logo-heading-small, .close-modal, .search-button-full {
+#logo-nav-full {
+  color: white;
+}
+
+#logo-heading-small {
+
+}
+.close-modal, .search-button-full {
   float: right;
 }
 
@@ -66,7 +78,7 @@ ul {
 }
 
 #nav-small {
-  background-color: rgba(139, 69, 19, .7);
+  background-color: rgba(0, 0, 0, .3);
 }
 
 #nav-small, .bottom-menu, .input-small, .search-button-small, .input-medium, #nav-container-full {
@@ -197,18 +209,20 @@ ul {
 @media screen and (min-width: 800px) {
   #nav-container-medium {
     padding-top: .4em;
-    background-color: rgba(139, 69, 19, .4);
+    background-color: rgba(0, 0, 0, .3);
+    border-bottom: rgba(0,0,0,.4);
     justify-content: space-between;
   }
   .menu, #logo-nav-medium {
-    font-size: 1.5em;
+    font-size: 2em;
   }
   #log-nav-medium, #nav-full {
     flex-grow: 1;
   }
   #logo-nav-medium {
-    color: brown;
+    color: white;
     margin-left: 25px;
+    letter-spacing: -7px;
   }
   .nav-list-medium {
     flex-grow: 4;
@@ -259,13 +273,14 @@ ul {
 @media screen and (min-width: 1200px) {
   #nav-container-full {
     height: 10%;
-    background-color: rgba(139, 69, 19, .5);
+    background-color: rgba(0, 0, 0, .3);
+    border-bottom: 1px solid rgba(0,0,0,.4);
   }
   #logo-nav-full, .input-label-full {
     margin-left: 10px;
   }
   #logo-nav-full {
-    letter-spacing: 2px;
+    letter-spacing: -7px;
     padding-top: 1%;
     flex-grow: 3;
   }
@@ -354,7 +369,7 @@ ul {
     font-size: 3em;
   }
   #logo-nav-full {
-    letter-spacing: 4px;
+    letter-spacing: -7px;
   }
 }
 

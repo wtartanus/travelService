@@ -1,18 +1,18 @@
 
 <section *ngIf="windowSize.width < 800" id="nav-container-small">
-  <div class="menu-heading-small" [style.border-bottom]="showNav ? 'none' : '1.5px solid black' " (click)="showNav = !showNav">
-    <span [style.cursor]="'pointer'" [style.margin-left]="'2%'"><i class="fa fa-bars fa-3x" aria-hidden="true"></i> </span>
-    <span id="logo-heading-small">Travel Guide</span>
-  </div>
-  <nav *ngIf="showNav" class="menu" id="nav-small">
-    <ul class="nav-list-small">
-      <li><a class="navigation-element nav-item-small" href="#">About</a></li>
-      <li><a class="navigation-element nav-item-small" href="#">Inspirations</a></li>
-      <li><a class="navigation-element nav-item-small" href="#">Sign Up / Login In</a></li>
-    </ul>
-  </nav>
-  <section class="splash-container-small">
 
+  <section class="splash-container-small">
+    <div class="menu-heading-small" [style.border-bottom]="showNav ? 'none' : '1.5px solid black' " (click)="showNav = !showNav">
+      <span [style.cursor]="'pointer'" [style.float]="'right'" [style.margin-right]="'1%'"><i class="fa fa-bars fa-3x" aria-hidden="true"></i> </span>
+      <span id="logo-heading-small">Travel Guide</span>
+    </div>
+    <nav *ngIf="showNav" class="menu" id="nav-small">
+      <ul class="nav-list-small">
+        <li><a class="navigation-element nav-item-small" href="#">About</a></li>
+        <li><a class="navigation-element nav-item-small" href="#">Inspirations</a></li>
+        <li><a class="navigation-element nav-item-small" href="#">Sign Up / Login In</a></li>
+      </ul>
+    </nav>
   </section>
   <nav class="bottom-menu">
     <span><a href="#form-small"><i class="fa fa-search" aria-hidden="true"></i></a></span>
@@ -175,15 +175,14 @@
 
   <section class="splash-container-full" [style.height]=" windowSize.height + 'px'">
     <section id="nav-container-full">
+      <span id="logo-nav-full">Travel Guide</span>
       <nav class="menu" id="nav-full">
         <ul class="nav-list-full">
           <li class="nav-list-item-full"><a class="navigation-element" href="#">About</a></li>
           <li class="nav-list-item-full"><a class="navigation-element" href="#">Inspirations</a></li>
-          <li class="nav-list-item-full navigation-element search" (click)="showModal = !showModal">Search</li>
           <li class="nav-list-item-full"><a class="navigation-element" href="#">Sign Up / Login In</a></li>
         </ul>
       </nav>
-      <span id="logo-nav-full">Travel Guide</span>
     </section>
     <section  class="form-new">
           <span class="invalid-small" *ngIf="!searchService.destinationCorrect">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
