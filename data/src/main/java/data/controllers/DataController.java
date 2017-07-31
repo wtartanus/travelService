@@ -3,6 +3,7 @@ package data.controllers;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.google.gson.Gson;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class DataController {
   
 	public static final String DATA_BASE_URI = "travel-guide/data";
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value = "/inspirations")
 	public String getInspirations() {
 		InspirationMapping im = new InspirationMapping();
@@ -25,7 +27,6 @@ public class DataController {
 		Gson gson = new Gson();
 
 		String inspirationsJson = gson.toJson(inspirations);
-		
 		return  inspirationsJson;
 	}
 	

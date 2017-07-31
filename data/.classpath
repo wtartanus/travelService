@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/postgresql-9.4.1212.jre6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/gson-2.6.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Admin/.m2/repository/org/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="cors-filter-2.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -13,6 +13,7 @@ var http_1 = require("@angular/http");
 var mydatepicker_1 = require("mydatepicker");
 var angular2_highcharts_1 = require("angular2-highcharts");
 var app_component_js_1 = require("./../components/app.component.js");
+var inspirations_component_js_1 = require("./../components/inspirations.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
 var searchResult_service_js_1 = require("./../services/searchResult.service.js");
@@ -38,6 +39,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_js_1.AppComponent,
+            inspirations_component_js_1.InspirationsComponent
         ],
         providers: [common_service_js_1.CommonService, search_service_js_1.SearchService, searchResult_service_js_1.SearchResultService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather],
         bootstrap: [app_component_js_1.AppComponent]

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
+var inspirations_component_js_1 = require("./../components/inspirations.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
 var AppComponent = (function () {
@@ -25,7 +26,6 @@ var AppComponent = (function () {
         this.departOptions = {};
         this.width = '100%';
         this.height = '50px';
-        this.showPhot = false;
         this.departDateValue = {
             date: {
                 year: this.today.getFullYear(),
@@ -61,18 +61,10 @@ var AppComponent = (function () {
             selectionTxtFontSize: '1.5em'
         };
     };
-    AppComponent.prototype.getInspirations = function () {
-        var _this = this;
-        this.commonService.getInspirations().then(function (inspirations) { return _this.inspirations = _this.commonService.createInspirationsModel(inspirations); }).then(function () {
-            this.selectedInspiration = this.inspirations[0];
-        }.bind(this));
-        this.selectedSideNav = "displayDescription";
-    };
     AppComponent.prototype.ngOnInit = function () {
         this.windowSize = this.commonService.getWindowSize();
         var input = document.getElementById('locationTextField');
         var autocomplete = new google.maps.places.Autocomplete(input);
-        this.getInspirations();
         if (this.windowSize.getWidth() >= 1200) {
             this.height = '56.79px';
             this.width = '100%';
@@ -91,41 +83,6 @@ var AppComponent = (function () {
     AppComponent.prototype.searchForInspiration = function (city) {
         this.destination = city;
     };
-    AppComponent.prototype.changeItem = function (moveRight, item, inspirationIndex) {
-        var inspiration = inspirationIndex ? this.inspirations[inspirationIndex] : this.selectedInspiration;
-        var value = item === "photoPosition" ? "photos" : "activities";
-        if (moveRight) {
-            var nowPosition = inspiration[item];
-            nowPosition += 1;
-            if (nowPosition > (inspiration[value].length - 1)) {
-                nowPosition = 0;
-            }
-            inspiration[item] = nowPosition;
-        }
-        else {
-            var nowPosition = inspiration[item];
-            nowPosition -= 1;
-            if (nowPosition < 0) {
-                nowPosition = (inspiration[value].length - 1);
-            }
-            inspiration[item] = nowPosition;
-        }
-    };
-    AppComponent.prototype.changeDisplay = function (item, inspirationIndex) {
-        var inspiration = inspirationIndex ? this.inspirations[inspirationIndex] : this.selectedInspiration;
-        this.selectedSideNav = item;
-        var keys = Object.keys(inspiration.menu);
-        for (var i = 0; i < keys.length; i++) {
-            if (inspiration.menu.hasOwnProperty(keys[i])) {
-                if (keys[i] === item) {
-                    inspiration.menu[keys[i]] = true;
-                }
-                else {
-                    inspiration.menu[keys[i]] = false;
-                }
-            }
-        }
-    };
     AppComponent.prototype.search = function () {
         var input = document.getElementById('locationTextField');
         this.destination = input["value"];
@@ -137,7 +94,8 @@ AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
         templateUrl: 'src/app/views/app.component.html',
-        providers: [common_service_js_1.CommonService]
+        providers: [common_service_js_1.CommonService],
+        entryComponents: [inspirations_component_js_1.InspirationsComponent]
     }),
     __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
 ], AppComponent);
