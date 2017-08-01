@@ -52,6 +52,7 @@
       'mydatepicker': './../node_modules/mydatepicker/bundles/mydatepicker.umd.js',
       'angular2-highcharts': './node_modules/angular2-highcharts',
       'highcharts': './../node_modules/highcharts',
+      'moment': './../node_modules/moment',
 
       // other libraries
       'rxjs':                      'npm:rxjs@5.0.1',
@@ -81,10 +82,17 @@
       'angular2-highcharts': {
     		    main: './index.js',
     		    defaultExtension: 'js'
-    		  }
+    	},
+      'moment': {
+        map: './../node_modules/moment/moment',
+        type: 'cjs',
+        defaultExtension: 'js'
+      }
     }
   });
+new Promise(function(resolve, reject) {
 
+});
 })(this);
 
 /*

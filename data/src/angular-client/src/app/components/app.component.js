@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var inspirations_component_js_1 = require("./../components/inspirations.component.js");
+var datepicker_component_js_1 = require("./../components/datepicker.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
 var AppComponent = (function () {
@@ -95,7 +96,7 @@ AppComponent = __decorate([
         selector: 'my-app',
         templateUrl: 'src/app/views/app.component.html',
         providers: [common_service_js_1.CommonService],
-        entryComponents: [inspirations_component_js_1.InspirationsComponent]
+        entryComponents: [inspirations_component_js_1.InspirationsComponent, datepicker_component_js_1.DatePickerComponent]
     }),
     __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
 ], AppComponent);

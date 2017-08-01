@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { InspirationsComponent } from "./../components/inspirations.component.js";
+import { DatePickerComponent } from "./../components/datepicker.component.js"
 
 import {CommonService} from './../services/common.service.js';
 import {SearchService} from './../services/search.service.js';
@@ -15,7 +16,7 @@ declare var google: any;
   selector: 'my-app',
   templateUrl: 'src/app/views/app.component.html',
   providers: [CommonService],
-  entryComponents: [InspirationsComponent]
+  entryComponents: [InspirationsComponent, DatePickerComponent]
 })
 export class AppComponent implements OnInit {
   private showNav = false;

@@ -38,6 +38,7 @@
     "angular-in-memory-web-api": "~0.3.0",
     "angular2-highcharts": "^0.5.5",
     "core-js": "^2.4.1",
+    "moment": "^2.18.1",
     "mydatepicker": "^1.8.3",
     "ng2-datepicker": "^1.8.3",
     "ngx-mydatepicker": "^0.1.2",
