@@ -5,6 +5,7 @@ import * as moment from 'moment/moment';
 
 import {CommonService} from './../services/common.service.js';
 import { WindowSize } from './../models/windowSize.js';
+import { DayObject } from './../models/dayObject.js';
 
 @Component({
   selector: 'date-picker',
@@ -12,41 +13,42 @@ import { WindowSize } from './../models/windowSize.js';
   providers: [CommonService]
 })
 export class DatePickerComponent implements OnInit {
-  public currentMonth: any[] = new Array();
+  public currentMonth: Map<number, DayObject[]> = new Map();
   public currentYear: Number;
   public windowSize: WindowSize;
   public today: any;
-  public firstDay = {};
+  public firstDay: DayObject;
 
 
   ngOnInit(): void {
-    this.today = moment();
-    let dayOfTheMonth = this.today.date() - 1;
-    this.firstDay = {
-      value: this.today.clone().subtract(dayOfTheMonth, "days"),
-      dispaly: this.today.clone().subtract(dayOfTheMonth, "days").format("DD"),
-      week: this.today.clone().subtract(dayOfTheMonth, "days").week()
-    }
+    this.initFirstDay();
     this.createMonth();
     console.log("this.currentMonth: ", this.currentMonth);
+  }
+
+  initFirstDay(): void {
+    this.today = moment();
+    let dayOfTheMonth = this.today.date() - 1;
+    let value = this.today.clone().subtract(dayOfTheMonth, "days");
+    let dispaly = this.today.clone().subtract(dayOfTheMonth, "days").format("DD");
+    let week = this.today.clone().subtract(dayOfTheMonth, "days").week();
+
+    this.firstDay = new DayObject(value, dispaly, week);
   }
 
   //used to create array of whole month, as parrameter pass name of the month
   createMonth(): void {
     let day, week;
+    let days: DayObject[] = new Array();
 
-    this.currentMonth.push(this.firstDay);
+    days.push(this.firstDay);
     let run = true;
     let count = 0;
     while (run) {
-      day = this.currentMonth[count].value.clone().add(1, 'day');
+      day = days[count].value.clone().add(1, 'day');
       week = day.week();
-      if (this.currentMonth[this.currentMonth.length - 1].value.isSame(day, 'month')) {
-        this.currentMonth.push({
-          value: day,
-          display: day.format("DD"),
-          week: week
-        });
+      if (days[days.length - 1].value.isSame(day, 'month')) {
+         days.push(new DayObject(day, day.format("DD"), week));
       } else {
         run = false;
       }
@@ -54,6 +56,7 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
+  /*
   nextMonth() {
     let month = this.today.clone().add(1, "M");
     if(month.isAfter(this.state.today, "M")) {
@@ -78,7 +81,8 @@ export class DatePickerComponent implements OnInit {
       currentMonth: month.format("MMMM YYYY"),
       month: month
     });
-  }
+  } */
+  
 
   previousMonth() {
 

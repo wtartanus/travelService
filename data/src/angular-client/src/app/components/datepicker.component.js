@@ -8,71 +8,74 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
-var moment = require("moment/moment");
 var common_service_js_1 = require("./../services/common.service.js");
 var DatePickerComponent = (function () {
     function DatePickerComponent() {
-        this.currentMonth = new Array();
-        this.firstDay = {};
+        //TODO: currentMonthValues should be object with keys: week number and values arrays of days
+        this.currentMonthValues = new Map();
     }
-    DatePickerComponent.prototype.ngOnInit = function () {
-        this.today = moment();
-        var dayOfTheMonth = this.today.date() - 1;
-        this.firstDay = {
-            value: this.today.clone().subtract(dayOfTheMonth, "days"),
-            dispaly: this.today.clone().subtract(dayOfTheMonth, "days").format("DD"),
-            week: this.today.clone().subtract(dayOfTheMonth, "days").week()
-        };
-        this.createMonth();
-        console.log("this.currentMonth: ", this.currentMonth);
-    };
-    //used to create array of whole month, as parrameter pass name of the month
-    DatePickerComponent.prototype.createMonth = function () {
-        var day, week;
-        this.currentMonth.push(this.firstDay);
-        var run = true;
-        var count = 0;
-        while (run) {
-            day = this.currentMonth[count].value.clone().add(1, 'day');
-            week = day.week();
-            if (this.currentMonth[this.currentMonth.length - 1].value.isSame(day, 'month')) {
-                this.currentMonth.push({
-                    value: day,
-                    display: day.format("DD"),
-                    week: week
-                });
-            }
-            else {
-                run = false;
-            }
-            count++;
-        }
-    };
-    DatePickerComponent.prototype.nextMonth = function () {
-        var month = this.today.clone().add(1, "M");
-        if (month.isAfter(this.state.today, "M")) {
-            this.setState({
-                leftArrowStyle: { dispaly: "initial" }
-            });
-        }
-        else {
-            this.setState({
-                leftArrowStyle: { dispaly: "none" }
-            });
-        }
-        var dayOfTheMonth = month.date() - 1;
-        var firstDay = {
-            value: month.clone().subtract(dayOfTheMonth, "days"),
-            dispaly: month.clone().subtract(dayOfTheMonth, "days").format("DD"),
-            week: month.clone().subtract(dayOfTheMonth, "days").week()
-        };
-        var days = this.getDays(firstDay);
-        this.renderMonth(days, this.state.today);
-        this.setState({
-            currentMonth: month.format("MMMM YYYY"),
-            month: month
-        });
-    };
+    /* ngOnInit(): void {
+       this.today = moment();
+       let dayOfTheMonth = this.today.date() - 1;
+       this.firstDay = {
+         value: this.today.clone().subtract(dayOfTheMonth, "days"),
+         dispaly: this.today.clone().subtract(dayOfTheMonth, "days").format("DD"),
+         week: this.today.clone().subtract(dayOfTheMonth, "days").week()
+       }
+       this.createMonth();
+       console.log("this.currentMonth: ", this.currentMonthValues);
+     }
+   
+     //used to create array of whole month, as parrameter pass name of the month
+     createMonth(): void {
+       let day, week;
+   
+       let run = true;
+       let count = 0;
+       while (run) {
+         if(this.currentMonthValues.size === 0) {
+            day = this.firstDay[value].clone()
+         }
+         day = this.currentMonthValues[count].value.clone().add(1, 'day');
+         week = day.week();
+         if (this.currentMonthValues[this.currentMonthValues.length - 1].value.isSame(day, 'month')) {
+           this.currentMonthValues.push({
+             value: day,
+             display: day.format("DD"),
+             week: week
+           });
+         } else {
+           run = false;
+         }
+         count++;
+       }
+     }
+   
+     nextMonth() {
+       let month = this.today.clone().add(1, "M");
+       if(month.isAfter(this.state.today, "M")) {
+         this.setState({
+           leftArrowStyle: {dispaly: "initial"}
+         });
+       } else {
+         this.setState({
+           leftArrowStyle: {dispaly: "none"}
+         });
+       }
+       var dayOfTheMonth = month.date() - 1;
+       var firstDay = {
+         value: month.clone().subtract(dayOfTheMonth,"days"),
+         dispaly: month.clone().subtract(dayOfTheMonth,"days").format("DD"),
+         week: month.clone().subtract(dayOfTheMonth, "days").week()
+       }
+   
+       var days = this.getDays(firstDay);
+       this.renderMonth(days, this.state.today);
+       this.setState({
+         currentMonth: month.format("MMMM YYYY"),
+         month: month
+       });
+     } */
     DatePickerComponent.prototype.previousMonth = function () {
     };
     DatePickerComponent.prototype.listMonths = function () {

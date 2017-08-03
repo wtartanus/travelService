@@ -18,6 +18,7 @@ import { Activity } from './../models/activity.js';
 import { City } from './../models/city.js';
 import { Photo } from './../models/photo.js';
 import { Weather } from './../models/weather.js';
+import { DayObject } from './../models/dayObject.js'
 
 
 
@@ -34,7 +35,7 @@ import { Weather } from './../models/weather.js';
     InspirationsComponent,
     DatePickerComponent
   ],
-  providers: [CommonService, SearchService, SearchResultService, WindowSize, Inspiration, Activity, City, Photo, Weather],
+  providers: [CommonService, SearchService, SearchResultService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
