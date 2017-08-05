@@ -8,74 +8,83 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
+var moment = require("moment/moment");
 var common_service_js_1 = require("./../services/common.service.js");
+var dayObject_js_1 = require("./../models/dayObject.js");
 var DatePickerComponent = (function () {
     function DatePickerComponent() {
-        //TODO: currentMonthValues should be object with keys: week number and values arrays of days
-        this.currentMonthValues = new Map();
+        this.currentMonthMap = new Map();
     }
-    /* ngOnInit(): void {
-       this.today = moment();
-       let dayOfTheMonth = this.today.date() - 1;
-       this.firstDay = {
-         value: this.today.clone().subtract(dayOfTheMonth, "days"),
-         dispaly: this.today.clone().subtract(dayOfTheMonth, "days").format("DD"),
-         week: this.today.clone().subtract(dayOfTheMonth, "days").week()
-       }
-       this.createMonth();
-       console.log("this.currentMonth: ", this.currentMonthValues);
-     }
-   
-     //used to create array of whole month, as parrameter pass name of the month
-     createMonth(): void {
-       let day, week;
-   
-       let run = true;
-       let count = 0;
-       while (run) {
-         if(this.currentMonthValues.size === 0) {
-            day = this.firstDay[value].clone()
-         }
-         day = this.currentMonthValues[count].value.clone().add(1, 'day');
-         week = day.week();
-         if (this.currentMonthValues[this.currentMonthValues.length - 1].value.isSame(day, 'month')) {
-           this.currentMonthValues.push({
-             value: day,
-             display: day.format("DD"),
-             week: week
-           });
-         } else {
-           run = false;
-         }
-         count++;
-       }
-     }
-   
-     nextMonth() {
-       let month = this.today.clone().add(1, "M");
-       if(month.isAfter(this.state.today, "M")) {
-         this.setState({
-           leftArrowStyle: {dispaly: "initial"}
-         });
-       } else {
-         this.setState({
-           leftArrowStyle: {dispaly: "none"}
-         });
-       }
-       var dayOfTheMonth = month.date() - 1;
-       var firstDay = {
-         value: month.clone().subtract(dayOfTheMonth,"days"),
-         dispaly: month.clone().subtract(dayOfTheMonth,"days").format("DD"),
-         week: month.clone().subtract(dayOfTheMonth, "days").week()
-       }
-   
-       var days = this.getDays(firstDay);
-       this.renderMonth(days, this.state.today);
-       this.setState({
-         currentMonth: month.format("MMMM YYYY"),
-         month: month
-       });
-     } */
+    DatePickerComponent.prototype.ngOnInit = function () {
+        this.today = moment();
+        var firstDay = this.getFirstDayOfTheMonth(this.today);
+        this.createMonth(firstDay);
+        //console.log("this.currentMonth: ", this.currentMonthMap);
+        this.changeMonth(true);
+        // console.log("next month: ", this.currentMonthMap);
+        this.changeMonth(false);
+        this.changeMonth(false);
+        console.log("previous month: ", this.currentMonthMap);
+    };
+    DatePickerComponent.prototype.getFirstDayOfTheMonth = function (dayMoment) {
+        var dayOfTheMonth = dayMoment.date() - 1;
+        var value = dayMoment.clone().subtract(dayOfTheMonth, "days");
+        var dispaly = value.format("DD");
+        var week = value.week();
+        var firstDay = new dayObject_js_1.DayObject(dispaly, week);
+        firstDay.setValue(value);
+        return firstDay;
+    };
+    //used to create array of whole month, as parrameter pass name of the month
+    DatePickerComponent.prototype.createMonth = function (firstDay) {
+        var day, week;
+        var days = new Array();
+        days.push(firstDay);
+        var run = true;
+        var count = 0;
+        while (run) {
+            day = days[count].value.clone().add(1, 'day');
+            week = day.week();
+            if (days[days.length - 1].value.isSame(day, 'month')) {
+                var newDay = new dayObject_js_1.DayObject(day.format("DD"), week);
+                newDay.setValue(day);
+                days.push(newDay);
+            }
+            else {
+                run = false;
+            }
+            count++;
+        }
+        //map to current moment, key: week number, value: DayObject[]
+        for (var i = 0; i < days.length; i++) {
+            if (!this.currentMonthMap[days[i].week]) {
+                this.currentMonthMap[days[i].week] = new Array();
+                this.currentMonthMap[days[i].week].push(days[i]);
+            }
+            else {
+                this.currentMonthMap[days[i].week].push(days[i]);
+            }
+        }
+    };
+    DatePickerComponent.prototype.changeMonth = function (nextMonth) {
+        var keys = Object.keys(this.currentMonthMap);
+        var firstDay;
+        for (var i = 0; i < keys.length; i++) {
+            if (this.currentMonthMap.hasOwnProperty(keys[i])) {
+                firstDay = this.currentMonthMap[keys[i]][0];
+                break;
+            }
+        }
+        if (nextMonth) {
+            firstDay.value.add(1, "M");
+        }
+        else {
+            firstDay.value.subtract(1, "M");
+        }
+        firstDay = this.getFirstDayOfTheMonth(firstDay.value);
+        this.currentMonthMap = new Map();
+        this.createMonth(firstDay);
+    };
     DatePickerComponent.prototype.previousMonth = function () {
     };
     DatePickerComponent.prototype.listMonths = function () {

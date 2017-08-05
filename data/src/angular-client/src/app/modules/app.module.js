@@ -24,7 +24,7 @@ var activity_js_1 = require("./../models/activity.js");
 var city_js_1 = require("./../models/city.js");
 var photo_js_1 = require("./../models/photo.js");
 var weather_js_1 = require("./../models/weather.js");
-//import { DateObject } from './../models/dayObject.js'
+var dayObject_js_1 = require("./../models/dayObject.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +44,7 @@ AppModule = __decorate([
             inspirations_component_js_1.InspirationsComponent,
             datepicker_component_js_1.DatePickerComponent
         ],
-        providers: [common_service_js_1.CommonService, search_service_js_1.SearchService, searchResult_service_js_1.SearchResultService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather],
+        providers: [common_service_js_1.CommonService, search_service_js_1.SearchService, searchResult_service_js_1.SearchResultService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather, dayObject_js_1.DayObject],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);
