@@ -26,10 +26,10 @@ export class DatePickerComponent implements OnInit {
     let firstDay = this.getFirstDayOfTheMonth(this.today);
     this.createMonth(firstDay);
     //console.log("this.currentMonth: ", this.currentMonthMap);
-    this.changeMonth(true);
+   // this.changeMonth(true);
    // console.log("next month: ", this.currentMonthMap);
-    this.changeMonth(false);
-    this.changeMonth(false);
+   // this.changeMonth(false);
+   // this.changeMonth(false);
     console.log("previous month: ", this.currentMonthMap); 
   }
 
@@ -39,7 +39,7 @@ export class DatePickerComponent implements OnInit {
     let dispaly = value.format("DD");
     let week = value.week();
 
-    let firstDay = new DayObject(dispaly, week);
+    let firstDay = new DayObject(dispaly, week, true);
     firstDay.setValue(value);
     return firstDay;
   }
@@ -56,7 +56,7 @@ export class DatePickerComponent implements OnInit {
       day = days[count].value.clone().add(1, 'day');
       week = day.week();
       if (days[days.length - 1].value.isSame(day, 'month')) {
-         let newDay = new DayObject(day.format("DD"), week);
+         let newDay = new DayObject(day.format("DD"), week, true);
          newDay.setValue(day);
          days.push(newDay);
       } else {
@@ -75,6 +75,8 @@ export class DatePickerComponent implements OnInit {
          this.currentMonthMap[days[i].week].push(days[i]);
        }
     }
+    
+    this.populateEnds();
   }
 
   
@@ -99,12 +101,59 @@ export class DatePickerComponent implements OnInit {
     this.createMonth(firstDay);
   } 
   
+  populateEnds() {
+    //get first and last week
+    let firstWeek, lastWeek;
+    
+    let keys = Object.keys(this.currentMonthMap);
+    for(var i = 0; i < keys.length; i++) {
+      if(this.currentMonthMap.hasOwnProperty(keys[i])) {
+        if(!firstWeek) {
+          firstWeek = keys[i];
+        }
+        lastWeek = keys[i];
+      }
+    }
 
-  previousMonth() {
-
+    let firstDay = this.currentMonthMap[firstWeek][0];
+    let prevDay = firstDay.value.clone().subtract(1, "day");
+    let week = firstDay.week;
+    let count = 0;
+    while(week === firstDay.week) {
+      if(count > 0) {
+        prevDay = prevDay.clone().subtract(1, "day");
+      }
+      console.log("@@@@", prevDay);
+      if(prevDay.week() === firstDay.week) {
+        let newDay = new DayObject(prevDay.format("DD"), prevDay.week(), false);
+        newDay.setValue(prevDay);
+        this.currentMonthMap[firstWeek].unshift(newDay);
+      }
+      week = prevDay.week();
+      count++;
+    }
+    
+    let last = this.currentMonthMap[lastWeek].length - 1;
+    let lastDay = this.currentMonthMap[lastWeek][last];
+    let nextDay = lastDay.value.clone().add(1, "day");
+    week = lastDay.week;
+    count = 0;
+    while(week === lastDay.week) {
+      if(count > 0) {
+        nextDay = nextDay.clone().add(1, "day");
+      }
+      if(nextDay.week() === lastDay.week) {
+        let newDay = new DayObject(nextDay.format("DD"), nextDay.week(), false);
+        newDay.setValue(nextDay);
+        this.currentMonthMap[lastWeek].push(newDay);
+      }
+      week = nextDay.week();
+      count++;
+    } 
   }
 
   listMonths() {
+    
 
   }
 

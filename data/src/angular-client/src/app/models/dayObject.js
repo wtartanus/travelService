@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var DayObject = (function () {
-    function DayObject(display, week) {
+    function DayObject(display, week, isCurrentMonth) {
         this.display = display;
         this.week = week;
+        this.isCurrentMonth = isCurrentMonth;
     }
     DayObject.prototype.setValue = function (value) {
         this.value = value;
@@ -22,7 +23,7 @@ var DayObject = (function () {
 }());
 DayObject = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [String, Number])
+    __metadata("design:paramtypes", [String, Number, Boolean])
 ], DayObject);
 exports.DayObject = DayObject;
 //# sourceMappingURL=dayObject.js.map
