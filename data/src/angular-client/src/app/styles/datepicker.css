@@ -1,0 +1,39 @@
+#datepicker-container {
+
+}
+
+.datepicker-input {
+  cursor: pointer;
+}
+
+.datepicker-icon {
+
+}
+
+.calendar-container {
+
+}
+
+.calendar-arrow {
+
+}
+
+.calendar-left-arrow {
+
+}
+
+.calendar-right-arrow {
+
+}
+
+.calendar-title {
+
+}
+
+.calendar-weekend {
+    color: red;
+}
+
+.calendar-out-month {
+    color: gray;
+}

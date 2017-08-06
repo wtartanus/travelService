@@ -14,17 +14,13 @@ var dayObject_js_1 = require("./../models/dayObject.js");
 var DatePickerComponent = (function () {
     function DatePickerComponent() {
         this.currentMonthMap = new Map();
+        this.weeksList = new Array();
     }
     DatePickerComponent.prototype.ngOnInit = function () {
+        this.showCalendar = false;
         this.today = moment();
         var firstDay = this.getFirstDayOfTheMonth(this.today);
         this.createMonth(firstDay);
-        //console.log("this.currentMonth: ", this.currentMonthMap);
-        // this.changeMonth(true);
-        // console.log("next month: ", this.currentMonthMap);
-        // this.changeMonth(false);
-        // this.changeMonth(false);
-        console.log("previous month: ", this.currentMonthMap);
     };
     DatePickerComponent.prototype.getFirstDayOfTheMonth = function (dayMoment) {
         var dayOfTheMonth = dayMoment.date() - 1;
@@ -39,6 +35,7 @@ var DatePickerComponent = (function () {
     DatePickerComponent.prototype.createMonth = function (firstDay) {
         var day, week;
         var days = new Array();
+        this.currentMonth = firstDay.value.format("MMMM YYYY");
         days.push(firstDay);
         var run = true;
         var count = 0;
@@ -66,13 +63,32 @@ var DatePickerComponent = (function () {
             }
         }
         this.populateEnds();
+        if (this.weeksList) {
+            this.weeksList.length = 0;
+        }
+        var keys = Object.keys(this.currentMonthMap);
+        if (this.currentMonth.includes("December") && keys[0] === "1" && parseInt(keys[1]) > 2) {
+            var item = keys.shift();
+            keys.push(item);
+        }
+        for (var i = 0; i < keys.length; i++) {
+            if (this.currentMonthMap.hasOwnProperty(keys[i])) {
+                this.weeksList.push(keys[i]);
+            }
+        }
     };
     DatePickerComponent.prototype.changeMonth = function (nextMonth) {
         var keys = Object.keys(this.currentMonthMap);
         var firstDay;
         for (var i = 0; i < keys.length; i++) {
             if (this.currentMonthMap.hasOwnProperty(keys[i])) {
-                firstDay = this.currentMonthMap[keys[i]][0];
+                var week = this.currentMonthMap[keys[i]];
+                for (var d = 0; d < week.length; d++) {
+                    if (week[d].isCurrentMonth) {
+                        firstDay = week[d];
+                        break;
+                    }
+                }
                 break;
             }
         }
@@ -90,6 +106,10 @@ var DatePickerComponent = (function () {
         //get first and last week
         var firstWeek, lastWeek;
         var keys = Object.keys(this.currentMonthMap);
+        if (this.currentMonth.includes("December") && keys[0] === "1" && parseInt(keys[1]) > 2) {
+            var item = keys.shift();
+            keys.push(item);
+        }
         for (var i = 0; i < keys.length; i++) {
             if (this.currentMonthMap.hasOwnProperty(keys[i])) {
                 if (!firstWeek) {
@@ -106,7 +126,6 @@ var DatePickerComponent = (function () {
             if (count > 0) {
                 prevDay = prevDay.clone().subtract(1, "day");
             }
-            console.log("@@@@", prevDay);
             if (prevDay.week() === firstDay.week) {
                 var newDay = new dayObject_js_1.DayObject(prevDay.format("DD"), prevDay.week(), false);
                 newDay.setValue(prevDay);
@@ -132,6 +151,9 @@ var DatePickerComponent = (function () {
             week = nextDay.week();
             count++;
         }
+    };
+    DatePickerComponent.prototype.toggleCalendar = function () {
+        this.showCalendar = !this.showCalendar;
     };
     DatePickerComponent.prototype.listMonths = function () {
     };

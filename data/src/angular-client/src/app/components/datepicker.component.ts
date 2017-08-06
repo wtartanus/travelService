@@ -19,18 +19,15 @@ export class DatePickerComponent implements OnInit {
   public windowSize: WindowSize;
   public today: any;
   public firstDay: DayObject;
+  public weeksList: string[] = new Array();
+  public showCalendar: boolean;
 
 
   ngOnInit(): void {
+    this.showCalendar = false;
     this.today = moment();
     let firstDay = this.getFirstDayOfTheMonth(this.today);
     this.createMonth(firstDay);
-    //console.log("this.currentMonth: ", this.currentMonthMap);
-   // this.changeMonth(true);
-   // console.log("next month: ", this.currentMonthMap);
-   // this.changeMonth(false);
-   // this.changeMonth(false);
-    console.log("previous month: ", this.currentMonthMap); 
   }
 
   getFirstDayOfTheMonth(dayMoment: any):  DayObject{
@@ -48,6 +45,8 @@ export class DatePickerComponent implements OnInit {
   createMonth(firstDay: DayObject): void {
     let day, week;
     let days: DayObject[] = new Array();
+
+    this.currentMonth = firstDay.value.format("MMMM YYYY");
 
     days.push(firstDay);
     let run = true;
@@ -77,6 +76,20 @@ export class DatePickerComponent implements OnInit {
     }
     
     this.populateEnds();
+    if(this.weeksList) {
+      this.weeksList.length = 0;
+    }
+    
+    let keys = Object.keys(this.currentMonthMap);
+    if(this.currentMonth.includes("December") && keys[0] === "1" && parseInt(keys[1]) > 2) {
+     let item = keys.shift();
+     keys.push(item);
+    }
+    for (var i = 0; i < keys.length; i++) {
+      if(this.currentMonthMap.hasOwnProperty(keys[i])) {
+        this.weeksList.push(keys[i]);
+      }
+    }
   }
 
   
@@ -86,7 +99,14 @@ export class DatePickerComponent implements OnInit {
     
     for(var i = 0; i < keys.length; i++) {
       if(this.currentMonthMap.hasOwnProperty(keys[i])) {
-          firstDay = this.currentMonthMap[keys[i]][0];
+        let week = this.currentMonthMap[keys[i]];
+         for(var d = 0; d < week.length; d++) {
+           if(week[d].isCurrentMonth) {
+             firstDay = week[d];
+             break;
+           }
+         }
+          
           break;
       }
     }
@@ -106,6 +126,10 @@ export class DatePickerComponent implements OnInit {
     let firstWeek, lastWeek;
     
     let keys = Object.keys(this.currentMonthMap);
+    if(this.currentMonth.includes("December") && keys[0] === "1" && parseInt(keys[1]) > 2) {
+     let item = keys.shift();
+     keys.push(item);
+    }
     for(var i = 0; i < keys.length; i++) {
       if(this.currentMonthMap.hasOwnProperty(keys[i])) {
         if(!firstWeek) {
@@ -123,7 +147,6 @@ export class DatePickerComponent implements OnInit {
       if(count > 0) {
         prevDay = prevDay.clone().subtract(1, "day");
       }
-      console.log("@@@@", prevDay);
       if(prevDay.week() === firstDay.week) {
         let newDay = new DayObject(prevDay.format("DD"), prevDay.week(), false);
         newDay.setValue(prevDay);
@@ -150,6 +173,10 @@ export class DatePickerComponent implements OnInit {
       week = nextDay.week();
       count++;
     } 
+  }
+
+  toggleCalendar(): void {
+     this.showCalendar = !this.showCalendar;
   }
 
   listMonths() {

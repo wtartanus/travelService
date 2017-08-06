@@ -83,7 +83,6 @@
 </section>
 
 <section *ngIf="windowSize.width >= 1500">
-<date-picker></date-picker>
   <section class="splash-container-full" [style.height]=" windowSize.height + 'px'">
     <section id="nav-container-full">
       <span id="logo-nav-full">Travel Guide</span>
@@ -104,6 +103,7 @@
               <button type="submit" class="search-button-full" (click)="search()"><i class="fa fa-search" [style.font-size]="'x-large'" aria-hidden="true"></i></button>
     </section>
   </section>
+  <date-picker></date-picker>
  <!-- *************** inspirations *************** -->
      <!--<inspirations>Loading</inspirations> -->
 </section>
