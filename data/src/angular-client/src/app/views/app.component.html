@@ -98,12 +98,11 @@
           <span class="invalid-small" *ngIf="!searchService.destinationCorrect">Invalid destination<i  class="fa fa-exclamation" aria-hidden="true"></i></span>
               <input class="input-full" id="locationTextField" autocomplete="on" type="text" [(ngModel)]="destination" required /><span><i class="fa fa-map-marker input-icon fa-2x" aria-hidden="true"></i></span>
               <input class="input-full" type="text" /><span><i class="fa fa-home input-icon fa-2x" aria-hidden="true"></i></span>
-              <my-date-picker class="datepicker" name="departDate" [options]="departOptions" [(ngModel)]="departDateValue" (dateChanged)="onDateChanged($event)"></my-date-picker>
-              <my-date-picker class="datepicker" name="returnDate" [options]="returnOptions" [(ngModel)]="returnDateValue"></my-date-picker>
+              <date-picker class="date-picker"></date-picker>
               <button type="submit" class="search-button-full" (click)="search()"><i class="fa fa-search" [style.font-size]="'x-large'" aria-hidden="true"></i></button>
     </section>
   </section>
-  <date-picker></date-picker>
+  
  <!-- *************** inspirations *************** -->
      <!--<inspirations>Loading</inspirations> -->
 </section>
