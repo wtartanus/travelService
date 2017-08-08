@@ -5,17 +5,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var moment = require("moment/moment");
 var common_service_js_1 = require("./../services/common.service.js");
+var search_service_js_1 = require("./../services/search.service.js");
 var dayObject_js_1 = require("./../models/dayObject.js");
 var DatePickerComponent = (function () {
-    function DatePickerComponent() {
+    function DatePickerComponent(commonService, searchService) {
+        this.commonService = commonService;
+        this.searchService = searchService;
         this.currentMonthMap = new Map();
         this.weeksList = new Array();
     }
+    ;
     DatePickerComponent.prototype.ngOnInit = function () {
         this.showCalendar = false;
         this.today = moment();
@@ -155,6 +162,21 @@ var DatePickerComponent = (function () {
     DatePickerComponent.prototype.toggleCalendar = function () {
         this.showCalendar = !this.showCalendar;
     };
+    DatePickerComponent.prototype.setDate = function (date) {
+        date = date.clone().toDate();
+        if (!this.searchService.dateFrom && !this.searchService.dateTo) {
+            this.searchService.setDateFrom(date);
+        }
+        else if (this.searchService.dateFrom && !this.searchService.dateTo) {
+            var dateFrom = this.searchService.dateFrom < date ? this.searchService.dateFrom : date;
+            var dateTo = this.searchService.dateFrom < date ? date : this.searchService.dateFrom;
+            this.searchService.setDateFrom(dateFrom);
+            this.searchService.setDateTo(dateTo);
+        }
+        else if (this.searchService.dateFrom && this.searchService.dateTo) {
+        }
+        console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
+    };
     DatePickerComponent.prototype.listMonths = function () {
     };
     DatePickerComponent.prototype.listYears = function () {
@@ -165,8 +187,9 @@ DatePickerComponent = __decorate([
     core_1.Component({
         selector: 'date-picker',
         templateUrl: 'src/app/views/datepicker.component.html',
-        providers: [common_service_js_1.CommonService]
-    })
+        providers: [common_service_js_1.CommonService, search_service_js_1.SearchService]
+    }),
+    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
 ], DatePickerComponent);
 exports.DatePickerComponent = DatePickerComponent;
 //# sourceMappingURL=datepicker.component.js.map

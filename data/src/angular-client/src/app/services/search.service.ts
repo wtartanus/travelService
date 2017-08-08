@@ -9,9 +9,9 @@ import 'rxjs/add/operator/toPromise';
 export class SearchService {
   private destination: string;
   public destinationCorrect: boolean;
-  private departure: string;
-  private dateFrom: Date;
-  private dateTo: Date;
+  public departure: string;
+  public dateFrom: Date;
+  public dateTo: Date;
 
   @Input() private resultDescription: string;
 

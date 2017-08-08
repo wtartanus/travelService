@@ -26,7 +26,6 @@
 .calendar-container {
   background-color: white;
   border: 1px solid black;
-  padding-top: 7%;
   height: 250px;
   text-align: -webkit-center;
   font-size: 1.1em;
@@ -34,23 +33,38 @@
   top: -30px;
 }
 
+.datepicker-close {
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.calendar-title-container {
+  margin-top: 30px;
+}
+
 .calendar-arrow {
   font-size: 1.2em;
   font-weight: bold;
-  margin: 22px;
+  cursor: pointer;
 }
 
 .calendar-left-arrow {
-
+  float: left;
+  margin-left: 50px;
 }
 
 .calendar-right-arrow {
-
+  float: right;
+   margin-right: 50px;
 }
 
 .calendar-title {
-    width: 200px;
+  width: 150px;
+  display: inline-block;
 }
+
 
 .calendar-weekend {
     color: red;

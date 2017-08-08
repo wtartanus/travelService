@@ -3,14 +3,15 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment/moment';
 
-import {CommonService} from './../services/common.service.js';
+import { CommonService } from './../services/common.service.js';
+import { SearchService } from './../services/search.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { DayObject } from './../models/dayObject.js';
 
 @Component({
   selector: 'date-picker',
   templateUrl: 'src/app/views/datepicker.component.html',
-  providers: [CommonService]
+  providers: [CommonService, SearchService]
 })
 export class DatePickerComponent implements OnInit {
   public currentMonthMap: Map<number, DayObject[]> = new Map();
@@ -22,6 +23,7 @@ export class DatePickerComponent implements OnInit {
   public weeksList: string[] = new Array();
   public showCalendar: boolean;
 
+  constructor(private commonService: CommonService, private searchService: SearchService) { };
 
   ngOnInit(): void {
     this.showCalendar = false;
@@ -177,6 +179,22 @@ export class DatePickerComponent implements OnInit {
 
   toggleCalendar(): void {
      this.showCalendar = !this.showCalendar;
+  }
+
+  setDate(date: any): void {
+    date = date.clone().toDate();
+    if(!this.searchService.dateFrom && !this.searchService.dateTo) {
+       this.searchService.setDateFrom(date);
+    } else if(this.searchService.dateFrom && !this.searchService.dateTo) {
+       let dateFrom = this.searchService.dateFrom < date ? this.searchService.dateFrom : date;
+       let dateTo = this.searchService.dateFrom < date ? date : this.searchService.dateFrom;
+       this.searchService.setDateFrom(dateFrom);
+       this.searchService.setDateTo(dateTo);
+    } else if (this.searchService.dateFrom && this.searchService.dateTo) {
+
+    }
+ 
+    console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
   }
 
   listMonths() {
