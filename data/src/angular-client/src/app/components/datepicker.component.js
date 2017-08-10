@@ -34,7 +34,7 @@ var DatePickerComponent = (function () {
         var value = dayMoment.clone().subtract(dayOfTheMonth, "days");
         var dispaly = value.format("DD");
         var week = value.week();
-        var firstDay = new dayObject_js_1.DayObject(dispaly, week, true);
+        var firstDay = new dayObject_js_1.DayObject(dispaly, week, true, value.isBefore(this.today));
         firstDay.setValue(value);
         return firstDay;
     };
@@ -50,7 +50,7 @@ var DatePickerComponent = (function () {
             day = days[count].value.clone().add(1, 'day');
             week = day.week();
             if (days[days.length - 1].value.isSame(day, 'month')) {
-                var newDay = new dayObject_js_1.DayObject(day.format("DD"), week, true);
+                var newDay = new dayObject_js_1.DayObject(day.format("DD"), week, true, day.isBefore(this.today));
                 newDay.setValue(day);
                 days.push(newDay);
             }
@@ -134,7 +134,7 @@ var DatePickerComponent = (function () {
                 prevDay = prevDay.clone().subtract(1, "day");
             }
             if (prevDay.week() === firstDay.week) {
-                var newDay = new dayObject_js_1.DayObject(prevDay.format("DD"), prevDay.week(), false);
+                var newDay = new dayObject_js_1.DayObject(prevDay.format("DD"), prevDay.week(), false, prevDay.isBefore(this.today));
                 newDay.setValue(prevDay);
                 this.currentMonthMap[firstWeek].unshift(newDay);
             }
@@ -151,7 +151,7 @@ var DatePickerComponent = (function () {
                 nextDay = nextDay.clone().add(1, "day");
             }
             if (nextDay.week() === lastDay.week) {
-                var newDay = new dayObject_js_1.DayObject(nextDay.format("DD"), nextDay.week(), false);
+                var newDay = new dayObject_js_1.DayObject(nextDay.format("DD"), nextDay.week(), false, nextDay.isBefore(this.today));
                 newDay.setValue(nextDay);
                 this.currentMonthMap[lastWeek].push(newDay);
             }
@@ -162,28 +162,58 @@ var DatePickerComponent = (function () {
     DatePickerComponent.prototype.toggleCalendar = function () {
         this.showCalendar = !this.showCalendar;
     };
-    DatePickerComponent.prototype.setDate = function (date) {
-        date = date.clone().toDate();
+    DatePickerComponent.prototype.findDayInCurrentMonth = function (day) {
+        var dayMoment = moment(day);
+        var result;
+        for (var i = 0; i < this.weeksList.length; i++) {
+            var week = this.currentMonthMap[this.weeksList[i]];
+            for (var j = 0; j < week.length; j++) {
+                if (week[j].value.isSame(dayMoment, "day")) {
+                    result = week[j];
+                    break;
+                }
+            }
+        }
+        return result;
+    };
+    DatePickerComponent.prototype.setDate = function (dateValue) {
+        var date = dateValue.value.clone().toDate();
         if (!this.searchService.dateFrom && !this.searchService.dateTo) {
             this.searchService.setDateFrom(date);
+            this.dayFrom = dateValue;
         }
         else if (this.searchService.dateFrom && !this.searchService.dateTo) {
-            var dateFrom = this.searchService.dateFrom < date ? this.searchService.dateFrom : date;
-            var dateTo = this.searchService.dateFrom < date ? date : this.searchService.dateFrom;
-            this.searchService.setDateFrom(dateFrom);
-            this.searchService.setDateTo(dateTo);
+            if (date < this.searchService.dateFrom) {
+                this.searchService.setDateTo(this.searchService.dateFrom);
+                this.searchService.setDateFrom(date);
+                this.dayFrom = dateValue;
+                this.dayTo = this.findDayInCurrentMonth(this.searchService.dateTo);
+                dateValue.select();
+            }
+            else if (date > this.searchService.dateFrom) {
+                this.dayTo = dateValue;
+                this.dayTo.select();
+                this.searchService.setDateTo(date);
+            }
         }
         else if (this.searchService.dateFrom && this.searchService.dateTo) {
             if (date > this.searchService.dateTo && date > this.searchService.dateFrom) {
                 this.searchService.setDateTo(date);
+                this.dayTo.deselect();
+                this.dayTo = dateValue;
             }
             else if (date > this.searchService.dateFrom && date < this.searchService.dateTo) {
                 this.searchService.setDateTo(date);
+                this.dayTo.deselect();
+                this.dayTo = dateValue;
             }
             else if (date < this.searchService.dateFrom && date < this.searchService.dateTo) {
                 this.searchService.setDateFrom(date);
+                this.dayFrom.deselect();
+                this.dayFrom = dateValue;
             }
         }
+        dateValue.select();
         console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
     };
     DatePickerComponent.prototype.listMonths = function () {

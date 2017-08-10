@@ -22,7 +22,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let week of weeksList">
-                <td *ngFor="let day of currentMonthMap[week]" [ngClass]="{'calendar-out-month': !day.isCurrentMonth}" class="calendar-td" (click)="setDate(day.value)">{{day.display}}</td>
+                <td *ngFor="let day of currentMonthMap[week]" [ngClass]="{'calendar-out-month': !day.isCurrentMonth, 'calendar-past': day.isPast, 'calendar-selected': day.isSelected}" class="calendar-td" (click)="setDate(day)">{{day.display}}</td>
             </tr>
           </tbody>
       </table>

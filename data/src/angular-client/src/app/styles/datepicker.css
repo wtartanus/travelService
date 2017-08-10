@@ -85,3 +85,17 @@
 .calendar-out-month {
     color: gray;
 }
+
+.calendar-past {
+  cursor: not-allowed !important;
+}
+
+.calendar-past:hover {
+  background-color: white;
+  color: black;
+  cursor: not-allowed;
+}
+
+.calendar-selected {
+  border: 1px solid green;
+}

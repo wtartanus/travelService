@@ -22,6 +22,8 @@ export class DatePickerComponent implements OnInit {
   public firstDay: DayObject;
   public weeksList: string[] = new Array();
   public showCalendar: boolean;
+  public dayFrom: DayObject;
+  public dayTo: DayObject;
 
   constructor(private commonService: CommonService, private searchService: SearchService) { };
 
@@ -38,7 +40,7 @@ export class DatePickerComponent implements OnInit {
     let dispaly = value.format("DD");
     let week = value.week();
 
-    let firstDay = new DayObject(dispaly, week, true);
+    let firstDay = new DayObject(dispaly, week, true, value.isBefore(this.today));
     firstDay.setValue(value);
     return firstDay;
   }
@@ -57,7 +59,7 @@ export class DatePickerComponent implements OnInit {
       day = days[count].value.clone().add(1, 'day');
       week = day.week();
       if (days[days.length - 1].value.isSame(day, 'month')) {
-         let newDay = new DayObject(day.format("DD"), week, true);
+         let newDay = new DayObject(day.format("DD"), week, true, day.isBefore(this.today));
          newDay.setValue(day);
          days.push(newDay);
       } else {
@@ -150,7 +152,7 @@ export class DatePickerComponent implements OnInit {
         prevDay = prevDay.clone().subtract(1, "day");
       }
       if(prevDay.week() === firstDay.week) {
-        let newDay = new DayObject(prevDay.format("DD"), prevDay.week(), false);
+        let newDay = new DayObject(prevDay.format("DD"), prevDay.week(), false, prevDay.isBefore(this.today));
         newDay.setValue(prevDay);
         this.currentMonthMap[firstWeek].unshift(newDay);
       }
@@ -168,7 +170,7 @@ export class DatePickerComponent implements OnInit {
         nextDay = nextDay.clone().add(1, "day");
       }
       if(nextDay.week() === lastDay.week) {
-        let newDay = new DayObject(nextDay.format("DD"), nextDay.week(), false);
+        let newDay = new DayObject(nextDay.format("DD"), nextDay.week(), false, nextDay.isBefore(this.today));
         newDay.setValue(nextDay);
         this.currentMonthMap[lastWeek].push(newDay);
       }
@@ -181,25 +183,55 @@ export class DatePickerComponent implements OnInit {
      this.showCalendar = !this.showCalendar;
   }
 
-  setDate(date: any): void {
-    date = date.clone().toDate();
+  public findDayInCurrentMonth(day: Date): DayObject {
+    let dayMoment = moment(day);
+    let result: DayObject;
+    for (var i = 0; i < this.weeksList.length; i++) {
+      let week = this.currentMonthMap[this.weeksList[i]];
+      for (var j = 0; j < week.length; j++) {
+        if(week[j].value.isSame(dayMoment, "day")) {
+           result = week[j];
+           break;
+        }
+      }
+    }
+   return result;
+  }
+
+  setDate(dateValue: any): void {
+    let date = dateValue.value.clone().toDate();
+    
     if(!this.searchService.dateFrom && !this.searchService.dateTo) {
        this.searchService.setDateFrom(date);
+       this.dayFrom = dateValue;
     } else if(this.searchService.dateFrom && !this.searchService.dateTo) {
-       let dateFrom = this.searchService.dateFrom < date ? this.searchService.dateFrom : date;
-       let dateTo = this.searchService.dateFrom < date ? date : this.searchService.dateFrom;
-       this.searchService.setDateFrom(dateFrom);
-       this.searchService.setDateTo(dateTo);
+      if(date < this.searchService.dateFrom) {
+        this.searchService.setDateTo(this.searchService.dateFrom);
+        this.searchService.setDateFrom(date);
+        this.dayFrom = dateValue;
+        this.dayTo = this.findDayInCurrentMonth(this.searchService.dateTo);
+        dateValue.select();
+      } else if (date > this.searchService.dateFrom) {
+         this.dayTo = dateValue;
+         this.dayTo.select();
+         this.searchService.setDateTo(date);
+      }
     } else if (this.searchService.dateFrom && this.searchService.dateTo) {
          if(date > this.searchService.dateTo && date > this.searchService.dateFrom) {
              this.searchService.setDateTo(date);
+             this.dayTo.deselect();
+             this.dayTo = dateValue;
          } else if (date > this.searchService.dateFrom && date < this.searchService.dateTo) {
              this.searchService.setDateTo(date);
+             this.dayTo.deselect();
+             this.dayTo = dateValue;
          } else if (date < this.searchService.dateFrom && date < this.searchService.dateTo) {
              this.searchService.setDateFrom(date);
+             this.dayFrom.deselect();
+             this.dayFrom = dateValue;
          }
     }
- 
+    dateValue.select();
     console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
   }
 
