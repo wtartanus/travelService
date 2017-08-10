@@ -174,6 +174,15 @@ var DatePickerComponent = (function () {
             this.searchService.setDateTo(dateTo);
         }
         else if (this.searchService.dateFrom && this.searchService.dateTo) {
+            if (date > this.searchService.dateTo && date > this.searchService.dateFrom) {
+                this.searchService.setDateTo(date);
+            }
+            else if (date > this.searchService.dateFrom && date < this.searchService.dateTo) {
+                this.searchService.setDateTo(date);
+            }
+            else if (date < this.searchService.dateFrom && date < this.searchService.dateTo) {
+                this.searchService.setDateFrom(date);
+            }
         }
         console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
     };
