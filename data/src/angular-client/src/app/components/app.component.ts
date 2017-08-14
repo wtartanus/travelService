@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {IMyOptions, IMyDateModel} from 'mydatepicker';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/toPromise';
 
 import { InspirationsComponent } from "./../components/inspirations.component.js";
@@ -8,6 +9,7 @@ import { DatePickerComponent } from "./../components/datepicker.component.js"
 
 import {CommonService} from './../services/common.service.js';
 import {SearchService} from './../services/search.service.js';
+import {MessageService} from './../services/message.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
 declare var google: any;
@@ -18,7 +20,7 @@ declare var google: any;
   providers: [CommonService],
   entryComponents: [InspirationsComponent, DatePickerComponent]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   private showNav = false;
   private showModal = false;
   private today = new Date();
@@ -29,8 +31,12 @@ export class AppComponent implements OnInit {
   private width = '100%';
   private height = '50px';
   public destination: String;
+  public substriction: Subscription;
+  public message: any;
 
-  constructor(private commonService: CommonService, private searchService: SearchService) { };
+  constructor(private commonService: CommonService, private searchService: SearchService, private messageService: MessageService) { 
+    this.substriction = this.messageService.getMessage().subscribe(message => this.message = message);
+  };
 
   setOptions(isReturn: boolean) {
     let date = isReturn ? this.returnDate : this.today;
@@ -79,6 +85,10 @@ export class AppComponent implements OnInit {
 
     this.departOptions = this.setOptions(false);
     this.returnOptions = this.setOptions(true);
+  }
+
+  ngOnDestroy(): void {
+     this.substriction.unsubscribe();
   }
 
 

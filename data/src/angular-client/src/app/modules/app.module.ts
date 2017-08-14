@@ -12,6 +12,7 @@ import { DatePickerComponent } from "./../components/datepicker.component.js";
 import { CommonService } from './../services/common.service.js';
 import { SearchService } from './../services/search.service.js';
 import {SearchResultService } from './../services/searchResult.service.js';
+import { MessageService } from './../services/message.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { Inspiration } from './../models/inspiration.js';
 import { Activity } from './../models/activity.js';
@@ -35,7 +36,7 @@ import { DayObject } from './../models/dayObject.js'
     InspirationsComponent,
     DatePickerComponent
   ],
-  providers: [CommonService, SearchService, SearchResultService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
+  providers: [CommonService, SearchService, SearchResultService, MessageService, WindowSize, Inspiration, Activity, City, Photo, Weather, DayObject],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

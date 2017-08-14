@@ -15,10 +15,13 @@ var inspirations_component_js_1 = require("./../components/inspirations.componen
 var datepicker_component_js_1 = require("./../components/datepicker.component.js");
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
+var message_service_js_1 = require("./../services/message.service.js");
 var AppComponent = (function () {
-    function AppComponent(commonService, searchService) {
+    function AppComponent(commonService, searchService, messageService) {
+        var _this = this;
         this.commonService = commonService;
         this.searchService = searchService;
+        this.messageService = messageService;
         this.showNav = false;
         this.showModal = false;
         this.today = new Date();
@@ -41,6 +44,7 @@ var AppComponent = (function () {
                 day: this.today.getDate()
             }
         };
+        this.substriction = this.messageService.getMessage().subscribe(function (message) { return _this.message = message; });
     }
     ;
     AppComponent.prototype.setOptions = function (isReturn) {
@@ -73,6 +77,9 @@ var AppComponent = (function () {
         this.departOptions = this.setOptions(false);
         this.returnOptions = this.setOptions(true);
     };
+    AppComponent.prototype.ngOnDestroy = function () {
+        this.substriction.unsubscribe();
+    };
     AppComponent.prototype.onDateChanged = function (event) {
         this.returnDate = new Date(event.jsdate);
         console.info("departDateValue: ", this.departDateValue);
@@ -98,7 +105,7 @@ AppComponent = __decorate([
         providers: [common_service_js_1.CommonService],
         entryComponents: [inspirations_component_js_1.InspirationsComponent, datepicker_component_js_1.DatePickerComponent]
     }),
-    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
+    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService, message_service_js_1.MessageService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

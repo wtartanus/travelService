@@ -12,12 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var common_service_js_1 = require("./../services/common.service.js");
+var message_service_js_1 = require("./../services/message.service.js");
 var Cities = require("./../../../cities.js");
 require("rxjs/add/operator/toPromise");
 var SearchService = (function () {
-    function SearchService(http, commonService) {
+    function SearchService(http, commonService, messageService) {
         this.http = http;
         this.commonService = commonService;
+        this.messageService = messageService;
         this.destinationCorrect = true;
     }
     ;
@@ -98,6 +100,12 @@ var SearchService = (function () {
         //this.getImages(city).then(result => console.log(result));
         //this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
     };
+    SearchService.prototype.sendMessage = function () {
+        this.messageService.sendMessage("Message send from search service.");
+    };
+    SearchService.prototype.clearMessage = function () {
+        this.messageService.clearMessage();
+    };
     return SearchService;
 }());
 __decorate([
@@ -106,7 +114,7 @@ __decorate([
 ], SearchService.prototype, "resultDescription", void 0);
 SearchService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, common_service_js_1.CommonService])
+    __metadata("design:paramtypes", [http_1.Http, common_service_js_1.CommonService, message_service_js_1.MessageService])
 ], SearchService);
 exports.SearchService = SearchService;
 //# sourceMappingURL=search.service.js.map

@@ -2,8 +2,10 @@ import {Injectable, Input, OnChanges} from '@angular/core';
 import { WindowSize } from './../models/windowSize.js';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {CommonService} from './../services/common.service.js';
+import { MessageService } from './../services/message.service.js'; 
 var Cities = require("./../../../cities.js");
 import 'rxjs/add/operator/toPromise';
+
 
 @Injectable()
 export class SearchService {
@@ -15,7 +17,7 @@ export class SearchService {
 
   @Input() private resultDescription: string;
 
-  constructor(private http: Http, private commonService: CommonService) {
+  constructor(private http: Http, private commonService: CommonService, private messageService: MessageService) {
     this.destinationCorrect = true;
    };
 
@@ -105,5 +107,13 @@ export class SearchService {
     this.getSomething().then(result => console.log("@@@@@",result));
     //this.getImages(city).then(result => console.log(result));
     //this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
+  }
+
+  sendMessage(): void {
+    this.messageService.sendMessage("Message send from search service.");
+  }
+
+  clearMessage(): void {
+    this.messageService.clearMessage();
   }
 }

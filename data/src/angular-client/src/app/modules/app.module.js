@@ -18,6 +18,7 @@ var datepicker_component_js_1 = require("./../components/datepicker.component.js
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
 var searchResult_service_js_1 = require("./../services/searchResult.service.js");
+var message_service_js_1 = require("./../services/message.service.js");
 var windowSize_js_1 = require("./../models/windowSize.js");
 var inspiration_js_1 = require("./../models/inspiration.js");
 var activity_js_1 = require("./../models/activity.js");
@@ -44,7 +45,7 @@ AppModule = __decorate([
             inspirations_component_js_1.InspirationsComponent,
             datepicker_component_js_1.DatePickerComponent
         ],
-        providers: [common_service_js_1.CommonService, search_service_js_1.SearchService, searchResult_service_js_1.SearchResultService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather, dayObject_js_1.DayObject],
+        providers: [common_service_js_1.CommonService, search_service_js_1.SearchService, searchResult_service_js_1.SearchResultService, message_service_js_1.MessageService, windowSize_js_1.WindowSize, inspiration_js_1.Inspiration, activity_js_1.Activity, city_js_1.City, photo_js_1.Photo, weather_js_1.Weather, dayObject_js_1.DayObject],
         bootstrap: [app_component_js_1.AppComponent]
     })
 ], AppModule);
