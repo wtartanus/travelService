@@ -7,6 +7,7 @@ import { CommonService } from './../services/common.service.js';
 import { SearchService } from './../services/search.service.js';
 import { WindowSize } from './../models/windowSize.js';
 import { DayObject } from './../models/dayObject.js';
+import { MessageService } from './../services/message.service.js';
 
 @Component({
   selector: 'date-picker',
@@ -24,14 +25,15 @@ export class DatePickerComponent implements OnInit {
   public showCalendar: boolean;
   public dayFrom: DayObject;
   public dayTo: DayObject;
+  public datesDisplay = "";
 
-  constructor(private commonService: CommonService, private searchService: SearchService) { };
+  constructor(private commonService: CommonService, private searchService: SearchService, private messageService: MessageService) { };
 
   ngOnInit(): void {
     this.showCalendar = false;
     this.today = moment();
     let firstDay = this.getFirstDayOfTheMonth(this.today);
-    this.createMonth(firstDay);
+    this.createMonth(firstDay); 
   }
 
   getFirstDayOfTheMonth(dayMoment: any):  DayObject{
@@ -233,6 +235,17 @@ export class DatePickerComponent implements OnInit {
     }
     dateValue.select();
     console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
+    if(this.searchService.dateFrom && this.searchService.dateTo) {
+       let from = moment(this.searchService.dateFrom);
+       let to = moment(this.searchService.dateTo);       
+       this.datesDisplay = from.format("D/M/YYYY") + " - " + to.format("D/M/YYYY");
+    } else if (this.searchService.dateFrom && !this.searchService.dateTo) {
+       let from = moment(this.searchService.dateFrom);
+       this.datesDisplay = from.format("D/M/YYYY")
+    } else if (!this.searchService.dateFrom && this.searchService.dateTo) {
+       let to = moment(this.searchService.dateTo);    
+       this.datesDisplay = to.format("D/M/YYYY");       
+    }
   }
 
   listMonths() {

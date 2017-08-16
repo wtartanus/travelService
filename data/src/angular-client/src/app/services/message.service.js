@@ -12,8 +12,8 @@ var MessageService = (function () {
     function MessageService() {
         this.subject = new Subject_1.Subject();
     }
-    MessageService.prototype.sendMessage = function (message) {
-        this.subject.next({ text: message });
+    MessageService.prototype.sendMessage = function (message, body) {
+        this.subject.next({ text: message, body: body });
     };
     MessageService.prototype.clearMessage = function () {
         this.subject.next();

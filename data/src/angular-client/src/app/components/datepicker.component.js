@@ -15,12 +15,15 @@ var moment = require("moment/moment");
 var common_service_js_1 = require("./../services/common.service.js");
 var search_service_js_1 = require("./../services/search.service.js");
 var dayObject_js_1 = require("./../models/dayObject.js");
+var message_service_js_1 = require("./../services/message.service.js");
 var DatePickerComponent = (function () {
-    function DatePickerComponent(commonService, searchService) {
+    function DatePickerComponent(commonService, searchService, messageService) {
         this.commonService = commonService;
         this.searchService = searchService;
+        this.messageService = messageService;
         this.currentMonthMap = new Map();
         this.weeksList = new Array();
+        this.datesDisplay = "";
     }
     ;
     DatePickerComponent.prototype.ngOnInit = function () {
@@ -215,6 +218,19 @@ var DatePickerComponent = (function () {
         }
         dateValue.select();
         console.log("dateFrom: ", this.searchService.dateFrom, "dateTo: ", this.searchService.dateTo);
+        if (this.searchService.dateFrom && this.searchService.dateTo) {
+            var from = moment(this.searchService.dateFrom);
+            var to = moment(this.searchService.dateTo);
+            this.datesDisplay = from.format("D/M/YYYY") + " - " + to.format("D/M/YYYY");
+        }
+        else if (this.searchService.dateFrom && !this.searchService.dateTo) {
+            var from = moment(this.searchService.dateFrom);
+            this.datesDisplay = from.format("D/M/YYYY");
+        }
+        else if (!this.searchService.dateFrom && this.searchService.dateTo) {
+            var to = moment(this.searchService.dateTo);
+            this.datesDisplay = to.format("D/M/YYYY");
+        }
     };
     DatePickerComponent.prototype.listMonths = function () {
     };
@@ -228,7 +244,7 @@ DatePickerComponent = __decorate([
         templateUrl: 'src/app/views/datepicker.component.html',
         providers: [common_service_js_1.CommonService, search_service_js_1.SearchService]
     }),
-    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService])
+    __metadata("design:paramtypes", [common_service_js_1.CommonService, search_service_js_1.SearchService, message_service_js_1.MessageService])
 ], DatePickerComponent);
 exports.DatePickerComponent = DatePickerComponent;
 //# sourceMappingURL=datepicker.component.js.map

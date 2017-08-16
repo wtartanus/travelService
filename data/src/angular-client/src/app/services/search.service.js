@@ -100,9 +100,6 @@ var SearchService = (function () {
         //this.getImages(city).then(result => console.log(result));
         //this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
     };
-    SearchService.prototype.sendMessage = function () {
-        this.messageService.sendMessage("Message send from search service.");
-    };
     SearchService.prototype.clearMessage = function () {
         this.messageService.clearMessage();
     };

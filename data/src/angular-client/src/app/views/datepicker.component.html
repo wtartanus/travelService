@@ -1,5 +1,5 @@
 <section id="datepicker-container">
-  <input class="datepicker-input" type="text" (click)="toggleCalendar()" readonly>
+  <input class="datepicker-input" type="text" value="{{datesDisplay}}" (click)="toggleCalendar()" readonly>
   <span class="datepicker-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
   <div *ngIf="showCalendar" class="calendar-container">
       <span class="datepicker-close" (click)="showCalendar = false"><i class="fa fa-times" aria-hidden="true"></i></span>

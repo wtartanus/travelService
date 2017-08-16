@@ -33,10 +33,18 @@ export class AppComponent implements OnInit, OnDestroy {
   public destination: String;
   public substriction: Subscription;
   public message: any;
+  public datesDisplay: string;
 
   constructor(private commonService: CommonService, private searchService: SearchService, private messageService: MessageService) { 
-    this.substriction = this.messageService.getMessage().subscribe(message => this.message = message);
+    this.substriction = this.messageService.getMessage().subscribe(message => this.updateDates(message));
   };
+
+  updateDates(message: any): void {
+    if(message.text === "dates-changed") {
+       console.log("dayFrom: ", message.body.dateFrom); 
+       console.log("dayFrom: ", message.body.dateTo);        
+    }
+  }
 
   setOptions(isReturn: boolean) {
     let date = isReturn ? this.returnDate : this.today;

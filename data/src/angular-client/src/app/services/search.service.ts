@@ -109,10 +109,6 @@ export class SearchService {
     //this.getCityDescription(city).then(result => this.sanitazeHtmlFromWiki(result));
   }
 
-  sendMessage(): void {
-    this.messageService.sendMessage("Message send from search service.");
-  }
-
   clearMessage(): void {
     this.messageService.clearMessage();
   }

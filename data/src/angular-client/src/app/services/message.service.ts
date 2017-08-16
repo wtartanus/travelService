@@ -6,8 +6,8 @@ import { Subject } from 'rxjs/Subject';
 export class MessageService {
     private subject = new Subject<any>();
 
-    sendMessage(message: String) {
-        this.subject.next({text: message});
+    sendMessage(message: String, body: any) {
+        this.subject.next({text: message, body: body});
     } 
 
     clearMessage() {

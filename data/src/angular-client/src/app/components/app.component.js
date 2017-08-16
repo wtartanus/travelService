@@ -44,9 +44,15 @@ var AppComponent = (function () {
                 day: this.today.getDate()
             }
         };
-        this.substriction = this.messageService.getMessage().subscribe(function (message) { return _this.message = message; });
+        this.substriction = this.messageService.getMessage().subscribe(function (message) { return _this.updateDates(message); });
     }
     ;
+    AppComponent.prototype.updateDates = function (message) {
+        if (message.text === "dates-changed") {
+            console.log("dayFrom: ", message.body.dateFrom);
+            console.log("dayFrom: ", message.body.dateTo);
+        }
+    };
     AppComponent.prototype.setOptions = function (isReturn) {
         var date = isReturn ? this.returnDate : this.today;
         return {
